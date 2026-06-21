@@ -591,7 +591,7 @@ function buildShareCanvas() {
   ctx.font='22px "Segoe UI",Arial,sans-serif';
   ctx.fillStyle=T.footerColor;
   ctx.textAlign='left';
-  ctx.fillText('¿Puedes superarme? 👉 tvs28i.mimo.run', 240, H-22);
+  ctx.fillText('¿Puedes superarme? 👉 mxdanico.github.io/verbquest/', 240, H-22);
   return cv;
 }
 
