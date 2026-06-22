@@ -1,77 +1,104 @@
 # VerbQuest 🦜
 
-Aplicación web PWA para practicar los **68 verbos irregulares** del libro *English File Pre-Intermediate*. Diseñada para estudiantes de inglés que quieren repasar de forma interactiva.
+**VerbQuest** es una aplicación web progresiva (PWA) diseñada para practicar los **68 verbos irregulares de English File Pre-Intermediate** de forma interactiva, rápida y divertida.
 
-## 🔗 Demo en vivo
+La aplicación funciona tanto en navegador como instalada en dispositivos móviles, e incluso puede utilizarse sin conexión a Internet.
 
-👉 [Ver VerbQuest](https://mxdanico.github.io/verbquest)
+## 🌐 Demo
 
----
-
-## ✨ Funcionalidades
-
-| Función | Descripción |
-|---|---|
-| 📖 Lista de verbos | 68 verbos con traducción y pronunciación IPA |
-| 🔍 Búsqueda | Filtra por nombre, traducción o forma verbal |
-| 🎮 Quiz interactivo | 4 modos de juego configurables |
-| ⚡ Past Simple | Practica solo el pasado simple |
-| 🎓 Past Participle | Practica solo el participio |
-| 🔥 Modo Ambos | Mezcla Past Simple y Past Participle |
-| 💀 Modo Survival | 3 vidas, sin segunda oportunidad |
-| 💡 Sistema de pistas | Primera letra como ayuda (-5 pts) |
-| 🔥 Rachas | Bonificación por respuestas consecutivas |
-| 🌙 Tema oscuro/claro | Cambia según tu preferencia |
-| 🔊 Efectos de sonido | Feedback auditivo en cada respuesta |
-| 📱 Instalable (PWA) | Funciona como app nativa en el móvil |
-| ✈️ Modo offline | Funciona sin conexión tras la primera visita |
-| 📤 Compartir | Envía tus resultados por WhatsApp con imagen |
+👉 https://mxdanico.github.io/verbquest/
 
 ---
 
-## 🗂️ Estructura del proyecto
+## ✨ Características
 
-```
+- 📖 Lista completa de 68 verbos irregulares
+- 🔍 Búsqueda por verbo, traducción o forma verbal
+- 🎮 Quiz interactivo con múltiples modos de juego
+- ⚡ Modo Past Simple
+- 🎓 Modo Past Participle
+- 🔥 Modo Combinado (Past Simple + Past Participle)
+- 💀 Modo Survival con sistema de vidas
+- 💡 Pistas con penalización de puntuación
+- 🔥 Sistema de rachas y bonificaciones
+- 🌙 Tema claro y oscuro
+- 🔊 Efectos de sonido generados en tiempo real
+- 📱 Instalable como aplicación (PWA)
+- ✈️ Funcionamiento offline
+- 📤 Compartir resultados por WhatsApp
+
+---
+
+## 📱 Instalación
+
+### Android (Chrome)
+
+1. Abrir VerbQuest.
+2. Pulsar el menú ⋮.
+3. Seleccionar **Agregar a pantalla de inicio**.
+
+### iPhone / iPad (Safari)
+
+1. Abrir VerbQuest.
+2. Pulsar el botón **Compartir**.
+3. Seleccionar **Agregar a pantalla de inicio**.
+
+---
+
+## 📂 Estructura del proyecto
+
+```text
 verbquest/
 │
-├── index.html               ← Página principal
-├── manifest.json            ← Configuración PWA
-├── README.md                ← Este archivo
+├── index.html
+├── manifest.json
+├── README.md
 │
 ├── assets/
 │   ├── css/
-│   │   └── style.css        ← Estilos
+│   │   └── style.css
+│   │
 │   ├── js/
-│   │   └── script.js        ← Lógica de la app
+│   │   └── script.js
+│   │
 │   └── icons/
-│       ├── favicon.png      ← Icono pestaña navegador
-│       ├── icon-192.png     ← Icono app Android
-│       └── icon-512.png     ← Icono app splash screen
+│       ├── favicon.png
+│       ├── icon-192.png
+│       └── icon-512.png
 │
 └── .github/
-    └── workflows/
-        └── deploy.yml       ← Deploy automático
+```
 
 ---
 
-### Instalar como app en el móvil
-- **Android (Chrome):** Abre la web → menú ⋮ → *Agregar a pantalla de inicio*
-- **iPhone (Safari):** Abre la web → botón compartir → *Agregar a pantalla de inicio*
+## 🛠️ Tecnologías utilizadas
+
+- HTML5
+- CSS3
+- JavaScript (Vanilla JS)
+- Web Audio API
+- Progressive Web Apps (PWA)
+- Service Worker
+- GitHub Pages
 
 ---
 
-## 🛠️ Tecnologías
+## 🚀 Despliegue
 
-- **HTML5** — estructura semántica
-- **CSS3** — variables, animaciones, diseño responsive
-- **JavaScript vanilla** — sin dependencias externas
-- **Web Audio API** — efectos de sonido generados en tiempo real
-- **Service Worker** — caché para modo offline
-- **PWA** — instalable como app nativa
+El proyecto está publicado mediante **GitHub Pages**.
+
+🔗 https://mxdanico.github.io/verbquest/
+
+---
+
+## 📚 Fuente de contenido
+
+Los verbos utilizados corresponden al libro **English File Pre-Intermediate** de Oxford University Press y se emplean con fines educativos.
 
 ---
 
 ## 📄 Licencia
 
-Proyecto educativo de uso personal. Los verbos y estructura corresponden al libro *English File Pre-Intermediate* de Oxford University Press.
+Proyecto educativo y de práctica personal.
 
+© 2026 mxdanico
