@@ -51,17 +51,8 @@ verbquest/
 └── .github/
     └── workflows/
         └── deploy.yml       ← Deploy automático
-```
 
 ---
-
-## 🚀 Cómo usar
-
-### Ver en GitHub Pages
-1. Sube el repositorio a GitHub
-2. Ve a **Settings → Pages**
-3. En *Branch* selecciona `main` y carpeta `/ (root)`
-4. Guarda — en unos minutos estará publicado
 
 ### Instalar como app en el móvil
 - **Android (Chrome):** Abre la web → menú ⋮ → *Agregar a pantalla de inicio*
