@@ -26,42 +26,42 @@ Incluye lista de verbos con pronunciación IPA, quizzes interactivos con múltip
 <div align="center">
 
 ### 📚 Lista de Verbos — Teoría
-<img src="docs/screenshots/lista-verbos.jpg" alt="Lista de verbos irregulares con pronunciación IPA" width="280"/>
+<img src="docs/screenshots/lista-verbos.jpeg" alt="Lista de verbos irregulares con pronunciación IPA" width="280"/>
 
 > Lista completa con infinitivo, Past Simple, Past Participle y pronunciación IPA en español.
 
 ---
 
 ### ⚙️ Configuración del Quiz
-<img src="docs/screenshots/configuracion-quiz.jpg" alt="Pantalla de configuración del quiz" width="280"/>
+<img src="docs/screenshots/configuracion-quiz.jpeg" alt="Pantalla de configuración del quiz" width="280"/>
 
 > Elige el tipo de quiz, modo de práctica, número de preguntas y filtra por letra inicial.
 
 ---
 
 ### 🎮 Quiz — Modo Clásico
-<img src="docs/screenshots/quiz-clasico.jpg" alt="Quiz modo clásico - escribe la forma verbal" width="700"/>
+<img src="docs/screenshots/quiz-clasico.png" alt="Quiz modo clásico - escribe la forma verbal" width="700"/>
 
 > Escribe la forma verbal correcta. Sistema de rachas con bonificación de puntos.
 
 ---
 
 ### 🔤 Quiz — Modo Completa la Oración
-<img src="docs/screenshots/quiz-completa.jpg" alt="Quiz modo completa la oración" width="700"/>
+<img src="docs/screenshots/quiz-completa.png" alt="Quiz modo completa la oración" width="700"/>
 
 > Identifica el verbo correcto en el contexto de una oración real.
 
 ---
 
 ### 🏆 Pantalla de Resultados
-<img src="docs/screenshots/resultados.jpg" alt="Pantalla de resultados con puntuación final" width="280"/>
+<img src="docs/screenshots/resultados.jpeg" alt="Pantalla de resultados con puntuación final" width="280"/>
 
 > Resumen con puntos, aciertos, errores y rango obtenido.
 
 ---
 
 ### 📤 Compartir Resultado
-<img src="docs/screenshots/compartir.jpg" alt="Vista previa para compartir resultado en WhatsApp" width="280"/>
+<img src="docs/screenshots/compartir.jpeg" alt="Vista previa para compartir resultado en WhatsApp" width="280"/>
 
 > Comparte tu puntuación en WhatsApp con vista previa del resultado.
 
