@@ -1,131 +1,205 @@
+/* =============================================
+   VERBOS IRREGULARES — English File Pre-Int.
+   ============================================= */
 const VERBS = [
-{inf:"be", pInf:"/biː/", es:"ser / estar", ps:"was / were", pPs:"/wɒz/ /wɜː/", pp:"been", pPp:"/biːn/"},
-{inf:"become", pInf:"/bɪˈkʌm/", es:"convertirse", ps:"became", pPs:"/bɪˈkeɪm/", pp:"become", pPp:"/bɪˈkʌm/"},
-{inf:"begin", pInf:"/bɪˈɡɪn/", es:"comenzar", ps:"began", pPs:"/bɪˈɡæn/", pp:"begun", pPp:"/bɪˈɡʌn/"},
-{inf:"break", pInf:"/breɪk/", es:"romper", ps:"broke", pPs:"/broʊk/", pp:"broken", pPp:"/ˈbroʊkən/"},
-{inf:"bring", pInf:"/brɪŋ/", es:"traer", ps:"brought", pPs:"/brɔːt/", pp:"brought", pPp:"/brɔːt/"},
-{inf:"build", pInf:"/bɪld/", es:"construir", ps:"built", pPs:"/bɪlt/", pp:"built", pPp:"/bɪlt/"},
-{inf:"buy", pInf:"/baɪ/", es:"comprar", ps:"bought", pPs:"/bɔːt/", pp:"bought", pPp:"/bɔːt/"},
-{inf:"can", pInf:"/kæn/", es:"poder", ps:"could", pPs:"/kʊd/", pp:"–", pPp:"–"},
-{inf:"catch", pInf:"/kætʃ/", es:"atrapar / coger", ps:"caught", pPs:"/kɔːt/", pp:"caught", pPp:"/kɔːt/"},
-{inf:"choose", pInf:"/tʃuːz/", es:"elegir", ps:"chose", pPs:"/tʃoʊz/", pp:"chosen", pPp:"/ˈtʃoʊzən/"},
-{inf:"come", pInf:"/kʌm/", es:"venir", ps:"came", pPs:"/keɪm/", pp:"come", pPp:"/kʌm/"},
-{inf:"cost", pInf:"/kɒst/", es:"costar", ps:"cost", pPs:"/kɒst/", pp:"cost", pPp:"/kɒst/"},
-{inf:"cut", pInf:"/kʌt/", es:"cortar", ps:"cut", pPs:"/kʌt/", pp:"cut", pPp:"/kʌt/"},
-{inf:"do", pInf:"/duː/", es:"hacer", ps:"did", pPs:"/dɪd/", pp:"done", pPp:"/dʌn/"},
-{inf:"dream", pInf:"/driːm/", es:"soñar", ps:"dreamt", pPs:"/dremt/", pp:"dreamt", pPp:"/dremt/"},
-{inf:"drink", pInf:"/drɪŋk/", es:"beber", ps:"drank", pPs:"/dræŋk/", pp:"drunk", pPp:"/drʌŋk/"},
-{inf:"drive", pInf:"/draɪv/", es:"conducir / manejar", ps:"drove", pPs:"/droʊv/", pp:"driven", pPp:"/ˈdrɪvən/"},
-{inf:"eat", pInf:"/iːt/", es:"comer", ps:"ate", pPs:"/eɪt/", pp:"eaten", pPp:"/ˈiːtən/"},
-{inf:"fall", pInf:"/fɔːl/", es:"caer", ps:"fell", pPs:"/fɛl/", pp:"fallen", pPp:"/ˈfɔːlən/"},
-{inf:"feel", pInf:"/fiːl/", es:"sentir", ps:"felt", pPs:"/fɛlt/", pp:"felt", pPp:"/fɛlt/"},
-{inf:"find", pInf:"/faɪnd/", es:"encontrar", ps:"found", pPs:"/faʊnd/", pp:"found", pPp:"/faʊnd/"},
-{inf:"fly", pInf:"/flaɪ/", es:"volar", ps:"flew", pPs:"/fluː/", pp:"flown", pPp:"/floʊn/"},
-{inf:"forget", pInf:"/fəˈɡɛt/", es:"olvidar", ps:"forgot", pPs:"/fəˈɡɒt/", pp:"forgotten", pPp:"/fəˈɡɒtən/"},
-{inf:"get", pInf:"/ɡɛt/", es:"conseguir / obtener", ps:"got", pPs:"/ɡɒt/", pp:"got", pPp:"/ɡɒt/"},
-{inf:"give", pInf:"/ɡɪv/", es:"dar", ps:"gave", pPs:"/ɡeɪv/", pp:"given", pPp:"/ˈɡɪvən/"},
-{inf:"go", pInf:"/ɡoʊ/", es:"ir", ps:"went", pPs:"/wɛnt/", pp:"gone", pPp:"/ɡɒn/"},
-{inf:"grow", pInf:"/ɡroʊ/", es:"crecer", ps:"grew", pPs:"/ɡruː/", pp:"grown", pPp:"/ɡroʊn/"},
-{inf:"have", pInf:"/hæv/", es:"tener", ps:"had", pPs:"/hæd/", pp:"had", pPp:"/hæd/"},
-{inf:"hear", pInf:"/hɪər/", es:"oír / escuchar", ps:"heard", pPs:"/hɜːrd/", pp:"heard", pPp:"/hɜːrd/"},
-{inf:"hit", pInf:"/hɪt/", es:"golpear", ps:"hit", pPs:"/hɪt/", pp:"hit", pPp:"/hɪt/"},
-{inf:"keep", pInf:"/kiːp/", es:"mantener / guardar", ps:"kept", pPs:"/kɛpt/", pp:"kept", pPp:"/kɛpt/"},
-{inf:"know", pInf:"/noʊ/", es:"saber / conocer", ps:"knew", pPs:"/njuː/", pp:"known", pPp:"/noʊn/"},
-{inf:"lay", pInf:"/leɪ/", es:"poner / tender", ps:"laid", pPs:"/leɪd/", pp:"laid", pPp:"/leɪd/"},
-{inf:"learn", pInf:"/lɜːrn/", es:"aprender", ps:"learnt", pPs:"/lɜːrnt/", pp:"learnt", pPp:"/lɜːrnt/"},
-{inf:"leave", pInf:"/liːv/", es:"dejar / salir", ps:"left", pPs:"/lɛft/", pp:"left", pPp:"/lɛft/"},
-{inf:"lend", pInf:"/lɛnd/", es:"prestar", ps:"lent", pPs:"/lɛnt/", pp:"lent", pPp:"/lɛnt/"},
-{inf:"let", pInf:"/lɛt/", es:"dejar / permitir", ps:"let", pPs:"/lɛt/", pp:"let", pPp:"/lɛt/"},
-{inf:"lose", pInf:"/luːz/", es:"perder", ps:"lost", pPs:"/lɒst/", pp:"lost", pPp:"/lɒst/"},
-{inf:"make", pInf:"/meɪk/", es:"hacer / fabricar", ps:"made", pPs:"/meɪd/", pp:"made", pPp:"/meɪd/"},
-{inf:"meet", pInf:"/miːt/", es:"conocer / reunirse", ps:"met", pPs:"/mɛt/", pp:"met", pPp:"/mɛt/"},
-{inf:"pay", pInf:"/peɪ/", es:"pagar", ps:"paid", pPs:"/peɪd/", pp:"paid", pPp:"/peɪd/"},
-{inf:"put", pInf:"/pʊt/", es:"poner / colocar", ps:"put", pPs:"/pʊt/", pp:"put", pPp:"/pʊt/"},
-{inf:"read", pInf:"/riːd/", es:"leer", ps:"read", pPs:"/rɛd/", pp:"read", pPp:"/rɛd/"},
-{inf:"ring", pInf:"/rɪŋ/", es:"llamar / sonar", ps:"rang", pPs:"/ræŋ/", pp:"rung", pPp:"/rʌŋ/"},
-{inf:"run", pInf:"/rʌn/", es:"correr", ps:"ran", pPs:"/ræn/", pp:"run", pPp:"/rʌn/"},
-{inf:"say", pInf:"/seɪ/", es:"decir", ps:"said", pPs:"/sɛd/", pp:"said", pPp:"/sɛd/"},
-{inf:"see", pInf:"/siː/", es:"ver", ps:"saw", pPs:"/sɔː/", pp:"seen", pPp:"/siːn/"},
-{inf:"sell", pInf:"/sɛl/", es:"vender", ps:"sold", pPs:"/soʊld/", pp:"sold", pPp:"/soʊld/"},
-{inf:"send", pInf:"/sɛnd/", es:"enviar / mandar", ps:"sent", pPs:"/sɛnt/", pp:"sent", pPp:"/sɛnt/"},
-{inf:"shut", pInf:"/ʃʌt/", es:"cerrar", ps:"shut", pPs:"/ʃʌt/", pp:"shut", pPp:"/ʃʌt/"},
-{inf:"sing", pInf:"/sɪŋ/", es:"cantar", ps:"sang", pPs:"/sæŋ/", pp:"sung", pPp:"/sʌŋ/"},
-{inf:"sit", pInf:"/sɪt/", es:"sentarse", ps:"sat", pPs:"/sæt/", pp:"sat", pPp:"/sæt/"},
-{inf:"sleep", pInf:"/sliːp/", es:"dormir", ps:"slept", pPs:"/slɛpt/", pp:"slept", pPp:"/slɛpt/"},
-{inf:"speak", pInf:"/spiːk/", es:"hablar", ps:"spoke", pPs:"/spoʊk/", pp:"spoken", pPp:"/ˈspoʊkən/"},
-{inf:"spend", pInf:"/spɛnd/", es:"gastar / pasar tiempo", ps:"spent", pPs:"/spɛnt/", pp:"spent", pPp:"/spɛnt/"},
-{inf:"stand", pInf:"/stænd/", es:"estar de pie", ps:"stood", pPs:"/stʊd/", pp:"stood", pPp:"/stʊd/"},
-{inf:"steal", pInf:"/stiːl/", es:"robar", ps:"stole", pPs:"/stoʊl/", pp:"stolen", pPp:"/ˈstoʊlən/"},
-{inf:"swim", pInf:"/swɪm/", es:"nadar", ps:"swam", pPs:"/swæm/", pp:"swum", pPp:"/swʌm/"},
-{inf:"take", pInf:"/teɪk/", es:"tomar / llevar", ps:"took", pPs:"/tʊk/", pp:"taken", pPp:"/ˈteɪkən/"},
-{inf:"teach", pInf:"/tiːtʃ/", es:"enseñar", ps:"taught", pPs:"/tɔːt/", pp:"taught", pPp:"/tɔːt/"},
-{inf:"tell", pInf:"/tɛl/", es:"decir / contar", ps:"told", pPs:"/toʊld/", pp:"told", pPp:"/toʊld/"},
-{inf:"think", pInf:"/θɪŋk/", es:"pensar", ps:"thought", pPs:"/θɔːt/", pp:"thought", pPp:"/θɔːt/"},
-{inf:"throw", pInf:"/θroʊ/", es:"lanzar / tirar", ps:"threw", pPs:"/θruː/", pp:"thrown", pPp:"/θroʊn/"},
-{inf:"understand", pInf:"/ˌʌndəˈstænd/", es:"entender", ps:"understood", pPs:"/ˌʌndəˈstʊd/", pp:"understood", pPp:"/ˌʌndəˈstʊd/"},
-{inf:"wake", pInf:"/weɪk/", es:"despertar", ps:"woke", pPs:"/woʊk/", pp:"woken", pPp:"/ˈwoʊkən/"},
-{inf:"wear", pInf:"/wɛər/", es:"llevar puesto / vestir",ps:"wore", pPs:"/wɔːr/", pp:"worn", pPp:"/wɔːrn/"},
-{inf:"win", pInf:"/wɪn/", es:"ganar", ps:"won", pPs:"/wʌn/", pp:"won", pPp:"/wʌn/"},
-{inf:"write", pInf:"/raɪt/", es:"escribir", ps:"wrote", pPs:"/roʊt/", pp:"written", pPp:"/ˈrɪtən/"},
+{inf:"be",      pInf:"/biː/",          es:"ser / estar",           ps:"was / were", pPs:"/wɒz/ /wɜː/",     pp:"been",        pPp:"/biːn/"},
+{inf:"become",  pInf:"/bɪˈkʌm/",       es:"convertirse",           ps:"became",     pPs:"/bɪˈkeɪm/",        pp:"become",      pPp:"/bɪˈkʌm/"},
+{inf:"begin",   pInf:"/bɪˈɡɪn/",       es:"comenzar",              ps:"began",      pPs:"/bɪˈɡæn/",         pp:"begun",       pPp:"/bɪˈɡʌn/"},
+{inf:"break",   pInf:"/breɪk/",        es:"romper",                ps:"broke",      pPs:"/broʊk/",          pp:"broken",      pPp:"/ˈbroʊkən/"},
+{inf:"bring",   pInf:"/brɪŋ/",         es:"traer",                 ps:"brought",    pPs:"/brɔːt/",          pp:"brought",     pPp:"/brɔːt/"},
+{inf:"build",   pInf:"/bɪld/",         es:"construir",             ps:"built",      pPs:"/bɪlt/",           pp:"built",       pPp:"/bɪlt/"},
+{inf:"buy",     pInf:"/baɪ/",          es:"comprar",               ps:"bought",     pPs:"/bɔːt/",           pp:"bought",      pPp:"/bɔːt/"},
+{inf:"can",     pInf:"/kæn/",          es:"poder",                 ps:"could",      pPs:"/kʊd/",            pp:"–",           pPp:"–"},
+{inf:"catch",   pInf:"/kætʃ/",         es:"atrapar / coger",       ps:"caught",     pPs:"/kɔːt/",           pp:"caught",      pPp:"/kɔːt/"},
+{inf:"choose",  pInf:"/tʃuːz/",        es:"elegir",                ps:"chose",      pPs:"/tʃoʊz/",          pp:"chosen",      pPp:"/ˈtʃoʊzən/"},
+{inf:"come",    pInf:"/kʌm/",          es:"venir",                 ps:"came",       pPs:"/keɪm/",           pp:"come",        pPp:"/kʌm/"},
+{inf:"cost",    pInf:"/kɒst/",         es:"costar",                ps:"cost",       pPs:"/kɒst/",           pp:"cost",        pPp:"/kɒst/"},
+{inf:"cut",     pInf:"/kʌt/",          es:"cortar",                ps:"cut",        pPs:"/kʌt/",            pp:"cut",         pPp:"/kʌt/"},
+{inf:"do",      pInf:"/duː/",          es:"hacer",                 ps:"did",        pPs:"/dɪd/",            pp:"done",        pPp:"/dʌn/"},
+{inf:"dream",   pInf:"/driːm/",        es:"soñar",                 ps:"dreamt",     pPs:"/dremt/",          pp:"dreamt",      pPp:"/dremt/"},
+{inf:"drink",   pInf:"/drɪŋk/",        es:"beber",                 ps:"drank",      pPs:"/dræŋk/",          pp:"drunk",       pPp:"/drʌŋk/"},
+{inf:"drive",   pInf:"/draɪv/",        es:"conducir / manejar",    ps:"drove",      pPs:"/droʊv/",          pp:"driven",      pPp:"/ˈdrɪvən/"},
+{inf:"eat",     pInf:"/iːt/",          es:"comer",                 ps:"ate",        pPs:"/eɪt/",            pp:"eaten",       pPp:"/ˈiːtən/"},
+{inf:"fall",    pInf:"/fɔːl/",         es:"caer",                  ps:"fell",       pPs:"/fɛl/",            pp:"fallen",      pPp:"/ˈfɔːlən/"},
+{inf:"feel",    pInf:"/fiːl/",         es:"sentir",                ps:"felt",       pPs:"/fɛlt/",           pp:"felt",        pPp:"/fɛlt/"},
+{inf:"find",    pInf:"/faɪnd/",        es:"encontrar",             ps:"found",      pPs:"/faʊnd/",          pp:"found",       pPp:"/faʊnd/"},
+{inf:"fly",     pInf:"/flaɪ/",         es:"volar",                 ps:"flew",       pPs:"/fluː/",           pp:"flown",       pPp:"/floʊn/"},
+{inf:"forget",  pInf:"/fəˈɡɛt/",       es:"olvidar",               ps:"forgot",     pPs:"/fəˈɡɒt/",         pp:"forgotten",   pPp:"/fəˈɡɒtən/"},
+{inf:"get",     pInf:"/ɡɛt/",          es:"conseguir / obtener",   ps:"got",        pPs:"/ɡɒt/",            pp:"got",         pPp:"/ɡɒt/"},
+{inf:"give",    pInf:"/ɡɪv/",          es:"dar",                   ps:"gave",       pPs:"/ɡeɪv/",           pp:"given",       pPp:"/ˈɡɪvən/"},
+{inf:"go",      pInf:"/ɡoʊ/",          es:"ir",                    ps:"went",       pPs:"/wɛnt/",           pp:"gone",        pPp:"/ɡɒn/"},
+{inf:"grow",    pInf:"/ɡroʊ/",         es:"crecer",                ps:"grew",       pPs:"/ɡruː/",           pp:"grown",       pPp:"/ɡroʊn/"},
+{inf:"have",    pInf:"/hæv/",          es:"tener",                 ps:"had",        pPs:"/hæd/",            pp:"had",         pPp:"/hæd/"},
+{inf:"hear",    pInf:"/hɪər/",         es:"oír / escuchar",        ps:"heard",      pPs:"/hɜːrd/",          pp:"heard",       pPp:"/hɜːrd/"},
+{inf:"hit",     pInf:"/hɪt/",          es:"golpear",               ps:"hit",        pPs:"/hɪt/",            pp:"hit",         pPp:"/hɪt/"},
+{inf:"keep",    pInf:"/kiːp/",         es:"mantener / guardar",    ps:"kept",       pPs:"/kɛpt/",           pp:"kept",        pPp:"/kɛpt/"},
+{inf:"know",    pInf:"/noʊ/",          es:"saber / conocer",       ps:"knew",       pPs:"/njuː/",           pp:"known",       pPp:"/noʊn/"},
+{inf:"lay",     pInf:"/leɪ/",          es:"poner / tender",        ps:"laid",       pPs:"/leɪd/",           pp:"laid",        pPp:"/leɪd/"},
+{inf:"learn",   pInf:"/lɜːrn/",        es:"aprender",              ps:"learnt",     pPs:"/lɜːrnt/",         pp:"learnt",      pPp:"/lɜːrnt/"},
+{inf:"leave",   pInf:"/liːv/",         es:"dejar / salir",         ps:"left",       pPs:"/lɛft/",           pp:"left",        pPp:"/lɛft/"},
+{inf:"lend",    pInf:"/lɛnd/",         es:"prestar",               ps:"lent",       pPs:"/lɛnt/",           pp:"lent",        pPp:"/lɛnt/"},
+{inf:"let",     pInf:"/lɛt/",          es:"dejar / permitir",      ps:"let",        pPs:"/lɛt/",            pp:"let",         pPp:"/lɛt/"},
+{inf:"lose",    pInf:"/luːz/",         es:"perder",                ps:"lost",       pPs:"/lɒst/",           pp:"lost",        pPp:"/lɒst/"},
+{inf:"make",    pInf:"/meɪk/",         es:"hacer / fabricar",      ps:"made",       pPs:"/meɪd/",           pp:"made",        pPp:"/meɪd/"},
+{inf:"meet",    pInf:"/miːt/",         es:"conocer / reunirse",    ps:"met",        pPs:"/mɛt/",            pp:"met",         pPp:"/mɛt/"},
+{inf:"pay",     pInf:"/peɪ/",          es:"pagar",                 ps:"paid",       pPs:"/peɪd/",           pp:"paid",        pPp:"/peɪd/"},
+{inf:"put",     pInf:"/pʊt/",          es:"poner / colocar",       ps:"put",        pPs:"/pʊt/",            pp:"put",         pPp:"/pʊt/"},
+{inf:"read",    pInf:"/riːd/",         es:"leer",                  ps:"read",       pPs:"/rɛd/",            pp:"read",        pPp:"/rɛd/"},
+{inf:"ring",    pInf:"/rɪŋ/",          es:"llamar / sonar",        ps:"rang",       pPs:"/ræŋ/",            pp:"rung",        pPp:"/rʌŋ/"},
+{inf:"run",     pInf:"/rʌn/",          es:"correr",                ps:"ran",        pPs:"/ræn/",            pp:"run",         pPp:"/rʌn/"},
+{inf:"say",     pInf:"/seɪ/",          es:"decir",                 ps:"said",       pPs:"/sɛd/",            pp:"said",        pPp:"/sɛd/"},
+{inf:"see",     pInf:"/siː/",          es:"ver",                   ps:"saw",        pPs:"/sɔː/",            pp:"seen",        pPp:"/siːn/"},
+{inf:"sell",    pInf:"/sɛl/",          es:"vender",                ps:"sold",       pPs:"/soʊld/",          pp:"sold",        pPp:"/soʊld/"},
+{inf:"send",    pInf:"/sɛnd/",         es:"enviar / mandar",       ps:"sent",       pPs:"/sɛnt/",           pp:"sent",        pPp:"/sɛnt/"},
+{inf:"shut",    pInf:"/ʃʌt/",          es:"cerrar",                ps:"shut",       pPs:"/ʃʌt/",            pp:"shut",        pPp:"/ʃʌt/"},
+{inf:"sing",    pInf:"/sɪŋ/",          es:"cantar",                ps:"sang",       pPs:"/sæŋ/",            pp:"sung",        pPp:"/sʌŋ/"},
+{inf:"sit",     pInf:"/sɪt/",          es:"sentarse",              ps:"sat",        pPs:"/sæt/",            pp:"sat",         pPp:"/sæt/"},
+{inf:"sleep",   pInf:"/sliːp/",        es:"dormir",                ps:"slept",      pPs:"/slɛpt/",          pp:"slept",       pPp:"/slɛpt/"},
+{inf:"speak",   pInf:"/spiːk/",        es:"hablar",                ps:"spoke",      pPs:"/spoʊk/",          pp:"spoken",      pPp:"/ˈspoʊkən/"},
+{inf:"spend",   pInf:"/spɛnd/",        es:"gastar / pasar tiempo", ps:"spent",      pPs:"/spɛnt/",          pp:"spent",       pPp:"/spɛnt/"},
+{inf:"stand",   pInf:"/stænd/",        es:"estar de pie",          ps:"stood",      pPs:"/stʊd/",           pp:"stood",       pPp:"/stʊd/"},
+{inf:"steal",   pInf:"/stiːl/",        es:"robar",                 ps:"stole",      pPs:"/stoʊl/",          pp:"stolen",      pPp:"/ˈstoʊlən/"},
+{inf:"swim",    pInf:"/swɪm/",         es:"nadar",                 ps:"swam",       pPs:"/swæm/",           pp:"swum",        pPp:"/swʌm/"},
+{inf:"take",    pInf:"/teɪk/",         es:"tomar / llevar",        ps:"took",       pPs:"/tʊk/",            pp:"taken",       pPp:"/ˈteɪkən/"},
+{inf:"teach",   pInf:"/tiːtʃ/",        es:"enseñar",               ps:"taught",     pPs:"/tɔːt/",           pp:"taught",      pPp:"/tɔːt/"},
+{inf:"tell",    pInf:"/tɛl/",          es:"decir / contar",        ps:"told",       pPs:"/toʊld/",          pp:"told",        pPp:"/toʊld/"},
+{inf:"think",   pInf:"/θɪŋk/",         es:"pensar",                ps:"thought",    pPs:"/θɔːt/",           pp:"thought",     pPp:"/θɔːt/"},
+{inf:"throw",   pInf:"/θroʊ/",         es:"lanzar / tirar",        ps:"threw",      pPs:"/θruː/",           pp:"thrown",      pPp:"/θroʊn/"},
+{inf:"understand",pInf:"/ˌʌndəˈstænd/",es:"entender",             ps:"understood",  pPs:"/ˌʌndəˈstʊd/",    pp:"understood",  pPp:"/ˌʌndəˈstʊd/"},
+{inf:"wake",    pInf:"/weɪk/",         es:"despertar",             ps:"woke",       pPs:"/woʊk/",           pp:"woken",       pPp:"/ˈwoʊkən/"},
+{inf:"wear",    pInf:"/wɛər/",         es:"llevar puesto / vestir",ps:"wore",       pPs:"/wɔːr/",           pp:"worn",        pPp:"/wɔːrn/"},
+{inf:"win",     pInf:"/wɪn/",          es:"ganar",                 ps:"won",        pPs:"/wʌn/",            pp:"won",         pPp:"/wʌn/"},
+{inf:"write",   pInf:"/raɪt/",         es:"escribir",              ps:"wrote",      pPs:"/roʊt/",           pp:"written",     pPp:"/ˈrɪtən/"},
 ];
 
-let audioCtx = null;
-let soundOn = true;
-let tFilter = 'all';
-let gameMode = 'ps';
-let totalQ = 10;
-let filterKey = 'all';
-let questions = [];
-let idx = 0;
-let score = 0;
-let okCount = 0;
-let badCount = 0;
-let lives = 3;
-let streak = 0;
-let wrongLog = [];
-let answered = false;
-let hintUsed = false;
-let lastScore = 0;
-let lastOk = 0;
-let lastTotal = 0;
-let lastPct = 0;
-let lastRank = '';
-let lastEmoji = '';
+/* =============================================
+   ORACIONES PARA QUIZ "COMPLETA LA ORACIÓN"
+   Extraídas del English File Pre-Intermediate
+   ============================================= */
+const SENTENCES = [
+  // PAST SIMPLE
+  {template:"She ___ sightseeing and ___ a lot of photos on holiday.", blanks:[{pos:0,verb:"go",form:"ps",answer:"went"},{pos:1,verb:"take",form:"ps",answer:"took"}], single:true, verb:"go",   form:"ps", answer:"went",  full:"She went sightseeing and took a lot of photos on holiday."},
+  {template:"He ___ his passport at the airport and missed the flight.", verb:"lose",  form:"ps", answer:"lost",       full:"He lost his passport at the airport and missed the flight."},
+  {template:"They ___ a fantastic hotel near the beach.", verb:"find",  form:"ps", answer:"found",      full:"They found a fantastic hotel near the beach."},
+  {template:"I ___ a postcard to my family from Paris.", verb:"send",   form:"ps", answer:"sent",       full:"I sent a postcard to my family from Paris."},
+  {template:"She ___ her phone on the bus yesterday.", verb:"leave",  form:"ps", answer:"left",       full:"She left her phone on the bus yesterday."},
+  {template:"We ___ by plane to Madrid and then ___ a car.", verb:"fly",   form:"ps", answer:"flew",       full:"We flew by plane to Madrid and then hired a car."},
+  {template:"He ___ English at a school in London for three months.", verb:"teach",  form:"ps", answer:"taught",     full:"He taught English at a school in London for three months."},
+  {template:"She ___ that the hotel was fully booked.", verb:"find",  form:"ps", answer:"found",      full:"She found that the hotel was fully booked."},
+  {template:"They ___ the match 3–0 and the fans went crazy.", verb:"win",   form:"ps", answer:"won",        full:"They won the match 3–0 and the fans went crazy."},
+  {template:"He ___ his new neighbours at the party last Saturday.", verb:"meet",  form:"ps", answer:"met",        full:"He met his new neighbours at the party last Saturday."},
+  {template:"She ___ three languages when she was a child.", verb:"speak",  form:"ps", answer:"spoke",      full:"She spoke three languages when she was a child."},
+  {template:"I ___ a really good book on the flight.", verb:"read",  form:"ps", answer:"read",       full:"I read a really good book on the flight."},
+  {template:"He ___ his car and ___ to work by bike after that.", verb:"sell",  form:"ps", answer:"sold",       full:"He sold his car and went to work by bike after that."},
+  {template:"The alarm ___ at six o'clock every morning.", verb:"ring",  form:"ps", answer:"rang",       full:"The alarm rang at six o'clock every morning."},
+  {template:"She ___ a beautiful dress to the graduation ceremony.", verb:"wear",  form:"ps", answer:"wore",       full:"She wore a beautiful dress to the graduation ceremony."},
+  {template:"He ___ his lunch in the park and listened to music.", verb:"eat",   form:"ps", answer:"ate",        full:"He ate his lunch in the park and listened to music."},
+  {template:"The children ___ in the sea for hours at the beach.", verb:"swim",  form:"ps", answer:"swam",       full:"The children swam in the sea for hours at the beach."},
+  {template:"She ___ a lot of money on clothes when she visited New York.", verb:"spend",  form:"ps", answer:"spent",      full:"She spent a lot of money on clothes when she visited New York."},
+  {template:"He ___ his girlfriend some flowers and a card.", verb:"give",  form:"ps", answer:"gave",       full:"He gave his girlfriend some flowers and a card."},
+  {template:"They ___ their tent next to a beautiful lake.", verb:"put",   form:"ps", answer:"put",        full:"They put their tent next to a beautiful lake."},
+  {template:"The dog ___ the ball and ___ it back to its owner.", verb:"catch",  form:"ps", answer:"caught",     full:"The dog caught the ball and brought it back to its owner."},
+  {template:"She ___ her wallet at home and couldn't pay for dinner.", verb:"leave",  form:"ps", answer:"left",       full:"She left her wallet at home and couldn't pay for dinner."},
+  {template:"He ___ to work late and ___ a taxi.", verb:"run",   form:"ps", answer:"ran",        full:"He ran to work late and got a taxi."},
+  {template:"The manager ___ the team to play better in the second half.", verb:"tell",  form:"ps", answer:"told",       full:"The manager told the team to play better in the second half."},
+  {template:"She ___ about her holiday in a blog post.", verb:"write",  form:"ps", answer:"wrote",      full:"She wrote about her holiday in a blog post."},
+  {template:"He ___ a coffee before the meeting and ___ more awake.", verb:"drink",  form:"ps", answer:"drank",      full:"He drank a coffee before the meeting and felt more awake."},
+  {template:"The students ___ about their future plans after the exam.", verb:"think",  form:"ps", answer:"thought",    full:"The students thought about their future plans after the exam."},
+  {template:"She ___ her keys in her bag and couldn't find them.", verb:"keep",  form:"ps", answer:"kept",       full:"She kept her keys in her bag and couldn't find them."},
+  {template:"He ___ her to the airport because she had heavy luggage.", verb:"drive",  form:"ps", answer:"drove",      full:"He drove her to the airport because she had heavy luggage."},
+  {template:"They ___ up early to catch the first train.", verb:"wake",  form:"ps", answer:"woke",       full:"They woke up early to catch the first train."},
 
-function toggleTheme() {
-  document.body.classList.toggle('light');
-  const isLight = document.body.classList.contains('light');
-  const icon = document.querySelector('#themeToggle .theme-icon');
-  if (icon) icon.textContent = isLight ? '☀️' : '🌙';
-  try {
-    localStorage.setItem('vq-theme', isLight ? 'light' : 'dark');
-  } catch(e) {}
-  if (soundOn) playClick();
-}
+  // PAST PARTICIPLE (Present Perfect)
+  {template:"I have never ___ sushi before — it was delicious!", verb:"eat",   form:"pp", answer:"eaten",      full:"I have never eaten sushi before — it was delicious!"},
+  {template:"She has ___ three languages since she was a child.", verb:"speak",  form:"pp", answer:"spoken",     full:"She has spoken three languages since she was a child."},
+  {template:"Have you ever ___ a motorbike along the coast?", verb:"drive",  form:"pp", answer:"driven",     full:"Have you ever driven a motorbike along the coast?"},
+  {template:"He has ___ her a message but she hasn't replied yet.", verb:"send",  form:"pp", answer:"sent",       full:"He has sent her a message but she hasn't replied yet."},
+  {template:"They have ___ to Brazil twice for the carnival.", verb:"fly",   form:"pp", answer:"flown",      full:"They have flown to Brazil twice for the carnival."},
+  {template:"She has ___ her passport — she can't find it anywhere.", verb:"lose",  form:"pp", answer:"lost",       full:"She has lost her passport — she can't find it anywhere."},
+  {template:"I have already ___ the tickets online for the concert.", verb:"buy",   form:"pp", answer:"bought",     full:"I have already bought the tickets online for the concert."},
+  {template:"Have you ever ___ in a five-star hotel?", verb:"sleep",  form:"pp", answer:"slept",      full:"Have you ever slept in a five-star hotel?"},
+  {template:"He has ___ his essay three times but it still has mistakes.", verb:"write",  form:"pp", answer:"written",    full:"He has written his essay three times but it still has mistakes."},
+  {template:"She has ___ a lot of interesting people at the conference.", verb:"meet",  form:"pp", answer:"met",        full:"She has met a lot of interesting people at the conference."},
+  {template:"I haven't ___ the washing-up yet — sorry!", verb:"do",    form:"pp", answer:"done",       full:"I haven't done the washing-up yet — sorry!"},
+  {template:"Has he ___ you about the new job offer?", verb:"tell",  form:"pp", answer:"told",       full:"Has he told you about the new job offer?"},
+  {template:"She has ___ her mind and decided to stay.", verb:"make",  form:"pp", answer:"made",       full:"She has made her mind and decided to stay."},
+  {template:"They have ___ the apartment since they got married.", verb:"keep",  form:"pp", answer:"kept",       full:"They have kept the apartment since they got married."},
+  {template:"I've ___ that film twice — it's amazing!", verb:"see",   form:"pp", answer:"seen",       full:"I've seen that film twice — it's amazing!"},
+  {template:"She has ___ her bike to work every day this month.", verb:"ride",   form:"pp", answer:"ridden",     full:"She has ridden her bike to work every day this month."},
+  {template:"Have you ___ the new shopping centre yet?", verb:"find",  form:"pp", answer:"found",      full:"Have you found the new shopping centre yet?"},
+  {template:"He has ___ everything he knows about cooking to his daughter.", verb:"teach",  form:"pp", answer:"taught",     full:"He has taught everything he knows about cooking to his daughter."},
+  {template:"I've never ___ a spider — I'm terrified of them!", verb:"hold",   form:"pp", answer:"held",       full:"I've never held a spider — I'm terrified of them!"},
+  {template:"She has ___ all her savings on the trip around the world.", verb:"spend",  form:"pp", answer:"spent",      full:"She has spent all her savings on the trip around the world."},
+];
 
+/* =============================================
+   ESTADO GLOBAL
+   ============================================= */
+let audioCtx   = null;
+let tFilter    = 'all';
+let quizType   = 'classic';   // 'classic' | 'sentence'
+let gameMode   = 'ps';
+let totalQ     = 10;
+let filterKey  = 'all';
+let questions  = [];
+let idx        = 0;
+let score      = 0;
+let okCount    = 0;
+let badCount   = 0;
+let lives      = 3;
+let streak     = 0;
+let wrongLog   = [];
+let answered   = false;
+let hintUsed   = false;
+let lastScore  = 0;
+let lastOk     = 0;
+let lastTotal  = 0;
+let lastPct    = 0;
+let lastRank   = '';
+let lastEmoji  = '';
+let currentSentenceFull = '';
+
+/* =============================================
+   TEMA (SOL / LUNA)
+   ============================================= */
 (function initTheme() {
-  try {
-    if (localStorage.getItem('vq-theme') === 'light') {
-      document.body.classList.add('light');
-      const icon = document.querySelector('#themeToggle .theme-icon');
-      if (icon) icon.textContent = '☀️';
-    }
-  } catch(e) {}
+  const saved = localStorage.getItem('vq-theme');
+  const toggle = document.getElementById('themeToggle');
+  if (saved === 'light') {
+    document.body.classList.add('light');
+    if (toggle) toggle.checked = false;  // light = sol = unchecked
+  } else {
+    // dark por defecto
+    if (toggle) toggle.checked = true;
+  }
 })();
 
+document.getElementById('themeToggle').addEventListener('change', function() {
+  // checked = noche (dark body sin clase 'light')
+  // unchecked = día (light body con clase 'light')
+  if (this.checked) {
+    document.body.classList.remove('light');
+    localStorage.setItem('vq-theme', 'dark');
+  } else {
+    document.body.classList.add('light');
+    localStorage.setItem('vq-theme', 'light');
+  }
+  playClick();
+});
+
+/* =============================================
+   AUDIO (Web Audio API — sonidos UI)
+   ============================================= */
 function getAudioCtx() {
   if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   return audioCtx;
 }
-
-function playTone(freq, dur, type = 'sine', vol = 0.3) {
-  if (!soundOn) return;
+function playTone(freq, dur, type='sine', vol=0.3) {
   try {
     const ctx = getAudioCtx();
     const osc = ctx.createOscillator();
-    const g = ctx.createGain();
-    osc.connect(g);
-    g.connect(ctx.destination);
+    const g   = ctx.createGain();
+    osc.connect(g); g.connect(ctx.destination);
     osc.type = type;
     osc.frequency.setValueAtTime(freq, ctx.currentTime);
     g.gain.setValueAtTime(vol, ctx.currentTime);
@@ -134,26 +208,21 @@ function playTone(freq, dur, type = 'sine', vol = 0.3) {
     osc.stop(ctx.currentTime + dur);
   } catch(e) {}
 }
-
 function playCorrect() {
   playTone(523,.12,'sine',.25);
   setTimeout(()=>playTone(659,.12,'sine',.25),100);
   setTimeout(()=>playTone(784,.22,'sine',.3),200);
 }
-
 function playWrong() {
   playTone(350,.1,'sawtooth',.2);
   setTimeout(()=>playTone(280,.18,'sawtooth',.2),100);
 }
-
 function playClick() {
   playTone(800,.06,'sine',.12);
 }
-
 function playStart() {
   [392,523,659].forEach((f,i)=>setTimeout(()=>playTone(f,.12,'triangle',.2),i*90));
 }
-
 function playResult(pct) {
   if (pct===100) {
     [523,659,784,1047,784,1047].forEach((f,i)=>setTimeout(()=>playTone(f,.15,'sine',.3),i*100));
@@ -164,70 +233,191 @@ function playResult(pct) {
   }
 }
 
-function toggleSound() {
-  soundOn = !soundOn;
-  const btn = document.getElementById('soundToggle');
-  btn.textContent = soundOn ? '🔊' : '🔇';
-  btn.classList.toggle('muted', !soundOn);
-  if (soundOn) playClick();
+/* =============================================
+   TEXT-TO-SPEECH (Web Speech API)
+   ============================================= */
+function speak(text, onEnd) {
+  if (!('speechSynthesis' in window)) return;
+  window.speechSynthesis.cancel();
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = 'en-US';
+  utt.rate = 0.88;
+  utt.pitch = 1;
+  if (onEnd) utt.onend = onEnd;
+  window.speechSynthesis.speak(utt);
 }
 
+function speakVerb(inf, ps, pp) {
+  const parts = [inf];
+  if (ps && ps !== '–') parts.push(ps.split('/')[0].trim());
+  if (pp && pp !== '–' && pp !== ps) parts.push(pp.split('/')[0].trim());
+  speak(parts.join(', '));
+}
+
+function speakWord(word) {
+  if (!word || word === '–') return;
+  speak(word.split('/')[0].trim());
+}
+
+function speakSentenceFull() {
+  if (currentSentenceFull) speak(currentSentenceFull);
+}
+
+/* =============================================
+   ERRORES GUARDADOS (localStorage)
+   ============================================= */
+function getStoredErrors() {
+  try {
+    return JSON.parse(localStorage.getItem('vq-errors') || '[]');
+  } catch(e) { return []; }
+}
+function saveStoredErrors(arr) {
+  try { localStorage.setItem('vq-errors', JSON.stringify(arr)); } catch(e) {}
+}
+function addError(verbInf, form) {
+  const errs = getStoredErrors();
+  const key  = verbInf + ':' + form;
+  if (!errs.find(e => e.key === key)) {
+    errs.push({ key, verbInf, form });
+  }
+  saveStoredErrors(errs);
+}
+function removeError(verbInf, form) {
+  let errs = getStoredErrors();
+  errs = errs.filter(e => e.key !== (verbInf + ':' + form));
+  saveStoredErrors(errs);
+}
+function updateErrorsUI() {
+  const errs = getStoredErrors();
+  const n    = errs.length;
+  // Banner en teoría
+  const banner = document.getElementById('errorsBanner');
+  if (banner) {
+    banner.style.display = n > 0 ? 'flex' : 'none';
+    const bt = document.getElementById('errorsBannerText');
+    if (bt) bt.textContent = `📌 Tienes ${n} verbo${n===1?'':'s'} por repasar`;
+  }
+  // Quick access en quiz
+  const eq = document.getElementById('errorsQuick');
+  if (eq) {
+    eq.style.display = n > 0 ? 'flex' : 'none';
+    const sub = document.getElementById('errorsQuickSub');
+    if (sub) sub.textContent = `${n} verbo${n===1?'':'s'} guardado${n===1?'':'s'} para repasar`;
+  }
+}
+function goToErrorsMode() {
+  switchTab('quiz');
+  startErrorsMode();
+}
+function startErrorsMode() {
+  const errs = getStoredErrors();
+  if (!errs.length) { alert('¡No tienes errores guardados! 🎉'); return; }
+  playStart();
+  const pool = errs.map(e => {
+    const v = VERBS.find(x => x.inf === e.verbInf);
+    if (!v) return null;
+    return { v, type: e.form };
+  }).filter(Boolean);
+  if (!pool.length) { alert('No se encontraron verbos.'); return; }
+  questions = shuffle(pool);
+  idx=0; score=0; okCount=0; badCount=0; lives=3; streak=0; wrongLog=[]; answered=false;
+  quizType = 'classic';
+  showScreen('quizScreen');
+  loadQ();
+}
+
+/* =============================================
+   TEORÍA — RENDER
+   ============================================= */
 function selTf(f, el) {
   tFilter = f;
   document.querySelectorAll('.tf').forEach(b=>b.classList.remove('on'));
   el.classList.add('on');
   renderTheory();
 }
-
 function getTheoryList() {
   const q = (document.getElementById('tSearch')||{value:''}).value.trim().toLowerCase();
   return VERBS.filter(v => {
     const c = v.inf[0].toLowerCase();
-    const fOk = tFilter==='all' || (tFilter==='a-f' && c>='a' && c<='f') || (tFilter==='g-m' && c>='g' && c<='m') || (tFilter==='n-z' && c>='n' && c<='z');
-    const sOk = !q || v.inf.includes(q) || v.es.toLowerCase().includes(q) || v.ps.toLowerCase().includes(q) || v.pp.toLowerCase().includes(q);
+    const fOk = tFilter==='all'
+      || (tFilter==='a-f' && c>='a' && c<='f')
+      || (tFilter==='g-m' && c>='g' && c<='m')
+      || (tFilter==='n-z' && c>='n' && c<='z');
+    const sOk = !q
+      || v.inf.includes(q)
+      || v.es.toLowerCase().includes(q)
+      || v.ps.toLowerCase().includes(q)
+      || v.pp.toLowerCase().includes(q);
     return fOk && sOk;
   });
 }
-
 function renderTheory() {
   const list = getTheoryList();
   document.getElementById('theoryList').innerHTML = list.map((v,i)=>`
     <div class="vt-row" style="animation:fadeUp .25s ease ${i*.018}s both">
-      <div><div class="vr-word">${v.inf}</div><div class="vr-pron">${v.pInf}</div></div>
+      <div>
+        <div class="vr-word">${v.inf}</div>
+        <div class="vr-pron">${v.pInf}</div>
+      </div>
       <div class="vr-es">${v.es}</div>
-      <div class="vr-ps"><div class="vr-word">${v.ps}</div><div class="vr-pron">${v.pPs}</div></div>
+      <div class="vr-ps">
+        <div class="vr-word">${v.ps}</div>
+        <div class="vr-pron">${v.pPs}</div>
+      </div>
       <div class="vr-pp">
         <div class="vr-word ${v.pp==='–'?'vr-dash':''}">${v.pp}</div>
         <div class="vr-pron">${v.pp!=='–'?v.pPp:''}</div>
       </div>
+      <div style="text-align:center">
+        <button class="tts-row-btn" title="Escuchar pronunciación"
+          onclick="speakVerb('${v.inf}','${v.ps}','${v.pp}');this.classList.add('speaking');setTimeout(()=>this.classList.remove('speaking'),1200)">
+          🔊
+        </button>
+      </div>
     </div>`).join('');
-  document.getElementById('theoryCount').innerHTML = `Mostrando <strong>${list.length}</strong> de <strong>${VERBS.length}</strong> verbos`;
+  document.getElementById('theoryCount').innerHTML =
+    `Mostrando <strong>${list.length}</strong> de <strong>${VERBS.length}</strong> verbos`;
 }
 
+/* =============================================
+   QUIZ — CONFIGURACIÓN
+   ============================================= */
+function selQuizType(t, el) {
+  quizType = t;
+  document.querySelectorAll('.type-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  playClick();
+}
 function selMode(m, el) {
   gameMode = m;
   document.querySelectorAll('.mode-card').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
+  playClick();
 }
-
 function selQ(n, el) {
   totalQ = n;
   document.querySelectorAll('.qbtn').forEach(b=>b.classList.remove('sel'));
   el.classList.add('sel');
+  playClick();
 }
-
 function selFilter(f, el) {
   filterKey = f;
   document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('sel'));
   el.classList.add('sel');
+  playClick();
 }
 
+/* =============================================
+   SHUFFLE / BUILD QUESTIONS
+   ============================================= */
 function shuffle(a) {
   const r=[...a];
-  for(let i=r.length-1;i>0;i--){const j=0|Math.random()*(i+1);[r[i],r[j]]=[r[j],r[i]];}
+  for(let i=r.length-1;i>0;i--){
+    const j=0|Math.random()*(i+1);
+    [r[i],r[j]]=[r[j],r[i]];
+  }
   return r;
 }
-
 function applyF(list) {
   if(filterKey==='all') return list;
   return list.filter(v=>{
@@ -237,7 +427,6 @@ function applyF(list) {
     return c>='n'&&c<='z';
   });
 }
-
 function buildQ() {
   const pool=shuffle(applyF(VERBS));
   if(!pool.length) return [];
@@ -253,15 +442,45 @@ function buildQ() {
   return out.slice(0,limit);
 }
 
-function startGame() {
-  playStart();
-  questions=buildQ();
-  if(!questions.length){alert('No hay verbos con ese filtro.');return;}
-  idx=0;score=0;okCount=0;badCount=0;lives=3;streak=0;wrongLog=[];answered=false;
-  showScreen('quizScreen');
-  loadQ();
+/* =============================================
+   QUIZ — BUILD SENTENCE QUESTIONS
+   ============================================= */
+function buildSentenceQ() {
+  // Filtrar oraciones según modo (ps / pp / both)
+  let pool = SENTENCES.filter(s => {
+    if (gameMode === 'ps')   return s.form === 'ps';
+    if (gameMode === 'pp')   return s.form === 'pp';
+    return true; // both / survival
+  });
+  if (!pool.length) pool = [...SENTENCES];
+  pool = shuffle(pool);
+  const limit = Math.min(totalQ === 68 ? pool.length : totalQ, pool.length);
+  return pool.slice(0, limit);
 }
 
+/* =============================================
+   QUIZ — START
+   ============================================= */
+function startGame() {
+  playStart();
+  idx=0; score=0; okCount=0; badCount=0; lives=3; streak=0; wrongLog=[]; answered=false;
+
+  if (quizType === 'sentence') {
+    questions = buildSentenceQ();
+    if (!questions.length) { alert('No hay oraciones disponibles.'); return; }
+    showScreen('sentenceScreen');
+    loadSentenceQ();
+  } else {
+    questions = buildQ();
+    if (!questions.length) { alert('No hay verbos con ese filtro.'); return; }
+    showScreen('quizScreen');
+    loadQ();
+  }
+}
+
+/* =============================================
+   QUIZ CLÁSICO — LÓGICA
+   ============================================= */
 function loadQ() {
   answered=false; hintUsed=false;
   const {v,type}=questions[idx];
@@ -270,7 +489,7 @@ function loadQ() {
   document.getElementById('qTotal').textContent=questions.length;
   document.getElementById('scoreDisp').textContent=score;
   const lr=document.getElementById('livesRow');
-  lr.innerHTML=gameMode==='survival' ?'❤️'.repeat(Math.max(0,lives))+'🖤'.repeat(Math.max(0,3-lives)):'';
+  lr.innerHTML=gameMode==='survival'?'❤️'.repeat(Math.max(0,lives))+'🖤'.repeat(Math.max(0,3-lives)):'';
   document.getElementById('vcVerb').textContent=v.inf;
   document.getElementById('vcPron').textContent=v.pInf;
   document.getElementById('vcMeaning').textContent=v.es;
@@ -278,7 +497,7 @@ function loadQ() {
   badge.textContent=type==='ps'?'📝 ¿Cuál es el Past Simple?':'🎓 ¿Cuál es el Past Participle?';
   badge.className='vc-badge '+(type==='ps'?'badge-ps':'badge-pp');
   const inp=document.getElementById('ansInput');
-  inp.value='';inp.className='answer-input';inp.disabled=false;
+  inp.value=''; inp.className='answer-input'; inp.disabled=false;
   inp.placeholder=type==='ps'?'Escribe el pasado simple…':'Escribe el participio pasado…';
   setTimeout(()=>inp.focus(),80);
   document.getElementById('btnCheck').disabled=true;
@@ -287,18 +506,13 @@ function loadQ() {
   document.getElementById('hintText').textContent='';
   document.getElementById('hintBtn').disabled=false;
 }
-
-function norm(s){
-  return s.trim().toLowerCase().replace(/\s*\/\s*/g,'/').replace(/[^a-z\/\s]/g,'').trim();
-}
-
+function norm(s){ return s.trim().toLowerCase().replace(/\s*\/\s*/g,'/').replace(/[^a-z\/\s]/g,'').trim(); }
 function isOk(user,correct){
   if(correct==='–') return false;
   const u=norm(user);
   return correct.toLowerCase().split('/').map(x=>x.trim())
     .some(v2=>v2===u||v2.replace(/\s/g,'')===u.replace(/\s/g,''));
 }
-
 function checkAnswer(){
   if(answered) return;
   answered=true;
@@ -314,47 +528,47 @@ function checkAnswer(){
   const pts=hintUsed?5:10+(streak>=3&&!hintUsed?5:0);
   if(right){
     playCorrect();
-    streak++;
-    score+=pts;
-    okCount++;
+    streak++; score+=pts; okCount++;
+    removeError(v.inf, type);
     fb.className='feedback ok show';
     document.getElementById('fbIcon').textContent='✅';
     const t=document.getElementById('fbTitle');
     t.className='fb-title ok';
     t.textContent=(streak>=3&&!hintUsed)?`🔥 ¡${streak} en racha! +${pts} pts`:`¡Correcto! +${pts} pts`;
-    document.getElementById('fbDetail').innerHTML= `<strong>${v.inf}</strong> → ${type==='ps'?'Past Simple':'Participio'}: <strong style="color:var(--accent)">${correct}</strong>`;
+    document.getElementById('fbDetail').innerHTML=
+      `<strong>${v.inf}</strong> → ${type==='ps'?'Past Simple':'Participio'}: <strong style="color:var(--accent)">${correct}</strong>`;
     document.getElementById('fbPron').textContent=pronC;
     document.getElementById('scoreDisp').textContent=score;
     if((streak===3||streak===5||streak===10)&&!hintUsed) showStreak(streak);
     if(Math.random()<0.18) confetti();
   } else {
     playWrong();
-    streak=0;
-    badCount++;
+    streak=0; badCount++;
+    addError(v.inf, type);
     fb.className='feedback err show';
     document.getElementById('fbIcon').textContent='❌';
     const t=document.getElementById('fbTitle');
     t.className='fb-title err';
     t.textContent=user.trim()?'Incorrecto':'Sin respuesta';
-    document.getElementById('fbDetail').innerHTML= `La respuesta correcta es: <strong style="color:var(--accent)">${correct}</strong>`;
+    document.getElementById('fbDetail').innerHTML=
+      `La respuesta correcta es: <strong style="color:var(--accent)">${correct}</strong>`;
     document.getElementById('fbPron').textContent=pronC;
     wrongLog.push({v,type,correct,pronC,given:user.trim()});
     if(gameMode==='survival'){
       lives--;
-      document.getElementById('livesRow').innerHTML= '❤️'.repeat(Math.max(0,lives))+'🖤'.repeat(Math.max(0,3-lives));
+      document.getElementById('livesRow').innerHTML=
+        '❤️'.repeat(Math.max(0,lives))+'🖤'.repeat(Math.max(0,3-lives));
     }
   }
   document.getElementById('btnCheck').disabled=true;
   document.getElementById('btnNext').className='btn-next show';
   if(gameMode==='survival'&&lives<=0) setTimeout(()=>showResults(),1400);
 }
-
 function nextQ(){
   idx++;
   if(idx>=questions.length||(gameMode==='survival'&&lives<=0)) showResults();
   else loadQ();
 }
-
 function showHint(){
   const {v,type}=questions[idx];
   const correct=type==='ps'?v.ps:v.pp;
@@ -363,11 +577,9 @@ function showHint(){
   document.getElementById('hintBtn').disabled=true;
   hintUsed=true;
 }
-
 function onTyping(){
   document.getElementById('btnCheck').disabled=!document.getElementById('ansInput').value.trim();
 }
-
 function onKey(e){
   if(e.key==='Enter'){
     if(!answered&&document.getElementById('ansInput').value.trim()) checkAnswer();
@@ -375,35 +587,212 @@ function onKey(e){
   }
 }
 
-function showResults(){
+/* =============================================
+   QUIZ "COMPLETA LA ORACIÓN" — LÓGICA
+   ============================================= */
+function loadSentenceQ() {
+  answered = false;
+  const s = questions[idx];
+
+  // Barra progreso
+  document.getElementById('sProgressBar').style.width=(idx/questions.length*100)+'%';
+  document.getElementById('sQNum').textContent=idx+1;
+  document.getElementById('sQTotal').textContent=questions.length;
+  document.getElementById('sScoreDisp').textContent=score;
+
+  // Vidas survival
+  const slr = document.getElementById('sLivesRow');
+  slr.innerHTML = gameMode==='survival'
+    ? '❤️'.repeat(Math.max(0,lives))+'🖤'.repeat(Math.max(0,3-lives)) : '';
+
+  // Oración con blank
+  const blankHtml = `<span class="sc-blank" id="scBlank">___</span>`;
+  const sentHtml  = s.template.replace('___', blankHtml);
+  document.getElementById('scSentence').innerHTML = sentHtml;
+
+  // Guardar oración completa para TTS
+  currentSentenceFull = s.full;
+  document.getElementById('scTtsRow').style.display = 'none';
+
+  // Reset feedback
+  document.getElementById('sFeedback').className = 'feedback';
+  document.getElementById('sBtnNext').className  = 'btn-next';
+
+  // Generar 3 opciones: la correcta + 2 distractores
+  const correctVerb = VERBS.find(v => v.inf === s.verb);
+  const correctAns  = s.answer;
+  const correctForm = s.form;
+
+  // Distractores: otras formas del mismo verbo o verbos similares
+  const distractors = buildDistractors(correctVerb, correctAns, correctForm);
+
+  const options = shuffle([
+    { word: correctAns, form: correctForm, isCorrect: true,  verb: correctVerb },
+    { word: distractors[0].word, form: distractors[0].form, isCorrect: false, verb: distractors[0].verb },
+    { word: distractors[1].word, form: distractors[1].form, isCorrect: false, verb: distractors[1].verb },
+  ]);
+
+  const optsEl = document.getElementById('scOptions');
+  optsEl.innerHTML = options.map((opt, i) => {
+    const formLabel = opt.form === 'ps' ? 'Past Simple' : opt.form === 'pp' ? 'Past Part.' : 'Infinitive';
+    const badgeClass = opt.form === 'ps' ? 'badge-ps2' : opt.form === 'pp' ? 'badge-pp2' : 'badge-inf';
+    return `
+      <button class="sc-option" id="scOpt${i}" onclick="selectSentenceOpt(${i}, ${opt.isCorrect}, '${opt.word.replace(/'/g,"\\'")}', '${opt.verb ? opt.verb.inf : ''}')">
+        <div class="sc-option-verb">
+          <div class="sc-opt-inf">${opt.verb ? opt.verb.inf : ''}</div>
+          <div class="sc-opt-word">${opt.word}</div>
+        </div>
+        <button class="sc-opt-tts" onclick="event.stopPropagation();speakWord('${opt.word.replace(/'/g,"\\'")}')">🔊</button>
+        <span class="sc-option-badge ${badgeClass}">${formLabel}</span>
+      </button>`;
+  }).join('');
+}
+
+function buildDistractors(correctVerb, correctAns, correctForm) {
+  const result = [];
+  // Distractor 1: otra forma del mismo verbo
+  if (correctForm === 'ps') {
+    // usar el pp como distractor, o el infinitivo
+    const alt = (correctVerb.pp !== '–' && correctVerb.pp !== correctAns)
+      ? { word: correctVerb.pp, form: 'pp', verb: correctVerb }
+      : { word: correctVerb.inf, form: 'inf', verb: correctVerb };
+    result.push(alt);
+  } else {
+    const alt = (correctVerb.ps !== correctAns)
+      ? { word: correctVerb.ps, form: 'ps', verb: correctVerb }
+      : { word: correctVerb.inf, form: 'inf', verb: correctVerb };
+    result.push(alt);
+  }
+  // Distractor 2: verbo diferente, misma forma
+  const others = shuffle(VERBS.filter(v => v.inf !== correctVerb.inf));
+  for (const v of others) {
+    const word = correctForm === 'ps' ? v.ps : v.pp;
+    if (word && word !== '–' && word !== correctAns && word !== result[0].word) {
+      result.push({ word, form: correctForm, verb: v });
+      break;
+    }
+  }
+  // fallback
+  if (result.length < 2) result.push({ word: correctVerb.inf, form: 'inf', verb: correctVerb });
+  return result;
+}
+
+function selectSentenceOpt(i, isCorrect, word, verbInf) {
+  if (answered) return;
+  answered = true;
+  playClick();
+
+  // Deshabilitar todas las opciones
+  document.querySelectorAll('.sc-option').forEach(b => b.disabled = true);
+
+  // Marcar seleccionada
+  const btn = document.getElementById('scOpt' + i);
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+
+  // Llenar el blank
+  const blank = document.getElementById('scBlank');
+  if (blank) {
+    blank.textContent = word;
+    blank.classList.add(isCorrect ? 'filled-ok' : 'filled-err');
+  }
+
+  const fb  = document.getElementById('sFeedback');
+  const pts = 10 + (streak >= 3 ? 5 : 0);
+
+  if (isCorrect) {
+    playCorrect();
+    streak++; okCount++;
+    score += pts;
+
+    removeError(verbInf, questions[idx].form);
+
+    fb.className = 'feedback ok show';
+    document.getElementById('sFbIcon').textContent = '✅';
+    const t = document.getElementById('sFbTitle');
+    t.className = 'fb-title ok';
+    t.textContent = streak >= 3 ? `🔥 ¡${streak} en racha! +${pts} pts` : `¡Correcto! +${pts} pts`;
+    document.getElementById('sFbDetail').innerHTML =
+      `<strong>${verbInf}</strong>: la forma correcta era <strong style="color:var(--accent)">${word}</strong>`;
+    document.getElementById('sScoreDisp').textContent = score;
+
+    // Mostrar TTS de oración completa
+    document.getElementById('scTtsRow').style.display = 'flex';
+
+    if ((streak === 3 || streak === 5 || streak === 10)) showStreak(streak);
+    if (Math.random() < 0.18) confetti();
+  } else {
+    playWrong();
+    streak = 0; badCount++;
+    addError(verbInf, questions[idx].form);
+
+    fb.className = 'feedback err show';
+    document.getElementById('sFbIcon').textContent = '❌';
+    const t = document.getElementById('sFbTitle');
+    t.className = 'fb-title err';
+    t.textContent = 'Incorrecto';
+    document.getElementById('sFbDetail').innerHTML =
+      `La respuesta correcta era: <strong style="color:var(--accent)">${questions[idx].answer}</strong>`;
+
+    // Highlight correct option
+    document.querySelectorAll('.sc-option').forEach(b => {
+      const w = b.querySelector('.sc-opt-word');
+      if (w && w.textContent === questions[idx].answer) b.classList.add('correct');
+    });
+
+    wrongLog.push({
+      v: VERBS.find(v=>v.inf===questions[idx].verb) || {inf:questions[idx].verb, pInf:'', es:''},
+      type: questions[idx].form,
+      correct: questions[idx].answer,
+      pronC: '',
+      given: word
+    });
+
+    if (gameMode === 'survival') {
+      lives--;
+      document.getElementById('sLivesRow').innerHTML =
+        '❤️'.repeat(Math.max(0,lives)) + '🖤'.repeat(Math.max(0,3-lives));
+    }
+  }
+
+  document.getElementById('sBtnNext').className = 'btn-next show';
+  if (gameMode === 'survival' && lives <= 0) setTimeout(()=>showResults(), 1400);
+}
+
+function nextSentenceQ() {
+  idx++;
+  if (idx >= questions.length || (gameMode === 'survival' && lives <= 0)) showResults();
+  else loadSentenceQ();
+}
+
+/* =============================================
+   RESULTADOS
+   ============================================= */
+function showResults() {
   showScreen('resultScreen');
-  const pct=Math.round(okCount/questions.length*100);
-  lastScore=score;
-  lastOk=okCount;
-  lastTotal=questions.length;
-  lastPct=pct;
-  setTimeout(()=>playResult(pct),400);
-  document.getElementById('rPts').textContent=score;
-  document.getElementById('rOk').textContent=okCount;
-  document.getElementById('rBad').textContent=badCount;
-  let emoji,title,sub,rankTxt,rankGrad;
-  if(pct===100) {emoji='🏆';title='¡Perfecto!'; sub='Dominaste todos los verbos'; rankTxt='🥇 Maestro del Inglés'; rankGrad='linear-gradient(135deg,#ffc800,#ff9600)';}
-  else if(pct>=80) {emoji='🎉';title='¡Excelente!'; sub='Casi los tienes todos'; rankTxt='🥈 Nivel Avanzado'; rankGrad='linear-gradient(135deg,#1cb0f6,#9d4edd)';}
-  else if(pct>=60) {emoji='💪';title='¡Bien hecho!'; sub='Sigue practicando'; rankTxt='🥉 Nivel Intermedio'; rankGrad='linear-gradient(135deg,#58cc02,#1cb0f6)';}
-  else if(pct>=40) {emoji='📚';title='¡Tú puedes!'; sub='Repasa los verbos marcados'; rankTxt='📖 Nivel Básico'; rankGrad='linear-gradient(135deg,#ffc800,#ff9600)';}
-  else {emoji='🔄';title='¡No te rindas!';sub='La práctica hace al maestro';rankTxt='🌱 Principiante'; rankGrad='linear-gradient(135deg,#ff4b4b,#c0392b)';}
-  lastEmoji=emoji;
-  lastRank=rankTxt;
-  document.getElementById('resEmoji').textContent=emoji;
-  document.getElementById('resTitle').textContent=title;
-  document.getElementById('resSub').textContent=sub+` · ${pct}% correcto`;
-  const rc=document.getElementById('rankChip');
-  rc.textContent=rankTxt;
-  rc.style.background=rankGrad;
-  rc.style.color='#000';
-  const ws=document.getElementById('wrongSection');
-  if(wrongLog.length){
-    ws.innerHTML=`<div class="wlog-title">Para repasar (${wrongLog.length})</div>
+  updateErrorsUI();
+  const pct = Math.round(okCount / questions.length * 100);
+  lastScore = score; lastOk = okCount; lastTotal = questions.length; lastPct = pct;
+  setTimeout(()=>playResult(pct), 400);
+  document.getElementById('rPts').textContent  = score;
+  document.getElementById('rOk').textContent   = okCount;
+  document.getElementById('rBad').textContent  = badCount;
+  let emoji, title, sub, rankTxt, rankGrad;
+  if      (pct===100){ emoji='🏆'; title='¡Perfecto!';     sub='Dominaste todos los verbos';    rankTxt='🥇 Maestro del Inglés';   rankGrad='linear-gradient(135deg,#e67e22,#c0390b)'; }
+  else if (pct>= 80) { emoji='🎉'; title='¡Excelente!';    sub='Casi los tienes todos';          rankTxt='🥈 Nivel Avanzado';       rankGrad='linear-gradient(135deg,#1e7abf,#8e44ad)'; }
+  else if (pct>= 60) { emoji='💪'; title='¡Bien hecho!';   sub='Sigue practicando';              rankTxt='🥉 Nivel Intermedio';     rankGrad='linear-gradient(135deg,#2e8b3a,#1e7abf)'; }
+  else if (pct>= 40) { emoji='📚'; title='¡Tú puedes!';    sub='Repasa los verbos marcados';    rankTxt='📖 Nivel Básico';          rankGrad='linear-gradient(135deg,#e67e22,#c0392b)'; }
+  else               { emoji='🔄'; title='¡No te rindas!'; sub='La práctica hace al maestro';   rankTxt='🌱 Principiante';          rankGrad='linear-gradient(135deg,#c0392b,#7b241c)'; }
+  lastEmoji=emoji; lastRank=rankTxt;
+  document.getElementById('resEmoji').textContent = emoji;
+  document.getElementById('resTitle').textContent = title;
+  document.getElementById('resSub').textContent   = sub + ` · ${pct}% correcto`;
+  const rc = document.getElementById('rankChip');
+  rc.textContent  = rankTxt;
+  rc.style.background = rankGrad;
+  rc.style.color  = '#fff';
+  const ws = document.getElementById('wrongSection');
+  if (wrongLog.length) {
+    ws.innerHTML = `<div class="wlog-title">Para repasar (${wrongLog.length})</div>
     <div class="wlog-scroll">${wrongLog.map(w=>`
       <div class="wi">
         <div class="wi-top">
@@ -412,32 +801,29 @@ function showResults(){
         </div>
         <div class="wi-ans">
           ${w.type==='ps'?'Past Simple':'Participio'}: <span>${w.correct}</span>
-          <span class="wi-pron">${w.pronC}</span>
+          ${w.pronC?`<span class="wi-pron">${w.pronC}</span>`:''}
           ${w.given?`· Tú: <span class="given">${w.given}</span>`:''}
         </div>
       </div>`).join('')}</div>`;
   } else {
-    ws.innerHTML='';
+    ws.innerHTML = '';
   }
-  if(pct>=80) confetti(50);
+  if (pct >= 80) confetti(50);
 }
 
+/* =============================================
+   CANVAS PARA COMPARTIR
+   ============================================= */
 function rrect(ctx, x, y, w, h, r, fill, stroke) {
   ctx.beginPath();
-  ctx.moveTo(x+r, y);
-  ctx.lineTo(x+w-r, y);
-  ctx.quadraticCurveTo(x+w, y, x+w, y+r);
-  ctx.lineTo(x+w, y+h-r);
-  ctx.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
-  ctx.lineTo(x+r, y+h);
-  ctx.quadraticCurveTo(x, y+h, x, y+h-r);
-  ctx.lineTo(x, y+r);
-  ctx.quadraticCurveTo(x, y, x+r, y);
-  ctx.closePath();
-  if(fill) { ctx.fillStyle=fill; ctx.fill(); }
-  if(stroke){ ctx.strokeStyle=stroke; ctx.lineWidth=2; ctx.stroke(); }
+  ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y);
+  ctx.quadraticCurveTo(x+w,y,x+w,y+r); ctx.lineTo(x+w,y+h-r);
+  ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h); ctx.lineTo(x+r,y+h);
+  ctx.quadraticCurveTo(x,y+h,x,y+h-r); ctx.lineTo(x,y+r);
+  ctx.quadraticCurveTo(x,y,x+r,y); ctx.closePath();
+  if(fill){ctx.fillStyle=fill;ctx.fill();}
+  if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke();}
 }
-
 function buildShareCanvas() {
   const isLight = document.body.classList.contains('light');
   const W=1080, H=580;
@@ -445,88 +831,65 @@ function buildShareCanvas() {
   cv.width=W; cv.height=H;
   const ctx=cv.getContext('2d');
   const T = isLight ? {
-    bg0:'#f0f4ff', bg1:'#e8f5e9', bg2:'#f7f7f7',
-    glowG:'rgba(88,204,2,0.14)', glowB:'rgba(28,176,246,0.12)',
+    bg0:'#e8f4ff', bg1:'#e0f0e8', bg2:'#f5f5f5',
+    glowG:'rgba(46,139,58,0.12)', glowB:'rgba(30,122,191,0.10)',
     border:'rgba(0,0,0,0.08)',
-    headerFill0:'rgba(88,204,2,0.18)', headerFill1:'rgba(28,176,246,0.12)',
+    headerFill0:'rgba(30,122,191,0.18)', headerFill1:'rgba(46,139,58,0.12)',
     headerSep:'rgba(0,0,0,0.08)',
-    logoColor:'#1a1a2e', subtitleColor:'rgba(0,0,0,0.38)',
+    logoColor:'#1a3a5c', subtitleColor:'rgba(0,0,0,0.38)',
     subTextColor:'rgba(0,0,0,0.50)',
     boxFill:'rgba(0,0,0,0.04)', boxStroke:'rgba(0,0,0,0.10)',
     statLabel:'rgba(0,0,0,0.40)',
     barTrack:'rgba(0,0,0,0.08)', barPct:'rgba(0,0,0,0.35)',
-    footerColor:'rgba(28,176,246,0.85)',
-    accentLine0:'#58cc02', accentLine1:'#1cb0f6',
+    footerColor:'rgba(30,122,191,0.85)',
+    accentLine0:'#2e8b3a', accentLine1:'#1e7abf',
   } : {
-    bg0:'#0b0f1a', bg1:'#0e1829', bg2:'#091408',
-    glowG:'rgba(88,204,2,0.22)', glowB:'rgba(28,176,246,0.18)',
+    bg0:'#0d1b2a', bg1:'#0f2a1a', bg2:'#091020',
+    glowG:'rgba(46,139,58,0.20)', glowB:'rgba(30,122,191,0.16)',
     border:'rgba(255,255,255,0.08)',
-    headerFill0:'rgba(88,204,2,0.28)', headerFill1:'rgba(28,176,246,0.18)',
+    headerFill0:'rgba(30,122,191,0.25)', headerFill1:'rgba(46,139,58,0.18)',
     headerSep:'rgba(255,255,255,0.10)',
-    logoColor:'#ffffff', subtitleColor:'rgba(255,255,255,0.45)',
+    logoColor:'#eaf2fb', subtitleColor:'rgba(255,255,255,0.45)',
     subTextColor:'rgba(255,255,255,0.60)',
     boxFill:'rgba(255,255,255,0.06)', boxStroke:'rgba(255,255,255,0.12)',
     statLabel:'rgba(255,255,255,0.45)',
     barTrack:'rgba(255,255,255,0.10)', barPct:'rgba(255,255,255,0.38)',
-    footerColor:'rgba(28,176,246,0.75)',
-    accentLine0:'#58cc02', accentLine1:'#1cb0f6',
+    footerColor:'rgba(30,122,191,0.80)',
+    accentLine0:'#2e8b3a', accentLine1:'#1e7abf',
   };
   const bg=ctx.createLinearGradient(0,0,W,H);
-  bg.addColorStop(0, T.bg0);
-  bg.addColorStop(0.55,T.bg1);
-  bg.addColorStop(1, T.bg2);
-  ctx.fillStyle=bg;
-  ctx.fillRect(0,0,W,H);
+  bg.addColorStop(0,T.bg0); bg.addColorStop(0.55,T.bg1); bg.addColorStop(1,T.bg2);
+  ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
   const gG=ctx.createRadialGradient(0,0,0,0,0,500);
-  gG.addColorStop(0,T.glowG);
-  gG.addColorStop(1,'rgba(88,204,2,0)');
-  ctx.fillStyle=gG;
-  ctx.fillRect(0,0,W,H);
+  gG.addColorStop(0,T.glowG); gG.addColorStop(1,'rgba(46,139,58,0)');
+  ctx.fillStyle=gG; ctx.fillRect(0,0,W,H);
   const gB=ctx.createRadialGradient(W,H,0,W,H,520);
-  gB.addColorStop(0,T.glowB);
-  gB.addColorStop(1,'rgba(28,176,246,0)');
-  ctx.fillStyle=gB;
-  ctx.fillRect(0,0,W,H);
+  gB.addColorStop(0,T.glowB); gB.addColorStop(1,'rgba(30,122,191,0)');
+  ctx.fillStyle=gB; ctx.fillRect(0,0,W,H);
   rrect(ctx,14,14,W-28,H-28,24,null,T.border);
   const hGrad=ctx.createLinearGradient(0,0,W,0);
-  hGrad.addColorStop(0, T.headerFill0);
-  hGrad.addColorStop(0.5, T.headerFill1);
-  hGrad.addColorStop(1, T.headerFill0);
+  hGrad.addColorStop(0,T.headerFill0); hGrad.addColorStop(0.5,T.headerFill1); hGrad.addColorStop(1,T.headerFill0);
   const hr=22;
   ctx.beginPath();
-  ctx.moveTo(14+hr,14);
-  ctx.lineTo(W-14-hr,14);
-  ctx.quadraticCurveTo(W-14,14,W-14,14+hr);
-  ctx.lineTo(W-14,86);
-  ctx.lineTo(14,86);
-  ctx.lineTo(14,14+hr);
-  ctx.quadraticCurveTo(14,14,14+hr,14);
-  ctx.closePath();
-  ctx.fillStyle=hGrad;
-  ctx.fill();
-  ctx.beginPath();
-  ctx.moveTo(14,86);
-  ctx.lineTo(W-14,86);
-  ctx.strokeStyle=T.headerSep;
-  ctx.lineWidth=1;
-  ctx.stroke();
+  ctx.moveTo(14+hr,14); ctx.lineTo(W-14-hr,14);
+  ctx.quadraticCurveTo(W-14,14,W-14,14+hr); ctx.lineTo(W-14,86);
+  ctx.lineTo(14,86); ctx.lineTo(14,14+hr);
+  ctx.quadraticCurveTo(14,14,14+hr,14); ctx.closePath();
+  ctx.fillStyle=hGrad; ctx.fill();
+  ctx.beginPath(); ctx.moveTo(14,86); ctx.lineTo(W-14,86);
+  ctx.strokeStyle=T.headerSep; ctx.lineWidth=1; ctx.stroke();
   ctx.font='bold 30px "Segoe UI Emoji","Segoe UI",Arial,sans-serif';
-  ctx.fillStyle=T.logoColor;
-  ctx.textAlign='left';
+  ctx.fillStyle=T.logoColor; ctx.textAlign='left';
   ctx.fillText('🎓 VerbQuest', 44, 60);
   ctx.font='20px "Segoe UI",Arial,sans-serif';
-  ctx.fillStyle=T.subtitleColor;
-  ctx.textAlign='right';
+  ctx.fillStyle=T.subtitleColor; ctx.textAlign='right';
   ctx.fillText('English File · Verbos Irregulares', W-44, 60);
   ctx.font='120px "Segoe UI Emoji",serif';
-  ctx.textAlign='center';
-  ctx.fillText(lastEmoji, 130, 230);
+  ctx.textAlign='center'; ctx.fillText(lastEmoji, 130, 230);
   const tGrad=ctx.createLinearGradient(240,130,750,130);
-  tGrad.addColorStop(0,'#58cc02');
-  tGrad.addColorStop(1,'#1cb0f6');
+  tGrad.addColorStop(0,'#2e8b3a'); tGrad.addColorStop(1,'#1e7abf');
   ctx.font='bold 70px "Segoe UI",Arial,sans-serif';
-  ctx.fillStyle=tGrad;
-  ctx.textAlign='left';
+  ctx.fillStyle=tGrad; ctx.textAlign='left';
   let titleTxt='¡No te rindas!';
   if(lastPct===100) titleTxt='¡Perfecto!';
   else if(lastPct>=80) titleTxt='¡Excelente!';
@@ -536,72 +899,59 @@ function buildShareCanvas() {
   ctx.font='30px "Segoe UI",Arial,sans-serif';
   ctx.fillStyle=T.subTextColor;
   ctx.fillText(`${lastPct}% correcto · ${lastOk} de ${lastTotal} preguntas`, 240, 248);
-  const chipX=240, chipY=274, chipW=400, chipH=54;
+  const chipX=240,chipY=274,chipW=400,chipH=54;
   const chipG=ctx.createLinearGradient(chipX,0,chipX+chipW,0);
-  if(lastPct===100) { chipG.addColorStop(0,'#ffc800'); chipG.addColorStop(1,'#ff9600'); }
-  else if(lastPct>=80) { chipG.addColorStop(0,'#1cb0f6'); chipG.addColorStop(1,'#9d4edd'); }
-  else if(lastPct>=60) { chipG.addColorStop(0,'#58cc02'); chipG.addColorStop(1,'#1cb0f6'); }
-  else if(lastPct>=40) { chipG.addColorStop(0,'#ffc800'); chipG.addColorStop(1,'#ff9600'); }
-  else { chipG.addColorStop(0,'#ff4b4b'); chipG.addColorStop(1,'#c0392b'); }
+  if(lastPct===100){chipG.addColorStop(0,'#e67e22');chipG.addColorStop(1,'#c0390b');}
+  else if(lastPct>=80){chipG.addColorStop(0,'#1e7abf');chipG.addColorStop(1,'#8e44ad');}
+  else if(lastPct>=60){chipG.addColorStop(0,'#2e8b3a');chipG.addColorStop(1,'#1e7abf');}
+  else if(lastPct>=40){chipG.addColorStop(0,'#e67e22');chipG.addColorStop(1,'#c0392b');}
+  else{chipG.addColorStop(0,'#c0392b');chipG.addColorStop(1,'#7b241c');}
   rrect(ctx,chipX,chipY,chipW,chipH,27,chipG,null);
   ctx.font='bold 26px "Segoe UI Emoji","Segoe UI",Arial,sans-serif';
-  ctx.fillStyle='#000';
-  ctx.textAlign='center';
+  ctx.fillStyle='#fff'; ctx.textAlign='center';
   ctx.fillText(lastRank, chipX+chipW/2, chipY+36);
   const stats=[
-    {label:'Puntos', val:String(lastScore), color:'#ffc800'},
-    {label:'Correctas', val:String(lastOk), color:'#58cc02'},
-    {label:'Errores', val:String(badCount), color:'#ff4b4b'},
+    {label:'Puntos',    val:String(lastScore), color:'#e67e22'},
+    {label:'Correctas', val:String(lastOk),    color:'#2e8b3a'},
+    {label:'Errores',   val:String(badCount),  color:'#c0392b'},
   ];
-  const bW=150, bH=112, bY=360, bX0=240, gap=18;
+  const bW=150,bH=112,bY=360,bX0=240,gap=18;
   stats.forEach((s,i)=>{
     const bx=bX0+i*(bW+gap);
     rrect(ctx,bx,bY,bW,bH,18,T.boxFill,T.boxStroke);
     ctx.font='bold 52px "Segoe UI",Arial,sans-serif';
-    ctx.fillStyle=s.color;
-    ctx.textAlign='center';
+    ctx.fillStyle=s.color; ctx.textAlign='center';
     ctx.fillText(s.val, bx+bW/2, bY+65);
     ctx.font='18px "Segoe UI",Arial,sans-serif';
     ctx.fillStyle=T.statLabel;
     ctx.fillText(s.label.toUpperCase(), bx+bW/2, bY+90);
   });
-  const barX=240, barY=500, barTW=480, barH=14;
+  const barX=240,barY=500,barTW=480,barH=14;
   rrect(ctx,barX,barY,barTW,barH,7,T.barTrack,null);
   if(lastPct>0){
     const filled=barTW*(lastPct/100);
     const pG=ctx.createLinearGradient(barX,0,barX+filled,0);
-    pG.addColorStop(0,'#58cc02');
-    pG.addColorStop(1,'#1cb0f6');
+    pG.addColorStop(0,'#2e8b3a'); pG.addColorStop(1,'#1e7abf');
     rrect(ctx,barX,barY,filled,barH,7,pG,null);
   }
   ctx.font='16px "Segoe UI",Arial,sans-serif';
-  ctx.fillStyle=T.barPct;
-  ctx.textAlign='left';
+  ctx.fillStyle=T.barPct; ctx.textAlign='left';
   ctx.fillText(`${lastPct}%`, barX+barTW+14, barY+12);
   const lG=ctx.createLinearGradient(0,100,0,H-20);
-  lG.addColorStop(0,T.accentLine0);
-  lG.addColorStop(0.5,T.accentLine1);
-  lG.addColorStop(1,T.accentLine0);
-  ctx.strokeStyle=lG;
-  ctx.lineWidth=5;
-  ctx.beginPath();
-  ctx.moveTo(42,104);
-  ctx.lineTo(42,H-20);
-  ctx.stroke();
+  lG.addColorStop(0,T.accentLine0); lG.addColorStop(0.5,T.accentLine1); lG.addColorStop(1,T.accentLine0);
+  ctx.strokeStyle=lG; ctx.lineWidth=5;
+  ctx.beginPath(); ctx.moveTo(42,104); ctx.lineTo(42,H-20); ctx.stroke();
   ctx.font='22px "Segoe UI",Arial,sans-serif';
-  ctx.fillStyle=T.footerColor;
-  ctx.textAlign='left';
+  ctx.fillStyle=T.footerColor; ctx.textAlign='left';
   ctx.fillText('¿Puedes superarme? 👉 mxdanico.github.io/verbquest/', 240, H-22);
   return cv;
 }
-
 function canvasToFile(cv, name) {
   return new Promise(res => cv.toBlob(b => res(new File([b], name, {type:'image/png'})), 'image/png'));
 }
-
 async function shareWhatsApp() {
   playClick();
-  const appUrl = 'https://mxdanico.github.io/verbquest';
+  const appUrl  = 'https://mxdanico.github.io/verbquest';
   const msgText = `🎓 *VerbQuest · Verbos Irregulares*\n\n🏅 Rango: *${lastRank}*\n⭐ Puntos: *${lastScore}*\n✅ Correctas: *${lastOk} de ${lastTotal}*\n📊 Resultado: *${lastPct}%*\n\n¿Puedes superarme? 😏\n👉 ${appUrl}`;
   const cv = buildShareCanvas();
   if (navigator.canShare) {
@@ -615,7 +965,6 @@ async function shareWhatsApp() {
   }
   _showSharePanel(cv, msgText, appUrl);
 }
-
 function _showSharePanel(cv, msgText, appUrl) {
   cv.toBlob(blob => {
     const imgUrl = URL.createObjectURL(blob);
@@ -632,52 +981,45 @@ function _showSharePanel(cv, msgText, appUrl) {
     if (textBox) textBox.textContent = msgText;
     if (!document.getElementById('btnDownloadImg')) {
       const a = document.createElement('a');
-      a.id = 'btnDownloadImg';
-      a.className = 'btn-copy';
+      a.id = 'btnDownloadImg'; a.className = 'btn-copy';
       a.style.cssText = 'display:flex;align-items:center;justify-content:center;gap:.3rem;text-decoration:none';
       a.textContent = '⬇️ Guardar imagen';
       const row = document.querySelector('.share-copy-row');
       if (row) row.prepend(a);
     }
     const dlBtn = document.getElementById('btnDownloadImg');
-    if (dlBtn) {
-      dlBtn.href = imgUrl;
-      dlBtn.download = 'verbquest-resultado.png';
-    }
+    if (dlBtn) { dlBtn.href = imgUrl; dlBtn.download = 'verbquest-resultado.png'; }
     document.getElementById('sharePreview').classList.add('show');
     window.open('https://wa.me/?text=' + encodeURIComponent(msgText), '_blank');
   }, 'image/png');
 }
-
 function copyShareText() {
   const text = document.getElementById('shareTextBox').textContent;
   navigator.clipboard.writeText(text).then(() => {
     const btn = document.getElementById('btnCopy');
-    btn.textContent='✅ ¡Copiado!';
-    btn.classList.add('copied');
+    btn.textContent='✅ ¡Copiado!'; btn.classList.add('copied');
     setTimeout(()=>{btn.textContent='📋 Copiar texto';btn.classList.remove('copied');},2000);
   }).catch(() => {
     const ta=document.createElement('textarea');
-    ta.value=text;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
+    ta.value=text; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
     const btn=document.getElementById('btnCopy');
     btn.textContent='✅ ¡Copiado!';
     setTimeout(()=>{btn.textContent='📋 Copiar texto';},2000);
   });
 }
-
 function closeSharePreview() {
   document.getElementById('sharePreview').classList.remove('show');
 }
 
+/* =============================================
+   NAV / SCREENS
+   ============================================= */
 function switchTab(tab) {
   playClick();
   document.querySelectorAll('.page,.quiz-page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
-  if(tab==='theory'){
+  if (tab==='theory') {
     document.getElementById('pageTheory').classList.add('active');
     document.getElementById('tabTheory').classList.add('active');
   } else {
@@ -687,26 +1029,21 @@ function switchTab(tab) {
   }
   window.scrollTo({top:0,behavior:'smooth'});
 }
-
-function goToStart(){
-  showScreen('startScreen');
-}
-
+function goToStart(){ showScreen('startScreen'); }
 function showScreen(id){
   document.querySelectorAll('#pageQuiz .screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
-
 function showStreak(n){
   const el=document.getElementById('streakPop');
   el.textContent=`🔥 ${n} seguidas!`;
   el.classList.add('go');
   setTimeout(()=>el.classList.remove('go'),1100);
 }
-
 function confetti(n=22){
-  const cols=['#ffc800','#1cb0f6','#58cc02','#ff4b4b','#ce82ff','#ffffff'];
+  // English File colors
+  const cols=['#1e7abf','#2e8b3a','#e67e22','#c0392b','#8e44ad','#ffffff','#1a3a5c'];
   for(let i=0;i<n;i++){
     setTimeout(()=>{
       const el=document.createElement('div');
@@ -718,13 +1055,17 @@ function confetti(n=22){
   }
 }
 
+/* =============================================
+   INIT
+   ============================================= */
 renderTheory();
+updateErrorsUI();
 
 if('serviceWorker' in navigator){
   const swCode=[
     'self.addEventListener("install",e=>{self.skipWaiting();});',
     'self.addEventListener("activate",e=>{e.waitUntil(clients.claim());});',
-    'self.addEventListener("fetch",e=>{e.respondWith(caches.open("verbquest-v4").then(cache=>{return cache.match(e.request).then(cached=>{const fetched=fetch(e.request).then(resp=>{cache.put(e.request,resp.clone());return resp;}).catch(()=>cached);return cached||fetched;});}));});'
+    'self.addEventListener("fetch",e=>{e.respondWith(caches.open("verbquest-v5").then(cache=>{return cache.match(e.request).then(cached=>{const fetched=fetch(e.request).then(resp=>{cache.put(e.request,resp.clone());return resp;}).catch(()=>cached);return cached||fetched;});}));});'
   ].join('\n');
   const blob=new Blob([swCode],{type:'text/javascript'});
   navigator.serviceWorker.register(URL.createObjectURL(blob))

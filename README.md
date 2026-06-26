@@ -1,4 +1,4 @@
-# VerbQuest 🦜
+# VerbQuest
 
 **VerbQuest** es una aplicación web progresiva (PWA) diseñada para practicar los **68 verbos irregulares de English File Pre-Intermediate** de forma interactiva, rápida y divertida.
 

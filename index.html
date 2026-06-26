@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="theme-color" content="#0e1117">
+    <meta name="theme-color" content="#1a3a5c">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,7 +17,7 @@
 <body>
     <header class="app-header">
         <div class="app-logo">
-            VerbQuest🦜
+            VerbQuest
             <span>English File Pre-Intermediate · 68 verbos</span>
         </div>
         <div class="nav-tabs">
@@ -26,6 +26,7 @@
         </div>
     </header>
 
+    <!-- ===== TAB TEORÍA ===== -->
     <div class="page active" id="pageTheory">
         <div class="theory-hero">
             <h2>📖 Lista de Verbos</h2>
@@ -36,6 +37,11 @@
             <div class="leg"><div class="leg-dot" style="background:var(--gold)"></div>Past Simple</div>
             <div class="leg"><div class="leg-dot" style="background:var(--accent)"></div>Past Participle</div>
             <div class="leg"><div class="leg-dot" style="background:var(--blue)"></div>Pronunciación IPA</div>
+        </div>
+        <!-- Modo errores banner -->
+        <div class="errors-banner" id="errorsBanner" style="display:none">
+            <span id="errorsBannerText">📌 Tienes verbos por repasar</span>
+            <button onclick="goToErrorsMode()">Practicar mis errores →</button>
         </div>
         <div class="tbar">
             <div class="search-wrap">
@@ -54,22 +60,46 @@
                 <span>Infinitivo</span>
                 <span>Español</span>
                 <span>Past Simple</span>
-                <span>Past Participle</span>
+                <span>Past Part.</span>
+                <span>🔊</span>
             </div>
             <div class="vt-list" id="theoryList"></div>
         </div>
         <div class="tcount" id="theoryCount"></div>
-        <button class="cta-quiz" onclick="switchTab('quiz')">✅ Ya estudié · ¡Ir al Quiz! →</button>
+        <button class="cta-quiz" onclick="switchTab('quiz')"> Ya estudié · ¡Ir al Quiz! →</button>
     </div>
 
+    <!-- ===== TAB QUIZ ===== -->
     <div class="quiz-page" id="pageQuiz">
 
+        <!-- Pantalla de inicio -->
         <div class="screen active" id="startScreen">
             <div class="brand">
                 <span class="brand-icon">🚀</span>
                 <h1>¡A Practicar!</h1>
                 <p>Pon a prueba lo que acabas de estudiar · 68 verbos</p>
             </div>
+
+            <!-- Mis errores rápido -->
+            <div class="errors-quick" id="errorsQuick" style="display:none">
+                <div class="eq-icon">🎯</div>
+                <div class="eq-body">
+                    <div class="eq-title">Practicar mis errores</div>
+                    <div class="eq-sub" id="errorsQuickSub">Verbos guardados para repasar</div>
+                </div>
+                <button class="eq-btn" onclick="startErrorsMode()">Ir →</button>
+            </div>
+
+            <div class="slabel">Tipo de quiz</div>
+            <div class="type-grid">
+                <div class="type-card selected" data-qt="classic" onclick="selQuizType('classic',this)">
+                    <div class="mi">✍️</div><div class="mn">Clásico</div><div class="md">Escribe la forma verbal</div>
+                </div>
+                <div class="type-card" data-qt="sentence" onclick="selQuizType('sentence',this)">
+                    <div class="mi">📝</div><div class="mn">Completa</div><div class="md">Elige el verbo en la oración</div>
+                </div>
+            </div>
+
             <div class="slabel">Modo de práctica</div>
             <div class="mode-grid">
                 <div class="mode-card selected" data-mode="ps" onclick="selMode('ps',this)">
@@ -99,9 +129,10 @@
                 <button class="fbtn" data-f="g-m" onclick="selFilter('g-m',this)">G – M</button>
                 <button class="fbtn" data-f="n-z" onclick="selFilter('n-z',this)">N – Z</button>
             </div>
-            <button class="btn-start" onclick="startGame()">¡Empezar el Quiz! 🚀</button>
+            <button class="btn-start" onclick="startGame()">¡Empezar el Quiz!</button>
         </div>
 
+        <!-- Pantalla quiz clásico -->
         <div class="screen" id="quizScreen">
             <div class="top-bar">
                 <div class="lives-row" id="livesRow"></div>
@@ -133,6 +164,36 @@
             <button class="btn-next" id="btnNext" onclick="nextQ()">Continuar →</button>
         </div>
 
+        <!-- Pantalla quiz "Completa la oración" -->
+        <div class="screen" id="sentenceScreen">
+            <div class="top-bar">
+                <div class="lives-row" id="sLivesRow"></div>
+                <div class="progress-wrap"><div class="progress-bar" id="sProgressBar" style="width:0%"></div></div>
+                <div class="score-pill">⭐ <span id="sScoreDisp">0</span></div>
+            </div>
+            <div class="q-counter">Pregunta <strong id="sQNum">1</strong> de <strong id="sQTotal">10</strong></div>
+
+            <div class="sentence-card" id="sentenceCard">
+                <div class="sc-label">Completa la oración</div>
+                <div class="sc-sentence" id="scSentence">–</div>
+                <div class="sc-tts-row" id="scTtsRow" style="display:none">
+                    <button class="tts-sentence-btn" onclick="speakSentenceFull()">🔊 Escuchar oración</button>
+                </div>
+            </div>
+
+            <div class="sc-options" id="scOptions"></div>
+
+            <div class="feedback" id="sFeedback">
+                <div class="fb-icon" id="sFbIcon"></div>
+                <div class="fb-body">
+                    <div class="fb-title" id="sFbTitle"></div>
+                    <div class="fb-detail" id="sFbDetail"></div>
+                </div>
+            </div>
+            <button class="btn-next" id="sBtnNext" onclick="nextSentenceQ()">Continuar →</button>
+        </div>
+
+        <!-- Pantalla resultados -->
         <div class="screen" id="resultScreen">
             <div class="res-hero">
                 <span class="res-emoji" id="resEmoji">🏆</span>
@@ -161,14 +222,28 @@
             <button class="btn-retry" onclick="startGame()">🔄 Jugar de nuevo</button>
             <button class="btn-home" onclick="goToStart()">🏠 Configurar nuevo quiz</button>
             <div style="height:.5rem"></div>
-            <button class="btn-home" style="border-color:rgba(88,204,2,.35);color:var(--accent)" onclick="switchTab('theory')">📖 Volver a repasar teoría</button>
+            <button class="btn-home" style="border-color:rgba(30,122,191,.35);color:var(--blue)" onclick="switchTab('theory')">📖 Volver a repasar teoría</button>
         </div>
     </div>
 
-    <button class="sound-toggle" id="soundToggle" onclick="toggleSound()" title="Activar/silenciar sonido">🔊</button>
-    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Cambiar tema claro/oscuro">
-        <span class="theme-icon">🌙</span>
-    </button>
+    <!-- Toggle tema (sol/luna animado) - bottom left -->
+    <div class="theme-toggle-wrap">
+        <label class="toggle-sky">
+            <input type="checkbox" id="themeToggle">
+            <div class="slider-sky">
+                <div class="sky-bg"></div>
+                <div class="stars-sky">
+                    <div class="star-s"></div><div class="star-s"></div><div class="star-s"></div>
+                    <div class="star-s"></div><div class="star-s"></div><div class="star-s"></div>
+                </div>
+                <div class="cloud-sky c1"></div>
+                <div class="cloud-sky c2"></div>
+                <div class="cloud-sky c3"></div>
+                <div class="ball-sky"></div>
+            </div>
+        </label>
+    </div>
+
     <div class="streak-pop" id="streakPop"></div>
 
     <script src="assets/js/script.js"></script>
