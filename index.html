@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#0e1117">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="VerbQuest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verb Quest · English File</title>
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="app-logo">
+            VerbQuest🦜
+            <span>English File Pre-Intermediate · 68 verbos</span>
+        </div>
+        <div class="nav-tabs">
+            <button class="nav-tab active" id="tabTheory" onclick="switchTab('theory')">📖 Teoría</button>
+            <button class="nav-tab" id="tabQuiz" onclick="switchTab('quiz')">🎮 Quiz</button>
+        </div>
+    </header>
+
+    <div class="page active" id="pageTheory">
+        <div class="theory-hero">
+            <h2>📖 Lista de Verbos</h2>
+            <p>68 verbos del English File · Estudia y luego practica</p>
+        </div>
+        <div class="legend">
+            <div class="leg"><div class="leg-dot" style="background:var(--text)"></div>Infinitivo</div>
+            <div class="leg"><div class="leg-dot" style="background:var(--gold)"></div>Past Simple</div>
+            <div class="leg"><div class="leg-dot" style="background:var(--accent)"></div>Past Participle</div>
+            <div class="leg"><div class="leg-dot" style="background:var(--blue)"></div>Pronunciación IPA</div>
+        </div>
+        <div class="tbar">
+            <div class="search-wrap">
+                <span class="sico">🔍</span>
+                <input class="tbar-search" id="tSearch" type="text" placeholder="Buscar verbo…" oninput="renderTheory()">
+            </div>
+            <div class="tfilter">
+                <button class="tf on" data-tf="all" onclick="selTf('all',this)">Todos</button>
+                <button class="tf" data-tf="a-f" onclick="selTf('a-f',this)">A–F</button>
+                <button class="tf" data-tf="g-m" onclick="selTf('g-m',this)">G–M</button>
+                <button class="tf" data-tf="n-z" onclick="selTf('n-z',this)">N–Z</button>
+            </div>
+        </div>
+        <div class="verb-table-wrap">
+            <div class="vt-head">
+                <span>Infinitivo</span>
+                <span>Español</span>
+                <span>Past Simple</span>
+                <span>Past Participle</span>
+            </div>
+            <div class="vt-list" id="theoryList"></div>
+        </div>
+        <div class="tcount" id="theoryCount"></div>
+        <button class="cta-quiz" onclick="switchTab('quiz')">✅ Ya estudié · ¡Ir al Quiz! →</button>
+    </div>
+
+    <div class="quiz-page" id="pageQuiz">
+
+        <div class="screen active" id="startScreen">
+            <div class="brand">
+                <span class="brand-icon">🚀</span>
+                <h1>¡A Practicar!</h1>
+                <p>Pon a prueba lo que acabas de estudiar · 68 verbos</p>
+            </div>
+            <div class="slabel">Modo de práctica</div>
+            <div class="mode-grid">
+                <div class="mode-card selected" data-mode="ps" onclick="selMode('ps',this)">
+                    <div class="mi">⚡</div><div class="mn">Past Simple</div><div class="md">Solo el pasado simple</div>
+                </div>
+                <div class="mode-card" data-mode="pp" onclick="selMode('pp',this)">
+                    <div class="mi">🎓</div><div class="mn">Past Participle</div><div class="md">Solo el participio</div>
+                </div>
+                <div class="mode-card" data-mode="both" onclick="selMode('both',this)">
+                    <div class="mi">🔥</div><div class="mn">Ambos</div><div class="md">Mezcla PS y PP</div>
+                </div>
+                <div class="mode-card" data-mode="survival" onclick="selMode('survival',this)">
+                    <div class="mi">💀</div><div class="mn">Survival</div><div class="md">3 vidas · sin piedad</div>
+                </div>
+            </div>
+            <div class="slabel">Número de preguntas</div>
+            <div class="q-row">
+                <button class="qbtn sel" data-n="10" onclick="selQ(10,this)">10</button>
+                <button class="qbtn" data-n="20" onclick="selQ(20,this)">20</button>
+                <button class="qbtn" data-n="40" onclick="selQ(40,this)">40</button>
+                <button class="qbtn" data-n="68" onclick="selQ(68,this)">Todos</button>
+            </div>
+            <div class="slabel">Filtrar por letra inicial</div>
+            <div class="filter-row">
+                <button class="fbtn sel" data-f="all" onclick="selFilter('all',this)">Todos</button>
+                <button class="fbtn" data-f="a-f" onclick="selFilter('a-f',this)">A – F</button>
+                <button class="fbtn" data-f="g-m" onclick="selFilter('g-m',this)">G – M</button>
+                <button class="fbtn" data-f="n-z" onclick="selFilter('n-z',this)">N – Z</button>
+            </div>
+            <button class="btn-start" onclick="startGame()">¡Empezar el Quiz! 🚀</button>
+        </div>
+
+        <div class="screen" id="quizScreen">
+            <div class="top-bar">
+                <div class="lives-row" id="livesRow"></div>
+                <div class="progress-wrap"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
+                <div class="score-pill">⭐ <span id="scoreDisp">0</span></div>
+            </div>
+            <div class="q-counter">Pregunta <strong id="qNum">1</strong> de <strong id="qTotal">10</strong></div>
+            <div class="verb-card">
+                <div class="vc-label">Verbo en inglés</div>
+                <div class="vc-verb" id="vcVerb">–</div>
+                <div class="vc-pron" id="vcPron"></div>
+                <div class="vc-meaning" id="vcMeaning">–</div>
+                <div class="vc-badge badge-ps" id="vcBadge">Past Simple</div>
+            </div>
+            <input class="answer-input" id="ansInput" type="text" placeholder="Escribe tu respuesta…" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" oninput="onTyping()" onkeydown="onKey(event)">
+            <div class="hint-row">
+                <button class="hint-btn" id="hintBtn" onclick="showHint()">💡 Pista (primera letra)</button>
+            </div>
+            <div class="hint-text" id="hintText"></div>
+            <div class="feedback" id="feedback">
+                <div class="fb-icon" id="fbIcon"></div>
+                <div class="fb-body">
+                    <div class="fb-title" id="fbTitle"></div>
+                    <div class="fb-detail" id="fbDetail"></div>
+                    <div class="fb-pron" id="fbPron"></div>
+                </div>
+            </div>
+            <button class="btn-check" id="btnCheck" onclick="checkAnswer()" disabled>Comprobar ✓</button>
+            <button class="btn-next" id="btnNext" onclick="nextQ()">Continuar →</button>
+        </div>
+
+        <div class="screen" id="resultScreen">
+            <div class="res-hero">
+                <span class="res-emoji" id="resEmoji">🏆</span>
+                <div class="res-title" id="resTitle">¡Excelente!</div>
+                <div class="res-sub" id="resSub"></div>
+            </div>
+            <div class="stats-row">
+                <div class="stat-box g"><div class="sn g" id="rPts">0</div><div class="sl">Puntos</div></div>
+                <div class="stat-box c"><div class="sn c" id="rOk">0</div><div class="sl">Correctas</div></div>
+                <div class="stat-box r"><div class="sn r" id="rBad">0</div><div class="sl">Errores</div></div>
+            </div>
+            <div class="rank-chip" id="rankChip"></div>
+            <div class="wrong-section" id="wrongSection"></div>
+            <button class="btn-whatsapp" onclick="shareWhatsApp()">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.847L.057 23.882a.5.5 0 00.614.605l6.094-1.597A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.655-.51-5.178-1.401l-.36-.214-3.736.979.996-3.638-.234-.374A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                Compartir en WhatsApp
+            </button>
+            <div class="share-preview" id="sharePreview">
+                <div class="share-preview-title">✉️ Vista previa del mensaje</div>
+                <div class="share-text-box" id="shareTextBox"></div>
+                <div class="share-copy-row">
+                    <button class="btn-copy" id="btnCopy" onclick="copyShareText()">📋 Copiar texto</button>
+                    <button class="btn-copy" onclick="closeSharePreview()">✕ Cerrar</button>
+                </div>
+            </div>
+            <button class="btn-retry" onclick="startGame()">🔄 Jugar de nuevo</button>
+            <button class="btn-home" onclick="goToStart()">🏠 Configurar nuevo quiz</button>
+            <div style="height:.5rem"></div>
+            <button class="btn-home" style="border-color:rgba(88,204,2,.35);color:var(--accent)" onclick="switchTab('theory')">📖 Volver a repasar teoría</button>
+        </div>
+    </div>
+
+    <button class="sound-toggle" id="soundToggle" onclick="toggleSound()" title="Activar/silenciar sonido">🔊</button>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Cambiar tema claro/oscuro">
+        <span class="theme-icon">🌙</span>
+    </button>
+    <div class="streak-pop" id="streakPop"></div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
