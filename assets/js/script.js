@@ -78,36 +78,36 @@ const VERBS = [
    ============================================= */
 const SENTENCES = [
   // PAST SIMPLE
-  {template:"She ___ sightseeing and ___ a lot of photos on holiday.", blanks:[{pos:0,verb:"go",form:"ps",answer:"went"},{pos:1,verb:"take",form:"ps",answer:"took"}], single:true, verb:"go",   form:"ps", answer:"went",  full:"She went sightseeing and took a lot of photos on holiday."},
-  {template:"He ___ his passport at the airport and missed the flight.", verb:"lose",  form:"ps", answer:"lost",       full:"He lost his passport at the airport and missed the flight."},
-  {template:"They ___ a fantastic hotel near the beach.", verb:"find",  form:"ps", answer:"found",      full:"They found a fantastic hotel near the beach."},
-  {template:"I ___ a postcard to my family from Paris.", verb:"send",   form:"ps", answer:"sent",       full:"I sent a postcard to my family from Paris."},
-  {template:"She ___ her phone on the bus yesterday.", verb:"leave",  form:"ps", answer:"left",       full:"She left her phone on the bus yesterday."},
-  {template:"We ___ by plane to Madrid and then ___ a car.", verb:"fly",   form:"ps", answer:"flew",       full:"We flew by plane to Madrid and then hired a car."},
-  {template:"He ___ English at a school in London for three months.", verb:"teach",  form:"ps", answer:"taught",     full:"He taught English at a school in London for three months."},
-  {template:"She ___ that the hotel was fully booked.", verb:"find",  form:"ps", answer:"found",      full:"She found that the hotel was fully booked."},
-  {template:"They ___ the match 3–0 and the fans went crazy.", verb:"win",   form:"ps", answer:"won",        full:"They won the match 3–0 and the fans went crazy."},
-  {template:"He ___ his new neighbours at the party last Saturday.", verb:"meet",  form:"ps", answer:"met",        full:"He met his new neighbours at the party last Saturday."},
-  {template:"She ___ three languages when she was a child.", verb:"speak",  form:"ps", answer:"spoke",      full:"She spoke three languages when she was a child."},
-  {template:"I ___ a really good book on the flight.", verb:"read",  form:"ps", answer:"read",       full:"I read a really good book on the flight."},
-  {template:"He ___ his car and ___ to work by bike after that.", verb:"sell",  form:"ps", answer:"sold",       full:"He sold his car and went to work by bike after that."},
-  {template:"The alarm ___ at six o'clock every morning.", verb:"ring",  form:"ps", answer:"rang",       full:"The alarm rang at six o'clock every morning."},
-  {template:"She ___ a beautiful dress to the graduation ceremony.", verb:"wear",  form:"ps", answer:"wore",       full:"She wore a beautiful dress to the graduation ceremony."},
-  {template:"He ___ his lunch in the park and listened to music.", verb:"eat",   form:"ps", answer:"ate",        full:"He ate his lunch in the park and listened to music."},
-  {template:"The children ___ in the sea for hours at the beach.", verb:"swim",  form:"ps", answer:"swam",       full:"The children swam in the sea for hours at the beach."},
-  {template:"She ___ a lot of money on clothes when she visited New York.", verb:"spend",  form:"ps", answer:"spent",      full:"She spent a lot of money on clothes when she visited New York."},
-  {template:"He ___ his girlfriend some flowers and a card.", verb:"give",  form:"ps", answer:"gave",       full:"He gave his girlfriend some flowers and a card."},
-  {template:"They ___ their tent next to a beautiful lake.", verb:"put",   form:"ps", answer:"put",        full:"They put their tent next to a beautiful lake."},
-  {template:"The dog ___ the ball and ___ it back to its owner.", verb:"catch",  form:"ps", answer:"caught",     full:"The dog caught the ball and brought it back to its owner."},
-  {template:"She ___ her wallet at home and couldn't pay for dinner.", verb:"leave",  form:"ps", answer:"left",       full:"She left her wallet at home and couldn't pay for dinner."},
-  {template:"He ___ to work late and ___ a taxi.", verb:"run",   form:"ps", answer:"ran",        full:"He ran to work late and got a taxi."},
-  {template:"The manager ___ the team to play better in the second half.", verb:"tell",  form:"ps", answer:"told",       full:"The manager told the team to play better in the second half."},
-  {template:"She ___ about her holiday in a blog post.", verb:"write",  form:"ps", answer:"wrote",      full:"She wrote about her holiday in a blog post."},
-  {template:"He ___ a coffee before the meeting and ___ more awake.", verb:"drink",  form:"ps", answer:"drank",      full:"He drank a coffee before the meeting and felt more awake."},
-  {template:"The students ___ about their future plans after the exam.", verb:"think",  form:"ps", answer:"thought",    full:"The students thought about their future plans after the exam."},
-  {template:"She ___ her keys in her bag and couldn't find them.", verb:"keep",  form:"ps", answer:"kept",       full:"She kept her keys in her bag and couldn't find them."},
-  {template:"He ___ her to the airport because she had heavy luggage.", verb:"drive",  form:"ps", answer:"drove",      full:"He drove her to the airport because she had heavy luggage."},
-  {template:"They ___ up early to catch the first train.", verb:"wake",  form:"ps", answer:"woke",       full:"They woke up early to catch the first train."},
+  {template:"She ___ sightseeing every morning during the holiday.", verb:"go",    form:"ps", answer:"went",    full:"She went sightseeing every morning during the holiday."},
+  {template:"He ___ his passport at the airport and missed the flight.", verb:"lose",  form:"ps", answer:"lost",    full:"He lost his passport at the airport and missed the flight."},
+  {template:"They ___ a fantastic hotel near the beach.", verb:"find",  form:"ps", answer:"found",   full:"They found a fantastic hotel near the beach."},
+  {template:"I ___ a postcard to my family from Paris.", verb:"send",  form:"ps", answer:"sent",    full:"I sent a postcard to my family from Paris."},
+  {template:"She ___ her phone on the bus yesterday.", verb:"leave", form:"ps", answer:"left",    full:"She left her phone on the bus yesterday."},
+  {template:"We ___ by plane to Madrid for the long weekend.", verb:"fly",   form:"ps", answer:"flew",    full:"We flew by plane to Madrid for the long weekend."},
+  {template:"He ___ English at a school in London for three months.", verb:"teach", form:"ps", answer:"taught",  full:"He taught English at a school in London for three months."},
+  {template:"She ___ that the hotel was fully booked.", verb:"find",  form:"ps", answer:"found",   full:"She found that the hotel was fully booked."},
+  {template:"They ___ the match 3–0 and the fans went crazy.", verb:"win",   form:"ps", answer:"won",     full:"They won the match 3–0 and the fans went crazy."},
+  {template:"He ___ his new neighbours at the party last Saturday.", verb:"meet",  form:"ps", answer:"met",     full:"He met his new neighbours at the party last Saturday."},
+  {template:"She ___ three languages when she was a child.", verb:"speak", form:"ps", answer:"spoke",   full:"She spoke three languages when she was a child."},
+  {template:"I ___ a really good book on the flight.", verb:"read",  form:"ps", answer:"read",    full:"I read a really good book on the flight."},
+  {template:"He ___ his old car to buy a new one.", verb:"sell",  form:"ps", answer:"sold",    full:"He sold his old car to buy a new one."},
+  {template:"The alarm ___ at six o'clock every morning.", verb:"ring",  form:"ps", answer:"rang",    full:"The alarm rang at six o'clock every morning."},
+  {template:"She ___ a beautiful dress to the graduation ceremony.", verb:"wear",  form:"ps", answer:"wore",    full:"She wore a beautiful dress to the graduation ceremony."},
+  {template:"He ___ his lunch in the park and listened to music.", verb:"eat",   form:"ps", answer:"ate",     full:"He ate his lunch in the park and listened to music."},
+  {template:"The children ___ in the sea for hours at the beach.", verb:"swim",  form:"ps", answer:"swam",    full:"The children swam in the sea for hours at the beach."},
+  {template:"She ___ a lot of money on clothes when she visited New York.", verb:"spend", form:"ps", answer:"spent",   full:"She spent a lot of money on clothes when she visited New York."},
+  {template:"He ___ his girlfriend some flowers and a card.", verb:"give",  form:"ps", answer:"gave",    full:"He gave his girlfriend some flowers and a card."},
+  {template:"They ___ their tent next to a beautiful lake.", verb:"put",   form:"ps", answer:"put",     full:"They put their tent next to a beautiful lake."},
+  {template:"The dog ___ the ball and returned it to its owner.", verb:"catch", form:"ps", answer:"caught",  full:"The dog caught the ball and returned it to its owner."},
+  {template:"She ___ her wallet at home and couldn't pay for dinner.", verb:"leave", form:"ps", answer:"left",    full:"She left her wallet at home and couldn't pay for dinner."},
+  {template:"He ___ five kilometres every morning before work.", verb:"run",   form:"ps", answer:"ran",     full:"He ran five kilometres every morning before work."},
+  {template:"The manager ___ the team to play better in the second half.", verb:"tell",  form:"ps", answer:"told",    full:"The manager told the team to play better in the second half."},
+  {template:"She ___ about her holiday in a blog post.", verb:"write", form:"ps", answer:"wrote",   full:"She wrote about her holiday in a blog post."},
+  {template:"He ___ a coffee before the meeting to feel more awake.", verb:"drink", form:"ps", answer:"drank",   full:"He drank a coffee before the meeting to feel more awake."},
+  {template:"The students ___ about their future plans after the exam.", verb:"think", form:"ps", answer:"thought", full:"The students thought about their future plans after the exam."},
+  {template:"She ___ her keys in her bag and couldn't find them.", verb:"keep",  form:"ps", answer:"kept",    full:"She kept her keys in her bag and couldn't find them."},
+  {template:"He ___ her to the airport because she had heavy luggage.", verb:"drive", form:"ps", answer:"drove",   full:"He drove her to the airport because she had heavy luggage."},
+  {template:"They ___ up early to catch the first train.", verb:"wake",  form:"ps", answer:"woke",    full:"They woke up early to catch the first train."},
 
   // PAST PARTICIPLE (Present Perfect)
   {template:"I have never ___ sushi before — it was delicious!", verb:"eat",   form:"pp", answer:"eaten",      full:"I have never eaten sushi before — it was delicious!"},
@@ -160,32 +160,122 @@ let lastEmoji  = '';
 let currentSentenceFull = '';
 
 /* =============================================
-   TEMA (SOL / LUNA)
+   TEMA (SOL / LUNA) — tap + swipe
    ============================================= */
 (function initTheme() {
-  const saved = localStorage.getItem('vq-theme');
-  const toggle = document.getElementById('themeToggle');
+  const saved   = localStorage.getItem('vq-theme');
+  const toggle  = document.getElementById('themeToggle');
   if (saved === 'light') {
     document.body.classList.add('light');
-    if (toggle) toggle.checked = false;  // light = sol = unchecked
+    if (toggle) toggle.checked = false;   // sol = unchecked
   } else {
-    // dark por defecto
-    if (toggle) toggle.checked = true;
+    if (toggle) toggle.checked = true;    // luna = checked (dark por defecto)
   }
 })();
 
-document.getElementById('themeToggle').addEventListener('change', function() {
-  // checked = noche (dark body sin clase 'light')
-  // unchecked = día (light body con clase 'light')
-  if (this.checked) {
+/* Aplica el tema según el estado del checkbox */
+function applyTheme(isDark) {
+  const toggle = document.getElementById('themeToggle');
+  if (isDark) {
     document.body.classList.remove('light');
     localStorage.setItem('vq-theme', 'dark');
+    if (toggle) toggle.checked = true;
   } else {
     document.body.classList.add('light');
     localStorage.setItem('vq-theme', 'light');
+    if (toggle) toggle.checked = false;
   }
   playClick();
+}
+
+/* Cambio por click / teclado (checkbox nativo) */
+document.getElementById('themeToggle').addEventListener('change', function() {
+  applyTheme(this.checked);
 });
+
+/* ── Swipe / drag sobre el label del toggle ── */
+(function initToggleSwipe() {
+  const label     = document.querySelector('.toggle-sky');
+  const THRESHOLD = 30;   // px mínimos para considerar swipe
+  let startX      = null;
+  let startY      = null;
+  let isDragging  = false;
+
+  label.addEventListener('touchstart', function(e) {
+    const t  = e.touches[0];
+    startX   = t.clientX;
+    startY   = t.clientY;
+    isDragging = false;
+  }, { passive: true });
+
+  label.addEventListener('touchmove', function(e) {
+    if (startX === null) return;
+    const dx = e.touches[0].clientX - startX;
+    const dy = e.touches[0].clientY - startY;
+    // Si el movimiento horizontal supera al vertical, es un swipe horizontal
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 8) {
+      isDragging = true;
+      e.preventDefault();   // evita scroll accidental mientras desliza
+    }
+  }, { passive: false });
+
+  label.addEventListener('touchend', function(e) {
+    if (startX === null) return;
+    const dx       = e.changedTouches[0].clientX - startX;
+    const isDark   = !document.body.classList.contains('light');
+
+    if (isDragging && Math.abs(dx) >= THRESHOLD) {
+      // Swipe detectado
+      if (dx > 0 && !isDark) {
+        // Desliza derecha → activar modo noche (ya está en noche, no hacer nada)
+        applyTheme(true);
+      } else if (dx < 0 && isDark) {
+        // Desliza izquierda → activar modo día
+        applyTheme(false);
+      }
+      // Prevenir que el touchend dispare también el click del label
+      e.preventDefault();
+    }
+    // Si NO fue swipe, el click nativo del label ya maneja el cambio
+
+    startX     = null;
+    startY     = null;
+    isDragging = false;
+  }, { passive: false });
+
+  /* Soporte mouse (desktop drag) */
+  let mouseStartX = null;
+  let mouseDragging = false;
+
+  label.addEventListener('mousedown', function(e) {
+    mouseStartX   = e.clientX;
+    mouseDragging = false;
+  });
+
+  label.addEventListener('mousemove', function(e) {
+    if (mouseStartX === null) return;
+    if (Math.abs(e.clientX - mouseStartX) > 8) mouseDragging = true;
+  });
+
+  label.addEventListener('mouseup', function(e) {
+    if (mouseStartX === null) return;
+    const dx     = e.clientX - mouseStartX;
+    const isDark = !document.body.classList.contains('light');
+
+    if (mouseDragging && Math.abs(dx) >= THRESHOLD) {
+      e.preventDefault();
+      if (dx > 0 && !isDark) applyTheme(true);
+      else if (dx < 0 && isDark) applyTheme(false);
+    }
+    mouseStartX   = null;
+    mouseDragging = false;
+  });
+
+  /* Evitar que un drag largo dispare el click del label */
+  label.addEventListener('click', function(e) {
+    if (mouseDragging) e.preventDefault();
+  });
+})();
 
 /* =============================================
    AUDIO (Web Audio API — sonidos UI)
