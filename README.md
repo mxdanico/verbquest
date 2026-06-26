@@ -125,7 +125,7 @@ verbquest/
 │       └── icon-512.png
 │
 ├── docs/
-│   └── screenshots/          ← 📸 Imágenes para el README
+│   └── screenshots/          
 │       ├── lista-verbos.jpg
 │       ├── configuracion-quiz.jpg
 │       ├── quiz-clasico.jpg
