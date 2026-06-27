@@ -153,10 +153,12 @@ let answered   = false;
 let hintUsed   = false;
 let lastScore  = 0;
 let lastOk     = 0;
+let lastBad    = 0;
 let lastTotal  = 0;
 let lastPct    = 0;
 let lastRank   = '';
 let lastEmoji  = '';
+let lastWasErrorMode = false; /* true cuando el quiz que terminó era de errores */
 let currentSentenceFull = '';
 
 /* =============================================
@@ -426,6 +428,7 @@ function startErrorsMode() {
   questions = shuffle(pool);
   idx=0; score=0; okCount=0; badCount=0; lives=3; streak=0; wrongLog=[]; answered=false;
   quizType = 'classic';
+  lastWasErrorMode = true; /* marcar que este quiz es de errores */
   showScreen('quizScreen');
   loadQ();
 }
@@ -656,6 +659,7 @@ function buildSentenceQ() {
 function startGame() {
   playStart();
   idx=0; score=0; okCount=0; badCount=0; lives=3; streak=0; wrongLog=[]; answered=false;
+  lastWasErrorMode = false; /* quiz normal, no de errores */
 
   if (quizType === 'sentence') {
     questions = buildSentenceQ();
@@ -992,7 +996,8 @@ function showResults() {
   showScreen('resultScreen');
   updateErrorsUI();
   const pct = Math.round(okCount / questions.length * 100);
-  lastScore = score; lastOk = okCount; lastTotal = questions.length; lastPct = pct;
+  lastScore = score; lastOk = okCount; lastBad = badCount;
+  lastTotal = questions.length; lastPct = pct;
   setTimeout(()=>playResult(pct), 400);
   document.getElementById('rPts').textContent  = score;
   document.getElementById('rOk').textContent   = okCount;
@@ -1134,7 +1139,7 @@ function buildShareCanvas() {
   const stats=[
     {label:'Puntos',    val:String(lastScore), color:'#e67e22'},
     {label:'Correctas', val:String(lastOk),    color:'#2e8b3a'},
-    {label:'Errores',   val:String(badCount),  color:'#c0392b'},
+    {label:'Errores',   val:String(lastBad),   color:'#c0392b'},
   ];
   const bW=150,bH=112,bY=360,bX0=240,gap=18;
   stats.forEach((s,i)=>{
@@ -1250,6 +1255,22 @@ function switchTab(tab) {
   }
   window.scrollTo({top:0,behavior:'smooth'});
 }
+function playAgain() {
+  if (lastWasErrorMode) {
+    /* Relanzar con los errores que aún queden en localStorage */
+    const errs = getStoredErrors();
+    if (errs.length) {
+      startErrorsMode();
+    } else {
+      /* Solucionó todos los errores — avisar y volver al inicio */
+      alert('🎉 ¡Felicidades! Ya no tienes errores pendientes.');
+      goToStart();
+    }
+  } else {
+    startGame();
+  }
+}
+
 function goToStart(){ showScreen('startScreen'); }
 function showScreen(id){
   document.querySelectorAll('#pageQuiz .screen').forEach(s=>s.classList.remove('active'));
