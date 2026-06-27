@@ -428,7 +428,8 @@ function startErrorsMode() {
   questions = shuffle(pool);
   idx=0; score=0; okCount=0; badCount=0; lives=3; streak=0; wrongLog=[]; answered=false;
   quizType = 'classic';
-  lastWasErrorMode = true; /* marcar que este quiz es de errores */
+  lastWasErrorMode = true;
+  try { localStorage.setItem('vq-last-mode', 'errors'); } catch(e) {}
   showScreen('quizScreen');
   loadQ();
 }
@@ -659,7 +660,8 @@ function buildSentenceQ() {
 function startGame() {
   playStart();
   idx=0; score=0; okCount=0; badCount=0; lives=3; streak=0; wrongLog=[]; answered=false;
-  lastWasErrorMode = false; /* quiz normal, no de errores */
+  lastWasErrorMode = false;
+  try { localStorage.setItem('vq-last-mode', 'normal'); } catch(e) {}
 
   if (quizType === 'sentence') {
     questions = buildSentenceQ();
@@ -1256,13 +1258,15 @@ function switchTab(tab) {
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function playAgain() {
-  if (lastWasErrorMode) {
-    /* Relanzar con los errores que aún queden en localStorage */
+  /* Leer fuente de verdad desde localStorage para no depender de variable en memoria */
+  let wasErrors = lastWasErrorMode;
+  try { wasErrors = localStorage.getItem('vq-last-mode') === 'errors'; } catch(e) {}
+
+  if (wasErrors) {
     const errs = getStoredErrors();
     if (errs.length) {
       startErrorsMode();
     } else {
-      /* Solucionó todos los errores — avisar y volver al inicio */
       alert('🎉 ¡Felicidades! Ya no tienes errores pendientes.');
       goToStart();
     }
