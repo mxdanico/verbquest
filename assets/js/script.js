@@ -477,16 +477,32 @@ function renderTheory() {
     </div>`).join('');
 
   document.getElementById('theoryCount').innerHTML =
-    `<span style="font-size:.72rem;opacity:.8">Mantén presionado un verbo para escucharlo 🔊</span> · Mostrando <strong>${list.length}</strong> de <strong>${VERBS.length}</strong>`;
+    `<span style="font-size:.72rem;opacity:.8">Mantén presionado una celda para escucharla 🔊</span> · Mostrando <strong>${list.length}</strong> de <strong>${VERBS.length}</strong>`;
 
-  /* Añadir long-press a cada fila */
+  /* Long-press por celda individual: cada columna pronuncia solo su forma */
   document.querySelectorAll('#theoryList .vt-row').forEach(row => {
-    initLongPress(row, () => {
-      const inf = row.dataset.inf;
-      const ps  = row.dataset.ps;
-      const pp  = row.dataset.pp;
-      speakVerb(inf, ps, pp);
+    const cells = row.querySelectorAll(':scope > div');
+    const inf = row.dataset.inf;
+    const ps  = row.dataset.ps;
+    const pp  = row.dataset.pp;
+
+    /* Celda 0 → infinitivo */
+    initLongPress(cells[0], () => {
+      speakWord(inf);
       showTtsPop(`🔊 ${inf}`);
+    });
+    /* Celda 1 → español (pronuncia infinitivo igual, la columna es solo referencia) */
+    initLongPress(cells[1], () => {
+      speakWord(inf);
+      showTtsPop(`🔊 ${inf}`);
+    });
+    /* Celda 2 → Past Simple */
+    initLongPress(cells[2], () => {
+      if (ps && ps !== '–') { speakWord(ps); showTtsPop(`🔊 ${ps}`); }
+    });
+    /* Celda 3 → Past Participle */
+    initLongPress(cells[3], () => {
+      if (pp && pp !== '–') { speakWord(pp); showTtsPop(`🔊 ${pp}`); }
     });
   });
 }
@@ -551,6 +567,8 @@ function showTtsPop(text) {
   el.classList.remove('go');
   void el.offsetWidth; /* forzar reflow para reiniciar animación */
   el.classList.add('go');
+  clearTimeout(el._hideTimer);
+  el._hideTimer = setTimeout(() => el.classList.remove('go'), 1200);
 }
 
 /* =============================================
