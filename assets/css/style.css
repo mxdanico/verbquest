@@ -210,14 +210,13 @@ body.light .app-header{
   transition:background .4s,border-color .4s;
 }
 .vt-head{
-  display:grid;grid-template-columns:1.6fr 1.4fr 1.4fr 1.4fr .5fr;
+  display:grid;grid-template-columns:1.6fr 1.4fr 1.4fr 1.4fr;
   padding:.75rem 1.1rem;
   background:linear-gradient(90deg,rgba(30,122,191,.18),rgba(46,139,58,.14));
   border-bottom:2px solid var(--border);
 }
 .vt-head span{font-size:.67rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .vt-head span:first-child{color:var(--blue)}
-.vt-head span:last-child{text-align:center}
 
 .vt-list{max-height:58vh;overflow-y:auto}
 .vt-list::-webkit-scrollbar{width:5px}
@@ -225,12 +224,23 @@ body.light .app-header{
 .vt-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px}
 
 .vt-row{
-  display:grid;grid-template-columns:1.6fr 1.4fr 1.4fr 1.4fr .5fr;
+  display:grid;grid-template-columns:1.6fr 1.4fr 1.4fr 1.4fr;
   padding:.68rem 1.1rem;border-bottom:1px solid var(--border-soft);
-  transition:background .15s;align-items:center;
+  transition:background .15s,transform .12s,box-shadow .15s;
+  align-items:center;
+  cursor:pointer;
+  user-select:none;
+  -webkit-user-select:none;
+  position:relative;
 }
 .vt-row:last-child{border-bottom:none}
-.vt-row:hover{background:rgba(30,122,191,.06)}
+.vt-row:hover{background:rgba(30,122,191,.08)}
+.vt-row:active{background:rgba(30,122,191,.15);transform:scale(.99)}
+/* Estado presionado (long press en progreso) */
+.vt-row.pressing{
+  background:rgba(30,122,191,.14);
+  box-shadow:inset 0 0 0 2px rgba(30,122,191,.35);
+}
 .vr-es{color:var(--muted);font-size:.77rem;font-style:italic;margin-top:1px}
 .vr-word{font-weight:800;color:var(--text);font-size:.9rem;line-height:1.2}
 .vr-pron{font-size:.72rem;color:var(--blue);font-style:italic;margin-top:1px;opacity:.85}
@@ -240,14 +250,42 @@ body.light .app-header{
 .vr-pp .vr-pron{color:rgba(46,139,58,.8)}
 .vr-dash{color:var(--muted);font-size:.85rem}
 
-/* Botón TTS en tabla */
-.tts-row-btn{
-  background:none;border:none;cursor:pointer;font-size:1.1rem;
-  opacity:.6;transition:opacity .2s,transform .2s;padding:.2rem;
-  display:flex;align-items:center;justify-content:center;
+/* Botón TTS en verb-card (quiz clásico) */
+.vc-tts-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  margin-top:.75rem;
+  background:rgba(30,122,191,.12);
+  border:2px solid rgba(30,122,191,.35);
+  border-radius:99px;
+  padding:.32rem .9rem;
+  font-size:1rem;
+  cursor:pointer;
+  color:var(--blue);
+  font-family:'Nunito',sans-serif;
+  font-weight:700;
+  letter-spacing:.02em;
+  transition:all .2s;
 }
-.tts-row-btn:hover{opacity:1;transform:scale(1.2)}
-.tts-row-btn.speaking{opacity:1;animation:heartbeat .5s ease infinite}
+.vc-tts-btn:hover{
+  background:rgba(30,122,191,.22);
+  border-color:var(--blue);
+  transform:scale(1.07);
+}
+.vc-tts-btn.speaking{
+  animation:heartbeat .5s ease infinite;
+  background:rgba(30,122,191,.25);
+  border-color:var(--blue);
+}
+/* Popup TTS correcto en quiz clásico (mismo estilo que streak-pop pero azul/verde) */
+.tts-correct-pop{
+  position:fixed;top:50%;left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  background:linear-gradient(135deg,var(--ef-green),var(--ef-teal));
+  color:#fff;font-family:'Fredoka One',cursive;font-size:1.5rem;
+  padding:.9rem 2rem;border-radius:99px;z-index:9999;
+  pointer-events:none;box-shadow:0 8px 40px var(--accent-glow);
+}
+.tts-correct-pop.go{animation:streakIn .55s ease forwards}
 
 .tcount{text-align:center;color:var(--muted);font-size:.78rem;margin-bottom:1rem;font-weight:700;letter-spacing:.04em}
 .tcount strong{color:var(--blue)}
@@ -702,7 +740,7 @@ body:not(.light) .badge-inf{background:rgba(30,122,191,.15);color:var(--blue);bo
    ============================================= */
 @media(max-width:400px){
   .vc-verb{font-size:2.4rem}
-  .vt-head,.vt-row{grid-template-columns:1.4fr 1.2fr 1.2fr 1.2fr .4fr;padding:.55rem .65rem}
+  .vt-head,.vt-row{grid-template-columns:1.4fr 1.2fr 1.2fr 1.2fr;padding:.55rem .65rem}
   .nav-tab{padding:.4rem .7rem;font-size:.76rem}
   .app-header{padding:.65rem .9rem}
   .toggle-sky{width:100px;height:44px}

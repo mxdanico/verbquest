@@ -353,6 +353,20 @@ function speakSentenceFull() {
   if (currentSentenceFull) speak(currentSentenceFull);
 }
 
+/* Pronuncia el verbo infinitivo que está actualmente en la verb-card del quiz clásico */
+function speakCurrentVerb() {
+  const inf = document.getElementById('vcVerb').textContent.trim();
+  if (!inf || inf === '–') return;
+  const v = VERBS.find(x => x.inf === inf);
+  if (v) {
+    const btn = document.getElementById('vcTtsBtn');
+    btn.classList.add('speaking');
+    speak(inf, () => btn.classList.remove('speaking'));
+  } else {
+    speak(inf);
+  }
+}
+
 /* =============================================
    ERRORES GUARDADOS (localStorage)
    ============================================= */
@@ -444,7 +458,9 @@ function getTheoryList() {
 function renderTheory() {
   const list = getTheoryList();
   document.getElementById('theoryList').innerHTML = list.map((v,i)=>`
-    <div class="vt-row" style="animation:fadeUp .25s ease ${i*.018}s both">
+    <div class="vt-row"
+         style="animation:fadeUp .25s ease ${i*.018}s both"
+         data-inf="${v.inf}" data-ps="${v.ps}" data-pp="${v.pp}">
       <div>
         <div class="vr-word">${v.inf}</div>
         <div class="vr-pron">${v.pInf}</div>
@@ -458,15 +474,83 @@ function renderTheory() {
         <div class="vr-word ${v.pp==='–'?'vr-dash':''}">${v.pp}</div>
         <div class="vr-pron">${v.pp!=='–'?v.pPp:''}</div>
       </div>
-      <div style="text-align:center">
-        <button class="tts-row-btn" title="Escuchar pronunciación"
-          onclick="speakVerb('${v.inf}','${v.ps}','${v.pp}');this.classList.add('speaking');setTimeout(()=>this.classList.remove('speaking'),1200)">
-          🔊
-        </button>
-      </div>
     </div>`).join('');
+
   document.getElementById('theoryCount').innerHTML =
-    `Mostrando <strong>${list.length}</strong> de <strong>${VERBS.length}</strong> verbos`;
+    `<span style="font-size:.72rem;opacity:.8">Mantén presionado un verbo para escucharlo 🔊</span> · Mostrando <strong>${list.length}</strong> de <strong>${VERBS.length}</strong>`;
+
+  /* Añadir long-press a cada fila */
+  document.querySelectorAll('#theoryList .vt-row').forEach(row => {
+    initLongPress(row, () => {
+      const inf = row.dataset.inf;
+      const ps  = row.dataset.ps;
+      const pp  = row.dataset.pp;
+      speakVerb(inf, ps, pp);
+      showTtsPop(`🔊 ${inf}`);
+    });
+  });
+}
+
+/* =============================================
+   LONG PRESS — helper reutilizable
+   Dispara callback tras 500ms de press sostenido
+   Funciona con touch y mouse
+   ============================================= */
+function initLongPress(el, callback) {
+  let timer  = null;
+  let startX = 0;
+  let startY = 0;
+
+  function start(clientX, clientY) {
+    startX = clientX;
+    startY = clientY;
+    el.classList.add('pressing');
+    timer = setTimeout(() => {
+      el.classList.remove('pressing');
+      callback();
+    }, 500);
+  }
+  function cancel() {
+    clearTimeout(timer);
+    timer = null;
+    el.classList.remove('pressing');
+  }
+
+  /* Touch */
+  el.addEventListener('touchstart', e => {
+    start(e.touches[0].clientX, e.touches[0].clientY);
+  }, { passive: true });
+  el.addEventListener('touchmove', e => {
+    const dx = Math.abs(e.touches[0].clientX - startX);
+    const dy = Math.abs(e.touches[0].clientY - startY);
+    if (dx > 10 || dy > 10) cancel();
+  }, { passive: true });
+  el.addEventListener('touchend', cancel);
+  el.addEventListener('touchcancel', cancel);
+
+  /* Mouse */
+  el.addEventListener('mousedown', e => { if (e.button === 0) start(e.clientX, e.clientY); });
+  el.addEventListener('mousemove', e => {
+    if (Math.abs(e.clientX - startX) > 10 || Math.abs(e.clientY - startY) > 10) cancel();
+  });
+  el.addEventListener('mouseup', cancel);
+  el.addEventListener('mouseleave', cancel);
+
+  /* Prevenir menú contextual en móvil durante long press */
+  el.addEventListener('contextmenu', e => e.preventDefault());
+}
+
+/* =============================================
+   POPUP TTS (pronunciación confirmada)
+   Mismo comportamiento visual que las rachas pero azul/verde
+   ============================================= */
+function showTtsPop(text) {
+  const el = document.getElementById('ttsPop');
+  if (!el) return;
+  el.textContent = text;
+  el.classList.remove('go');
+  void el.offsetWidth; /* forzar reflow para reiniciar animación */
+  el.classList.add('go');
 }
 
 /* =============================================
@@ -595,6 +679,9 @@ function loadQ() {
   document.getElementById('feedback').className='feedback';
   document.getElementById('hintText').textContent='';
   document.getElementById('hintBtn').disabled=false;
+  /* Resetear botón TTS del verbo */
+  const vcBtn = document.getElementById('vcTtsBtn');
+  if (vcBtn) vcBtn.classList.remove('speaking');
 }
 function norm(s){ return s.trim().toLowerCase().replace(/\s*\/\s*/g,'/').replace(/[^a-z\/\s]/g,'').trim(); }
 function isOk(user,correct){
@@ -631,6 +718,11 @@ function checkAnswer(){
     document.getElementById('scoreDisp').textContent=score;
     if((streak===3||streak===5||streak===10)&&!hintUsed) showStreak(streak);
     if(Math.random()<0.18) confetti();
+    /* Popup TTS + pronunciación de la forma correcta */
+    setTimeout(() => {
+      showTtsPop('🔊');
+      speakWord(correct);
+    }, 350);
   } else {
     playWrong();
     streak=0; badCount++;
@@ -649,6 +741,7 @@ function checkAnswer(){
       document.getElementById('livesRow').innerHTML=
         '❤️'.repeat(Math.max(0,lives))+'🖤'.repeat(Math.max(0,3-lives));
     }
+    /* Sin popup TTS en respuesta incorrecta */
   }
   document.getElementById('btnCheck').disabled=true;
   document.getElementById('btnNext').className='btn-next show';
@@ -726,16 +819,36 @@ function loadSentenceQ() {
   optsEl.innerHTML = options.map((opt, i) => {
     const formLabel = opt.form === 'ps' ? 'Past Simple' : opt.form === 'pp' ? 'Past Part.' : 'Infinitive';
     const badgeClass = opt.form === 'ps' ? 'badge-ps2' : opt.form === 'pp' ? 'badge-pp2' : 'badge-inf';
+    /* Guardamos la palabra en data-word para el long-press */
     return `
-      <button class="sc-option" id="scOpt${i}" onclick="selectSentenceOpt(${i}, ${opt.isCorrect}, '${opt.word.replace(/'/g,"\\'")}', '${opt.verb ? opt.verb.inf : ''}')">
+      <button class="sc-option" id="scOpt${i}"
+              data-word="${opt.word.replace(/"/g,'&quot;')}"
+              data-correct="${opt.isCorrect}"
+              data-verb="${opt.verb ? opt.verb.inf : ''}">
         <div class="sc-option-verb">
           <div class="sc-opt-inf">${opt.verb ? opt.verb.inf : ''}</div>
           <div class="sc-opt-word">${opt.word}</div>
         </div>
-        <button class="sc-opt-tts" onclick="event.stopPropagation();speakWord('${opt.word.replace(/'/g,"\\'")}')">🔊</button>
         <span class="sc-option-badge ${badgeClass}">${formLabel}</span>
       </button>`;
   }).join('');
+
+  /* Asignar click normal y long-press a cada opción */
+  options.forEach((opt, i) => {
+    const btn = document.getElementById('scOpt' + i);
+    if (!btn) return;
+
+    /* Click corto → seleccionar respuesta */
+    btn.addEventListener('click', () => {
+      selectSentenceOpt(i, opt.isCorrect, opt.word, opt.verb ? opt.verb.inf : '');
+    });
+
+    /* Long press → pronunciar la palabra con popup TTS */
+    initLongPress(btn, () => {
+      speakWord(opt.word);
+      showTtsPop(`🔊 ${opt.word}`);
+    });
+  });
 }
 
 function buildDistractors(correctVerb, correctAns, correctForm) {
@@ -1151,14 +1264,5 @@ function confetti(n=22){
 renderTheory();
 updateErrorsUI();
 
-if('serviceWorker' in navigator){
-  const swCode=[
-    'self.addEventListener("install",e=>{self.skipWaiting();});',
-    'self.addEventListener("activate",e=>{e.waitUntil(clients.claim());});',
-    'self.addEventListener("fetch",e=>{e.respondWith(caches.open("verbquest-v5").then(cache=>{return cache.match(e.request).then(cached=>{const fetched=fetch(e.request).then(resp=>{cache.put(e.request,resp.clone());return resp;}).catch(()=>cached);return cached||fetched;});}));});'
-  ].join('\n');
-  const blob=new Blob([swCode],{type:'text/javascript'});
-  navigator.serviceWorker.register(URL.createObjectURL(blob))
-    .then(()=>console.log('VerbQuest: modo offline activado'))
-    .catch(()=>{});
-}
+/* El Service Worker se registra desde index.html como sw.js externo
+   para garantizar compatibilidad con PWA instalada (Blob URL no persiste) */

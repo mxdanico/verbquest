@@ -61,7 +61,6 @@
                 <span>Español</span>
                 <span>Past Simple</span>
                 <span>Past Part.</span>
-                <span>🔊</span>
             </div>
             <div class="vt-list" id="theoryList"></div>
         </div>
@@ -146,6 +145,7 @@
                 <div class="vc-pron" id="vcPron"></div>
                 <div class="vc-meaning" id="vcMeaning">–</div>
                 <div class="vc-badge badge-ps" id="vcBadge">Past Simple</div>
+                <button class="vc-tts-btn" id="vcTtsBtn" onclick="speakCurrentVerb()" title="Escuchar pronunciación">🔊</button>
             </div>
             <input class="answer-input" id="ansInput" type="text" placeholder="Escribe tu respuesta…" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" oninput="onTyping()" onkeydown="onKey(event)">
             <div class="hint-row">
@@ -245,7 +245,17 @@
     </div>
 
     <div class="streak-pop" id="streakPop"></div>
+    <div class="tts-correct-pop" id="ttsPop"></div>
 
     <script src="assets/js/script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('VerbQuest SW registrado:', reg.scope))
+            .catch(err => console.warn('VerbQuest SW error:', err));
+        });
+      }
+    </script>
 </body>
 </html>
