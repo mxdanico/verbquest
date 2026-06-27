@@ -1267,12 +1267,148 @@ function playAgain() {
     if (errs.length) {
       startErrorsMode();
     } else {
-      alert('🎉 ¡Felicidades! Ya no tienes errores pendientes.');
-      goToStart();
+      showErrorsClearedCard();
     }
   } else {
     startGame();
   }
+}
+
+/* =============================================
+   TARJETA "ERRORES COMPLETADOS"
+   Reemplaza el alert() nativo — respeta modo oscuro/claro
+   ============================================= */
+function showErrorsClearedCard() {
+  const isLight = document.body.classList.contains('light');
+
+  /* Colores según tema */
+  const bg        = isLight ? '#ffffff' : '#1a2a3a';
+  const overlay   = isLight ? 'rgba(0,0,0,0.45)' : 'rgba(0,0,0,0.65)';
+  const textColor = isLight ? '#1a3a5c' : '#eaf2fb';
+  const subColor  = isLight ? '#555' : 'rgba(255,255,255,0.7)';
+  const btnBg     = isLight
+    ? 'linear-gradient(135deg,#1e7abf,#2e8b3a)'
+    : 'linear-gradient(135deg,#1e7abf,#2e8b3a)';
+  const shadow    = isLight
+    ? '0 8px 40px rgba(0,0,0,0.18)'
+    : '0 8px 40px rgba(0,0,0,0.55)';
+
+  /* Overlay */
+  const overlay_el = document.createElement('div');
+  overlay_el.id = 'errClearedOverlay';
+  overlay_el.style.cssText = `
+    position:fixed;inset:0;background:${overlay};
+    z-index:99998;display:flex;align-items:center;justify-content:center;
+    animation:ecFadeIn .3s ease;
+  `;
+
+  /* Tarjeta */
+  const card = document.createElement('div');
+  card.style.cssText = `
+    background:${bg};border-radius:24px;padding:2rem 1.8rem 1.6rem;
+    max-width:320px;width:90%;text-align:center;
+    box-shadow:${shadow};position:relative;z-index:99999;
+    animation:ecSlideUp .35s cubic-bezier(.34,1.56,.64,1);
+  `;
+
+  /* SVG bandera EE.UU. ondeando */
+  card.innerHTML = `
+    <style>
+      @keyframes ecFadeIn{from{opacity:0}to{opacity:1}}
+      @keyframes ecSlideUp{from{opacity:0;transform:translateY(40px) scale(.93)}to{opacity:1;transform:translateY(0) scale(1)}}
+      @keyframes flagWave{
+        0%{d:path("M0,0 Q20,-6 40,0 Q60,6 80,0 L80,50 Q60,56 40,50 Q20,44 0,50 Z")}
+        25%{d:path("M0,0 Q20,6 40,0 Q60,-6 80,0 L80,50 Q60,44 40,50 Q20,56 0,50 Z")}
+        50%{d:path("M0,0 Q20,-4 40,2 Q60,8 80,2 L80,52 Q60,46 40,52 Q20,58 0,52 Z")}
+        75%{d:path("M0,0 Q20,4 40,-2 Q60,-8 80,-2 L80,48 Q60,54 40,48 Q20,42 0,48 Z")}
+        100%{d:path("M0,0 Q20,-6 40,0 Q60,6 80,0 L80,50 Q60,56 40,50 Q20,44 0,50 Z")}
+      }
+      #flagPath{animation:flagWave 2s ease-in-out infinite}
+      .ec-btn{
+        margin-top:1.4rem;padding:.75rem 2rem;
+        background:${btnBg};color:#fff;border:none;
+        border-radius:99px;font-size:1rem;font-weight:800;
+        font-family:'Nunito',sans-serif;cursor:pointer;
+        letter-spacing:.03em;width:100%;
+        box-shadow:0 4px 16px rgba(30,122,191,.35);
+        transition:transform .15s,box-shadow .15s;
+      }
+      .ec-btn:hover{transform:scale(1.04);box-shadow:0 6px 22px rgba(30,122,191,.45)}
+      .ec-btn:active{transform:scale(.97)}
+    </style>
+
+    <svg viewBox="0 0 80 50" width="160" height="100"
+         style="display:block;margin:0 auto .2rem;filter:drop-shadow(0 4px 12px rgba(0,0,0,.25))">
+      <defs>
+        <clipPath id="flagClip">
+          <path id="flagPath" d="M0,0 Q20,-6 40,0 Q60,6 80,0 L80,50 Q60,56 40,50 Q20,44 0,50 Z"/>
+        </clipPath>
+      </defs>
+      <!-- Franjas rojas y blancas -->
+      <g clip-path="url(#flagClip)">
+        <rect width="80" height="50" fill="#B22234"/>
+        <rect y="3.85"  width="80" height="3.85" fill="#fff"/>
+        <rect y="7.7"   width="80" height="3.85" fill="#B22234"/>
+        <rect y="11.55" width="80" height="3.85" fill="#fff"/>
+        <rect y="15.4"  width="80" height="3.85" fill="#B22234"/>
+        <rect y="19.25" width="80" height="3.85" fill="#fff"/>
+        <rect y="23.1"  width="80" height="3.85" fill="#B22234"/>
+        <rect y="26.95" width="80" height="3.85" fill="#fff"/>
+        <rect y="30.8"  width="80" height="3.85" fill="#B22234"/>
+        <rect y="34.65" width="80" height="3.85" fill="#fff"/>
+        <rect y="38.5"  width="80" height="3.85" fill="#B22234"/>
+        <rect y="42.35" width="80" height="3.85" fill="#fff"/>
+        <rect y="46.15" width="80" height="3.85" fill="#B22234"/>
+        <!-- Cantón azul -->
+        <rect width="32" height="26.95" fill="#3C3B6E"/>
+        <!-- Estrellas 5×4 + 4×5 = 50 estrellas simplificadas como puntos -->
+        <g fill="#fff" font-size="3.2" text-anchor="middle">
+          ${(()=>{
+            const stars=[];
+            for(let r=0;r<9;r++){
+              const cols = r%2===0 ? 6 : 5;
+              const xStart = r%2===0 ? 2.4 : 5.0;
+              for(let c=0;c<cols;c++){
+                stars.push(`<circle cx="${xStart+c*5.2}" cy="${2.8+r*2.8}" r="1.1"/>`);
+              }
+            }
+            return stars.join('');
+          })()}
+        </g>
+      </g>
+      <!-- Asta -->
+      <rect x="-1" y="-2" width="1.5" height="56" fill="#8B6914" rx=".5"/>
+    </svg>
+
+    <div style="font-size:1.55rem;font-weight:900;font-family:'Fredoka One',cursive;
+                color:${textColor};margin:.6rem 0 .3rem;line-height:1.2">
+      🎉 ¡Sin errores pendientes!
+    </div>
+    <div style="font-size:.92rem;color:${subColor};font-family:'Nunito',sans-serif;
+                line-height:1.5;margin-bottom:.2rem">
+      Dominaste todos los verbos de tu lista de errores. ¡Sigue así!
+    </div>
+    <button class="ec-btn" id="ecAcceptBtn">Aceptar</button>
+  `;
+
+  overlay_el.appendChild(card);
+  document.body.appendChild(overlay_el);
+
+  document.getElementById('ecAcceptBtn').addEventListener('click', () => {
+    overlay_el.style.animation = 'ecFadeIn .2s ease reverse forwards';
+    setTimeout(() => {
+      overlay_el.remove();
+      goToStart();
+    }, 200);
+  });
+
+  /* Cerrar también al tocar el overlay fuera de la tarjeta */
+  overlay_el.addEventListener('click', e => {
+    if (e.target === overlay_el) {
+      overlay_el.style.animation = 'ecFadeIn .2s ease reverse forwards';
+      setTimeout(() => { overlay_el.remove(); goToStart(); }, 200);
+    }
+  });
 }
 
 function goToStart(){ showScreen('startScreen'); }
