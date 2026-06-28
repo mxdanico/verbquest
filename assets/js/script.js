@@ -32,6 +32,7 @@ const VERBS = [
 {inf:"have",    pInf:"/hæv/",          es:"tener",                 ps:"had",        pPs:"/hæd/",            pp:"had",         pPp:"/hæd/"},
 {inf:"hear",    pInf:"/hɪər/",         es:"oír / escuchar",        ps:"heard",      pPs:"/hɜːrd/",          pp:"heard",       pPp:"/hɜːrd/"},
 {inf:"hit",     pInf:"/hɪt/",          es:"golpear",               ps:"hit",        pPs:"/hɪt/",            pp:"hit",         pPp:"/hɪt/"},
+{inf:"hold",    pInf:"/hoʊld/",        es:"sostener / aguantar",   ps:"held",       pPs:"/hɛld/",           pp:"held",        pPp:"/hɛld/"},
 {inf:"keep",    pInf:"/kiːp/",         es:"mantener / guardar",    ps:"kept",       pPs:"/kɛpt/",           pp:"kept",        pPp:"/kɛpt/"},
 {inf:"know",    pInf:"/noʊ/",          es:"saber / conocer",       ps:"knew",       pPs:"/njuː/",           pp:"known",       pPp:"/noʊn/"},
 {inf:"lay",     pInf:"/leɪ/",          es:"poner / tender",        ps:"laid",       pPs:"/leɪd/",           pp:"laid",        pPp:"/leɪd/"},
@@ -51,24 +52,49 @@ const VERBS = [
 {inf:"see",     pInf:"/siː/",          es:"ver",                   ps:"saw",        pPs:"/sɔː/",            pp:"seen",        pPp:"/siːn/"},
 {inf:"sell",    pInf:"/sɛl/",          es:"vender",                ps:"sold",       pPs:"/soʊld/",          pp:"sold",        pPp:"/soʊld/"},
 {inf:"send",    pInf:"/sɛnd/",         es:"enviar / mandar",       ps:"sent",       pPs:"/sɛnt/",           pp:"sent",        pPp:"/sɛnt/"},
+{inf:"set",     pInf:"/sɛt/",          es:"fijar / establecer",    ps:"set",        pPs:"/sɛt/",            pp:"set",         pPp:"/sɛt/"},
+{inf:"sew",     pInf:"/soʊ/",          es:"coser",                 ps:"sewed",      pPs:"/soʊd/",           pp:"sewn",        pPp:"/soʊn/"},
+{inf:"shake",   pInf:"/ʃeɪk/",         es:"sacudir / agitar",      ps:"shook",      pPs:"/ʃʊk/",            pp:"shaken",      pPp:"/ˈʃeɪkən/"},
+{inf:"shine",   pInf:"/ʃaɪn/",         es:"brillar",               ps:"shone",      pPs:"/ʃɒn/",            pp:"shone",       pPp:"/ʃɒn/"},
+{inf:"shoot",   pInf:"/ʃuːt/",         es:"disparar",              ps:"shot",       pPs:"/ʃɒt/",            pp:"shot",        pPp:"/ʃɒt/"},
+{inf:"show",    pInf:"/ʃoʊ/",          es:"mostrar",               ps:"showed",     pPs:"/ʃoʊd/",           pp:"shown",       pPp:"/ʃoʊn/"},
+{inf:"shrink",  pInf:"/ʃrɪŋk/",        es:"encoger",               ps:"shrank",     pPs:"/ʃræŋk/",          pp:"shrunk",      pPp:"/ʃrʌŋk/"},
 {inf:"shut",    pInf:"/ʃʌt/",          es:"cerrar",                ps:"shut",       pPs:"/ʃʌt/",            pp:"shut",        pPp:"/ʃʌt/"},
 {inf:"sing",    pInf:"/sɪŋ/",          es:"cantar",                ps:"sang",       pPs:"/sæŋ/",            pp:"sung",        pPp:"/sʌŋ/"},
+{inf:"sink",    pInf:"/sɪŋk/",         es:"hundir / hundirse",     ps:"sank",       pPs:"/sæŋk/",           pp:"sunk",        pPp:"/sʌŋk/"},
 {inf:"sit",     pInf:"/sɪt/",          es:"sentarse",              ps:"sat",        pPs:"/sæt/",            pp:"sat",         pPp:"/sæt/"},
 {inf:"sleep",   pInf:"/sliːp/",        es:"dormir",                ps:"slept",      pPs:"/slɛpt/",          pp:"slept",       pPp:"/slɛpt/"},
+{inf:"slide",   pInf:"/slaɪd/",        es:"deslizar",              ps:"slid",       pPs:"/slɪd/",           pp:"slid",        pPp:"/slɪd/"},
+{inf:"sow",     pInf:"/soʊ/",          es:"sembrar",               ps:"sowed",      pPs:"/soʊd/",           pp:"sown",        pPp:"/soʊn/"},
 {inf:"speak",   pInf:"/spiːk/",        es:"hablar",                ps:"spoke",      pPs:"/spoʊk/",          pp:"spoken",      pPp:"/ˈspoʊkən/"},
+{inf:"spell",   pInf:"/spɛl/",         es:"deletrear",             ps:"spelt",      pPs:"/spɛlt/",          pp:"spelt",       pPp:"/spɛlt/"},
 {inf:"spend",   pInf:"/spɛnd/",        es:"gastar / pasar tiempo", ps:"spent",      pPs:"/spɛnt/",          pp:"spent",       pPp:"/spɛnt/"},
+{inf:"spill",   pInf:"/spɪl/",         es:"derramar",              ps:"spilt",      pPs:"/spɪlt/",          pp:"spilt",       pPp:"/spɪlt/"},
+{inf:"split",   pInf:"/splɪt/",        es:"partir / dividir",      ps:"split",      pPs:"/splɪt/",          pp:"split",       pPp:"/splɪt/"},
+{inf:"spoil",   pInf:"/spɔɪl/",        es:"estropear / mimar",     ps:"spoilt",     pPs:"/spɔɪlt/",         pp:"spoilt",      pPp:"/spɔɪlt/"},
+{inf:"spread",  pInf:"/sprɛd/",        es:"extender / difundir",   ps:"spread",     pPs:"/sprɛd/",          pp:"spread",      pPp:"/sprɛd/"},
 {inf:"stand",   pInf:"/stænd/",        es:"estar de pie",          ps:"stood",      pPs:"/stʊd/",           pp:"stood",       pPp:"/stʊd/"},
 {inf:"steal",   pInf:"/stiːl/",        es:"robar",                 ps:"stole",      pPs:"/stoʊl/",          pp:"stolen",      pPp:"/ˈstoʊlən/"},
+{inf:"sting",   pInf:"/stɪŋ/",         es:"picar / aguijonear",    ps:"stung",      pPs:"/stʌŋ/",           pp:"stung",       pPp:"/stʌŋ/"},
+{inf:"stink",   pInf:"/stɪŋk/",        es:"apestar",               ps:"stank",      pPs:"/stæŋk/",          pp:"stunk",       pPp:"/stʌŋk/"},
+{inf:"strike",  pInf:"/straɪk/",       es:"golpear / impactar",    ps:"struck",     pPs:"/strʌk/",          pp:"struck",      pPp:"/strʌk/"},
+{inf:"swear",   pInf:"/swɛər/",        es:"jurar / maldecir",      ps:"swore",      pPs:"/swɔːr/",          pp:"sworn",       pPp:"/swɔːrn/"},
+{inf:"sweep",   pInf:"/swiːp/",        es:"barrer",                ps:"swept",      pPs:"/swɛpt/",          pp:"swept",       pPp:"/swɛpt/"},
 {inf:"swim",    pInf:"/swɪm/",         es:"nadar",                 ps:"swam",       pPs:"/swæm/",           pp:"swum",        pPp:"/swʌm/"},
 {inf:"take",    pInf:"/teɪk/",         es:"tomar / llevar",        ps:"took",       pPs:"/tʊk/",            pp:"taken",       pPp:"/ˈteɪkən/"},
 {inf:"teach",   pInf:"/tiːtʃ/",        es:"enseñar",               ps:"taught",     pPs:"/tɔːt/",           pp:"taught",      pPp:"/tɔːt/"},
+{inf:"tear",    pInf:"/tɛər/",         es:"romper / rasgar",       ps:"tore",       pPs:"/tɔːr/",           pp:"torn",        pPp:"/tɔːrn/"},
 {inf:"tell",    pInf:"/tɛl/",          es:"decir / contar",        ps:"told",       pPs:"/toʊld/",          pp:"told",        pPp:"/toʊld/"},
 {inf:"think",   pInf:"/θɪŋk/",         es:"pensar",                ps:"thought",    pPs:"/θɔːt/",           pp:"thought",     pPp:"/θɔːt/"},
 {inf:"throw",   pInf:"/θroʊ/",         es:"lanzar / tirar",        ps:"threw",      pPs:"/θruː/",           pp:"thrown",      pPp:"/θroʊn/"},
+{inf:"tread",   pInf:"/trɛd/",         es:"pisar",                 ps:"trod",       pPs:"/trɒd/",           pp:"trodden",     pPp:"/ˈtrɒdən/"},
 {inf:"understand",pInf:"/ˌʌndəˈstænd/",es:"entender",             ps:"understood",  pPs:"/ˌʌndəˈstʊd/",    pp:"understood",  pPp:"/ˌʌndəˈstʊd/"},
 {inf:"wake",    pInf:"/weɪk/",         es:"despertar",             ps:"woke",       pPs:"/woʊk/",           pp:"woken",       pPp:"/ˈwoʊkən/"},
 {inf:"wear",    pInf:"/wɛər/",         es:"llevar puesto / vestir",ps:"wore",       pPs:"/wɔːr/",           pp:"worn",        pPp:"/wɔːrn/"},
+{inf:"weave",   pInf:"/wiːv/",         es:"tejer",                 ps:"wove",       pPs:"/woʊv/",           pp:"woven",       pPp:"/ˈwoʊvən/"},
+{inf:"weep",    pInf:"/wiːp/",         es:"llorar",                ps:"wept",       pPs:"/wɛpt/",           pp:"wept",        pPp:"/wɛpt/"},
 {inf:"win",     pInf:"/wɪn/",          es:"ganar",                 ps:"won",        pPs:"/wʌn/",            pp:"won",         pPp:"/wʌn/"},
+{inf:"wring",   pInf:"/rɪŋ/",          es:"retorcer / escurrir",   ps:"wrung",      pPs:"/rʌŋ/",            pp:"wrung",       pPp:"/rʌŋ/"},
 {inf:"write",   pInf:"/raɪt/",         es:"escribir",              ps:"wrote",      pPs:"/roʊt/",           pp:"written",     pPp:"/ˈrɪtən/"},
 ];
 
@@ -131,6 +157,11 @@ const SENTENCES = [
   {template:"I've never ___ a spider — I'm terrified of them!", verb:"hold",   form:"pp", answer:"held",       full:"I've never held a spider — I'm terrified of them!"},
   {template:"She has ___ all her savings on the trip around the world.", verb:"spend",  form:"pp", answer:"spent",      full:"She has spent all her savings on the trip around the world."},
 ];
+
+/* =============================================
+   CONFIGURACIÓN
+   ============================================= */
+const APP_URL = 'https://mxdanico.github.io/verbquest';
 
 /* =============================================
    ESTADO GLOBAL
@@ -626,11 +657,12 @@ function applyF(list) {
 function buildQ() {
   const pool=shuffle(applyF(VERBS));
   if(!pool.length) return [];
-  const limit=totalQ===68?pool.length:Math.min(totalQ,pool.length*2);
+  const isAll = totalQ >= pool.length * 2;
+  const limit = isAll ? pool.length * 2 : Math.min(totalQ, pool.length * 2);
   const out=[];
   for(let i=0;out.length<limit;i++){
     const v=pool[i%pool.length];
-    let type=gameMode==='ps'?'ps':gameMode==='pp'?'pp':out.length%2===0?'ps':'pp';
+    let type=gameMode==='ps'?'ps':gameMode==='pp'?'pp':Math.random()<0.5?'ps':'pp';
     if(type==='pp'&&v.pp==='–') type='ps';
     out.push({v,type});
     if(i>limit*5) break;
@@ -650,7 +682,7 @@ function buildSentenceQ() {
   });
   if (!pool.length) pool = [...SENTENCES];
   pool = shuffle(pool);
-  const limit = Math.min(totalQ === 68 ? pool.length : totalQ, pool.length);
+  const limit = Math.min(totalQ >= pool.length ? pool.length : totalQ, pool.length);
   return pool.slice(0, limit);
 }
 
@@ -890,17 +922,25 @@ function buildDistractors(correctVerb, correctAns, correctForm) {
       : { word: correctVerb.inf, form: 'inf', verb: correctVerb };
     result.push(alt);
   }
-  // Distractor 2: verbo diferente, misma forma
+  // Distractor 2: verbo diferente, misma forma — nunca igual a la correcta ni al distractor 1
+  const usedWords = new Set([correctAns.toLowerCase(), result[0].word.toLowerCase()]);
   const others = shuffle(VERBS.filter(v => v.inf !== correctVerb.inf));
   for (const v of others) {
     const word = correctForm === 'ps' ? v.ps : v.pp;
-    if (word && word !== '–' && word !== correctAns && word !== result[0].word) {
+    if (word && word !== '–' && !usedWords.has(word.toLowerCase())) {
       result.push({ word, form: correctForm, verb: v });
       break;
     }
   }
-  // fallback
-  if (result.length < 2) result.push({ word: correctVerb.inf, form: 'inf', verb: correctVerb });
+  // fallback seguro: infinitivo de un verbo diferente que no esté ya usado
+  if (result.length < 2) {
+    for (const v of others) {
+      if (!usedWords.has(v.inf.toLowerCase())) {
+        result.push({ word: v.inf, form: 'inf', verb: v });
+        break;
+      }
+    }
+  }
   return result;
 }
 
@@ -1171,7 +1211,7 @@ function buildShareCanvas() {
   ctx.beginPath(); ctx.moveTo(42,104); ctx.lineTo(42,H-20); ctx.stroke();
   ctx.font='22px "Segoe UI",Arial,sans-serif';
   ctx.fillStyle=T.footerColor; ctx.textAlign='left';
-  ctx.fillText('¿Puedes superarme? 👉 mxdanico.github.io/verbquest/', 240, H-22);
+  ctx.fillText(`¿Puedes superarme? 👉 ${APP_URL.replace('https://','')}`, 240, H-22);
   return cv;
 }
 function canvasToFile(cv, name) {
@@ -1179,8 +1219,7 @@ function canvasToFile(cv, name) {
 }
 async function shareWhatsApp() {
   playClick();
-  const appUrl  = 'https://mxdanico.github.io/verbquest';
-  const msgText = `🎓 *VerbQuest · Verbos Irregulares*\n\n🏅 Rango: *${lastRank}*\n⭐ Puntos: *${lastScore}*\n✅ Correctas: *${lastOk} de ${lastTotal}*\n📊 Resultado: *${lastPct}%*\n\n¿Puedes superarme? 😏\n👉 ${appUrl}`;
+  const msgText = `🎓 *VerbQuest · Verbos Irregulares*\n\n🏅 Rango: *${lastRank}*\n⭐ Puntos: *${lastScore}*\n✅ Correctas: *${lastOk} de ${lastTotal}*\n📊 Resultado: *${lastPct}%*\n\n¿Puedes superarme? 😏\n👉 ${APP_URL}`;
   const cv = buildShareCanvas();
   if (navigator.canShare) {
     try {
@@ -1191,7 +1230,7 @@ async function shareWhatsApp() {
       }
     } catch(e) {}
   }
-  _showSharePanel(cv, msgText, appUrl);
+  _showSharePanel(cv, msgText, APP_URL);
 }
 function _showSharePanel(cv, msgText, appUrl) {
   cv.toBlob(blob => {
@@ -1223,18 +1262,28 @@ function _showSharePanel(cv, msgText, appUrl) {
 }
 function copyShareText() {
   const text = document.getElementById('shareTextBox').textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.getElementById('btnCopy');
-    btn.textContent='✅ ¡Copiado!'; btn.classList.add('copied');
-    setTimeout(()=>{btn.textContent='📋 Copiar texto';btn.classList.remove('copied');},2000);
-  }).catch(() => {
-    const ta=document.createElement('textarea');
-    ta.value=text; document.body.appendChild(ta); ta.select();
-    document.execCommand('copy'); document.body.removeChild(ta);
-    const btn=document.getElementById('btnCopy');
-    btn.textContent='✅ ¡Copiado!';
-    setTimeout(()=>{btn.textContent='📋 Copiar texto';},2000);
-  });
+  const btn  = document.getElementById('btnCopy');
+  const markCopied = () => {
+    btn.textContent = '✅ ¡Copiado!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copiar texto'; btn.classList.remove('copied'); }, 2000);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(markCopied).catch(() => {
+      /* Clipboard API falló — intentar selección manual */
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      try { document.execCommand('copy'); markCopied(); } catch(e) {}
+      document.body.removeChild(ta);
+    });
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try { document.execCommand('copy'); markCopied(); } catch(e) {}
+    document.body.removeChild(ta);
+  }
 }
 function closeSharePreview() {
   document.getElementById('sharePreview').classList.remove('show');

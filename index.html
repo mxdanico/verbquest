@@ -8,7 +8,37 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="VerbQuest">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verb Quest · English File</title>
+    <title>VerbQuest · Verbos Irregulares en Inglés</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Practica los 94 verbos irregulares del English File Pre-Intermediate de forma gamificada. Quiz interactivo, rachas, modo survival, pronunciación IPA y soporte offline.">
+    <meta name="keywords" content="verbos irregulares inglés, English File, quiz inglés, past simple, past participle, aprender inglés">
+    <meta name="author" content="mxdanico">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph (WhatsApp, Facebook, LinkedIn, Telegram, Discord) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mxdanico.github.io/verbquest/">
+    <meta property="og:title" content="VerbQuest · Verbos Irregulares en Inglés">
+    <meta property="og:description" content="Practica los 94 verbos irregulares del English File con quizzes, rachas y pronunciación IPA. ¡Gratis y sin instalación!">
+    <meta property="og:image" content="https://mxdanico.github.io/verbquest/assets/icons/icon-512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:image:alt" content="VerbQuest - Quiz de verbos irregulares en inglés">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="VerbQuest">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://mxdanico.github.io/verbquest/">
+    <meta name="twitter:title" content="VerbQuest · Verbos Irregulares en Inglés">
+    <meta name="twitter:description" content="Practica los 94 verbos irregulares del English File con quizzes, rachas y pronunciación IPA. ¡Gratis y sin instalación!">
+    <meta name="twitter:image" content="https://mxdanico.github.io/verbquest/assets/icons/icon-512.png">
+    <meta name="twitter:image:alt" content="VerbQuest - Quiz de verbos irregulares en inglés">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://mxdanico.github.io/verbquest/">
+
     <link rel="icon" type="image/png" href="assets/icons/favicon.png">
     <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
     <link rel="manifest" href="manifest.json">
@@ -18,7 +48,7 @@
     <header class="app-header">
         <div class="app-logo">
             VerbQuest
-            <span><a href="https://drive.google.com/drive/folders/1HuqCslQX0G6oQawRjVAKicq7vjCvNBzu?usp=drive_link" target="_blank" rel="noopener noreferrer">English File Pre-Intermediate</a> · 68 verbos</span>
+            <span><a href="https://drive.google.com/drive/folders/1HuqCslQX0G6oQawRjVAKicq7vjCvNBzu?usp=drive_link" target="_blank" rel="noopener noreferrer">English File Pre-Intermediate</a> · 94 verbos</span>
         </div>
         <div class="nav-tabs">
             <button class="nav-tab active" id="tabTheory" onclick="switchTab('theory')">📖 Teoría</button>
@@ -30,7 +60,7 @@
     <div class="page active" id="pageTheory">
         <div class="theory-hero">
             <h2>📖 Lista de Verbos</h2>
-            <p>68 verbos del English File · Estudia y luego practica</p>
+            <p>94 verbos irregulares · Estudia y luego practica</p>
         </div>
         <div class="legend">
             <div class="leg"><div class="leg-dot" style="background:var(--text)"></div>Infinitivo</div>
@@ -76,7 +106,7 @@
             <div class="brand">
                 <span class="brand-icon">🚀</span>
                 <h1>¡A Practicar!</h1>
-                <p>Pon a prueba lo que acabas de estudiar · 68 verbos</p>
+                <p>Pon a prueba lo que acabas de estudiar · 94 verbos</p>
             </div>
 
             <!-- Mis errores rápido -->
@@ -119,7 +149,7 @@
                 <button class="qbtn sel" data-n="10" onclick="selQ(10,this)">10</button>
                 <button class="qbtn" data-n="20" onclick="selQ(20,this)">20</button>
                 <button class="qbtn" data-n="40" onclick="selQ(40,this)">40</button>
-                <button class="qbtn" data-n="68" onclick="selQ(68,this)">Todos</button>
+                <button class="qbtn" data-n="99" onclick="selQ(99,this)">Todos</button>
             </div>
             <div class="slabel">Filtrar por letra inicial</div>
             <div class="filter-row">
