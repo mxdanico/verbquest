@@ -310,17 +310,130 @@ async function initNotifications() {
   try {
     const reg = await navigator.serviceWorker.ready;
 
-    /* Pedir permiso solo si aún no se ha decidido */
-    if (Notification.permission === 'default') {
-      /* Esperar un momento para no interrumpir la carga inicial */
-      setTimeout(async () => {
+    if (Notification.permission === 'granted') {
+      registerPeriodicSync(reg);
+    } else if (Notification.permission === 'default') {
+      /* Mostrar tarjeta propia antes del diálogo nativo */
+      setTimeout(() => showNotifPermissionCard(reg), 4000);
+    }
+    /* Si es 'denied' no hacemos nada — el usuario ya rechazó */
+  } catch(e) {}
+}
+
+function showNotifPermissionCard(reg) {
+  const isLight   = document.body.classList.contains('light');
+  const bg        = isLight ? '#ffffff'               : '#1a2a3a';
+  const overlayBg = isLight ? 'rgba(0,0,0,0.45)'     : 'rgba(0,0,0,0.68)';
+  const textColor = isLight ? '#1a3a5c'               : '#eaf2fb';
+  const subColor  = isLight ? '#4a5568'               : 'rgba(255,255,255,0.68)';
+  const pillBg    = isLight ? 'rgba(30,122,191,0.10)' : 'rgba(30,122,191,0.18)';
+  const pillColor = isLight ? '#1e6091'               : '#7ec8f7';
+  const shadow    = isLight ? '0 8px 40px rgba(0,0,0,0.16)' : '0 8px 40px rgba(0,0,0,0.55)';
+  const divider   = isLight ? 'rgba(0,0,0,0.07)'     : 'rgba(255,255,255,0.07)';
+
+  const overlay = document.createElement('div');
+  overlay.id = 'notifPermOverlay';
+  overlay.style.cssText = `
+    position:fixed;inset:0;background:${overlayBg};
+    z-index:99998;display:flex;align-items:center;justify-content:center;
+    animation:npFadeIn .25s ease;padding:1rem;box-sizing:border-box;
+  `;
+
+  const card = document.createElement('div');
+  card.style.cssText = `
+    background:${bg};border-radius:24px;padding:1.8rem 1.6rem 1.5rem;
+    max-width:320px;width:100%;text-align:center;
+    box-shadow:${shadow};position:relative;z-index:99999;
+    animation:npSlideUp .3s cubic-bezier(.34,1.56,.64,1);
+  `;
+
+  card.innerHTML = `
+    <style>
+      @keyframes npFadeIn  { from{opacity:0} to{opacity:1} }
+      @keyframes npSlideUp { from{opacity:0;transform:translateY(40px) scale(.94)} to{opacity:1;transform:translateY(0) scale(1)} }
+      #notifPermOverlay .np-btn {
+        width:100%;padding:.78rem 1rem;border:none;border-radius:99px;
+        font-size:1rem;font-weight:800;font-family:'Nunito',sans-serif;
+        cursor:pointer;letter-spacing:.02em;transition:transform .15s,box-shadow .15s;
+      }
+      #notifPermOverlay .np-btn:active { transform:scale(.97); }
+      #notifPermOverlay .np-btn-enable {
+        background:linear-gradient(135deg,#1e7abf,#2e8b3a);color:#fff;
+        box-shadow:0 4px 16px rgba(30,122,191,.35);margin-bottom:.75rem;
+      }
+      #notifPermOverlay .np-btn-enable:hover { transform:scale(1.03);box-shadow:0 6px 22px rgba(30,122,191,.45); }
+      #notifPermOverlay .np-btn-skip {
+        background:transparent;color:${subColor};
+        border:2px solid ${divider};font-weight:700;
+      }
+      #notifPermOverlay .np-btn-skip:hover { background:${pillBg}; }
+      #notifPermOverlay .np-row {
+        display:flex;align-items:center;gap:.75rem;
+        padding:.55rem .75rem;border-radius:12px;
+        background:${pillBg};margin-bottom:.6rem;
+        text-align:left;font-family:'Nunito',sans-serif;
+      }
+      #notifPermOverlay .np-row-icon { font-size:1.3rem;flex-shrink:0; }
+      #notifPermOverlay .np-row-text { font-size:.84rem;color:${pillColor};font-weight:700;line-height:1.3; }
+    </style>
+
+    <div style="font-size:2.4rem;margin-bottom:.4rem">🔔</div>
+
+    <div style="font-size:1.3rem;font-weight:900;font-family:'Fredoka One',cursive;
+                color:${textColor};margin-bottom:.35rem;line-height:1.25">
+      Activar recordatorios
+    </div>
+    <div style="font-size:.875rem;color:${subColor};font-family:'Nunito',sans-serif;
+                margin-bottom:1.1rem;line-height:1.55">
+      Recibe un aviso cuando lleves más de <strong style="color:${pillColor}">5 horas</strong>
+      sin repasar tus verbos pendientes.
+    </div>
+
+    <!-- Beneficios -->
+    <div style="margin-bottom:1.3rem">
+      <div class="np-row">
+        <span class="np-row-icon">📚</span>
+        <span class="np-row-text">Solo cuando tengas errores guardados por repasar</span>
+      </div>
+      <div class="np-row">
+        <span class="np-row-icon">🚫</span>
+        <span class="np-row-text">Sin spam — un aviso cada vez, nunca repetido</span>
+      </div>
+      <div class="np-row">
+        <span class="np-row-icon">⚙️</span>
+        <span class="np-row-text">Puedes desactivarlo cuando quieras desde ajustes del navegador</span>
+      </div>
+    </div>
+
+    <button class="np-btn np-btn-enable" id="npBtnEnable">🔔 Activar avisos</button>
+    <button class="np-btn np-btn-skip"   id="npBtnSkip">Ahora no</button>
+  `;
+
+  overlay.appendChild(card);
+  document.body.appendChild(overlay);
+
+  function closeNotifCard(cb) {
+    overlay.style.animation = 'npFadeIn .2s ease reverse forwards';
+    setTimeout(() => { overlay.remove(); if (cb) cb(); }, 200);
+  }
+
+  /* Cerrar al tocar fuera */
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeNotifCard();
+  });
+
+  /* Ahora no */
+  document.getElementById('npBtnSkip').addEventListener('click', () => closeNotifCard());
+
+  /* Activar — lanzar diálogo nativo del navegador */
+  document.getElementById('npBtnEnable').addEventListener('click', () => {
+    closeNotifCard(async () => {
+      try {
         const perm = await Notification.requestPermission();
         if (perm === 'granted') registerPeriodicSync(reg);
-      }, 4000);
-    } else if (Notification.permission === 'granted') {
-      registerPeriodicSync(reg);
-    }
-  } catch(e) {}
+      } catch(e) {}
+    });
+  });
 }
 
 async function registerPeriodicSync(reg) {
@@ -329,7 +442,7 @@ async function registerPeriodicSync(reg) {
     const status = await navigator.permissions.query({ name: 'periodic-background-sync' });
     if (status.state !== 'granted') return;
     await reg.periodicSync.register('vq-errors-reminder', {
-      minInterval: 60 * 60 * 1000, /* el SW comprueba cada hora como mínimo */
+      minInterval: 60 * 60 * 1000,
     });
   } catch(e) {}
 }
