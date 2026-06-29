@@ -1,9 +1,10 @@
 /* =============================================
-   VerbQuest — Service Worker v6
+   VerbQuest — Service Worker v8
    Estrategia: Cache-First con actualización en background
+   + Periodic Background Sync para notificaciones de errores
    ============================================= */
 
-const CACHE_NAME = 'verbquest-v7';
+const CACHE_NAME = 'verbquest-v8';
 
 const ASSETS = [
   './',
@@ -21,13 +22,15 @@ const EXTERNAL_ASSETS = [
   'https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap',
 ];
 
+/* Tiempo mínimo sin practicar para notificar (5 horas en ms) */
+const REMINDER_THRESHOLD_MS = 5 * 60 * 60 * 1000;
+const SYNC_TAG = 'vq-errors-reminder';
+
 /* ── Instalación: pre-cachear todos los assets ── */
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
-      /* Assets propios — fallan si no hay red y abortan la instalación */
       return cache.addAll(ASSETS).then(() => {
-        /* Fuentes externas — se intentan pero no bloquean la instalación */
         return Promise.allSettled(
           EXTERNAL_ASSETS.map(url =>
             fetch(url, { mode: 'cors' })
@@ -83,7 +86,6 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.open(CACHE_NAME).then(cache =>
       cache.match(event.request).then(cached => {
-        /* Lanzar fetch en background para mantener caché fresco */
         const fetchPromise = fetch(event.request)
           .then(response => {
             if (response && response.status === 200 && response.type !== 'opaque') {
@@ -91,11 +93,97 @@ self.addEventListener('fetch', event => {
             }
             return response;
           })
-          .catch(() => cached); /* si no hay red, usar caché */
+          .catch(() => cached);
 
-        /* Devolver caché inmediatamente si existe, si no esperar red */
         return cached || fetchPromise;
       })
     )
+  );
+});
+
+/* ── Periodic Background Sync: recordatorio de errores pendientes ── */
+self.addEventListener('periodicsync', event => {
+  if (event.tag === SYNC_TAG) {
+    event.waitUntil(checkAndNotifyErrors());
+  }
+});
+
+async function checkAndNotifyErrors() {
+  /* Leer datos desde todos los clientes activos vía IDB o mensaje */
+  const allClients = await self.clients.matchAll({ includeUncontrolled: true });
+
+  /* Leer desde IndexedDB el timestamp y errores guardados */
+  const data = await readVQData();
+  if (!data) return;
+
+  const { errors, lastPractice } = data;
+  if (!errors || errors.length === 0) return;
+
+  const now        = Date.now();
+  const elapsed    = now - (lastPractice || 0);
+  if (elapsed < REMINDER_THRESHOLD_MS) return;
+
+  /* No molestar si la app está abierta en primer plano */
+  const focused = allClients.some(c => c.visibilityState === 'visible');
+  if (focused) return;
+
+  /* Lanzar notificación */
+  const n = errors.length;
+  await self.registration.showNotification('VerbQuest · Errores pendientes 📚', {
+    body: `Tienes ${n} verbo${n === 1 ? '' : 's'} por repasar. ¡Llevas más de 5h sin practicarlos!`,
+    icon: './assets/icons/icon-192.png',
+    badge: './assets/icons/icon-192.png',
+    tag: 'vq-reminder',          /* evita duplicados */
+    renotify: false,
+    vibrate: [200, 100, 200],
+    data: { url: self.location.origin + self.registration.scope },
+    actions: [
+      { action: 'practice', title: '📖 Practicar ahora' },
+      { action: 'dismiss',  title: 'Más tarde'          },
+    ],
+  });
+}
+
+/* ── Leer vq-errors y vq-errors-ts desde IndexedDB ── */
+function readVQData() {
+  return new Promise(resolve => {
+    try {
+      const req = indexedDB.open('verbquest-store', 1);
+      req.onupgradeneeded = e => {
+        e.target.result.createObjectStore('kv', { keyPath: 'k' });
+      };
+      req.onsuccess = e => {
+        const db  = e.target.result;
+        const tx  = db.transaction('kv', 'readonly');
+        const st  = tx.objectStore('kv');
+        let errors = null, lastPractice = null;
+        const r1  = st.get('vq-errors');
+        const r2  = st.get('vq-errors-ts');
+        r1.onsuccess = () => { errors = r1.result ? r1.result.v : null; };
+        r2.onsuccess = () => { lastPractice = r2.result ? r2.result.v : null; };
+        tx.oncomplete = () => resolve({ errors, lastPractice });
+        tx.onerror    = () => resolve(null);
+      };
+      req.onerror = () => resolve(null);
+    } catch(e) { resolve(null); }
+  });
+}
+
+/* ── Tap en la notificación: abrir la app ── */
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  if (event.action === 'dismiss') return;
+
+  const targetUrl = (event.notification.data && event.notification.data.url)
+    ? event.notification.data.url
+    : self.location.origin;
+
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clients => {
+      /* Si ya hay una ventana abierta, enfocarla */
+      const existing = clients.find(c => c.url.startsWith(targetUrl));
+      if (existing) return existing.focus();
+      return self.clients.openWindow(targetUrl);
+    })
   );
 });

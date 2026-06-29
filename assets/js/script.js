@@ -156,6 +156,60 @@ const SENTENCES = [
   {template:"He has ___ everything he knows about cooking to his daughter.", verb:"teach",  form:"pp", answer:"taught",     full:"He has taught everything he knows about cooking to his daughter."},
   {template:"I've never ___ a spider — I'm terrified of them!", verb:"hold",   form:"pp", answer:"held",       full:"I've never held a spider — I'm terrified of them!"},
   {template:"She has ___ all her savings on the trip around the world.", verb:"spend",  form:"pp", answer:"spent",      full:"She has spent all her savings on the trip around the world."},
+
+  // PAST SIMPLE — verbos nuevos
+  {template:"She ___ the alarm for six o'clock so she wouldn't miss the flight.", verb:"set",    form:"ps", answer:"set",     full:"She set the alarm for six o'clock so she wouldn't miss the flight."},
+  {template:"My grandmother ___ a beautiful dress for the wedding by hand.", verb:"sew",    form:"ps", answer:"sewed",   full:"My grandmother sewed a beautiful dress for the wedding by hand."},
+  {template:"The earthquake ___ the buildings so hard that windows broke.", verb:"shake",  form:"ps", answer:"shook",   full:"The earthquake shook the buildings so hard that windows broke."},
+  {template:"The sun ___ so brightly that we couldn't look at it directly.", verb:"shine",  form:"ps", answer:"shone",   full:"The sun shone so brightly that we couldn't look at it directly."},
+  {template:"The hunter ___ at the target and missed by just a few centimetres.", verb:"shoot",  form:"ps", answer:"shot",    full:"The hunter shot at the target and missed by just a few centimetres."},
+  {template:"The tour guide ___ us around the old city and explained its history.", verb:"show",   form:"ps", answer:"showed",  full:"The tour guide showed us around the old city and explained its history."},
+  {template:"His jumper ___ in the wash because the temperature was too high.", verb:"shrink", form:"ps", answer:"shrank",  full:"His jumper shrank in the wash because the temperature was too high."},
+  {template:"The heavy rain ___ the road and cars couldn't pass.", verb:"sink",   form:"ps", answer:"sank",    full:"The heavy rain sank the road and cars couldn't pass."},
+  {template:"The child ___ down the snowy hill on a plastic tray, laughing all the way.", verb:"slide",  form:"ps", answer:"slid",    full:"The child slid down the snowy hill on a plastic tray, laughing all the way."},
+  {template:"The farmer ___ seeds early in spring to get a good harvest.", verb:"sow",    form:"ps", answer:"sowed",   full:"The farmer sowed seeds early in spring to get a good harvest."},
+  {template:"The teacher ___ the word on the board so the students could copy it.", verb:"spell",  form:"ps", answer:"spelt",   full:"The teacher spelt the word on the board so the students could copy it."},
+  {template:"He ___ his coffee all over his laptop when he heard the news.", verb:"spill",  form:"ps", answer:"spilt",   full:"He spilt his coffee all over his laptop when he heard the news."},
+  {template:"They ___ the bill equally between the four of them at the restaurant.", verb:"split",  form:"ps", answer:"split",   full:"They split the bill equally between the four of them at the restaurant."},
+  {template:"The bad weather ___ our plans for a picnic in the park.", verb:"spoil",  form:"ps", answer:"spoilt",  full:"The bad weather spoilt our plans for a picnic in the park."},
+  {template:"The news ___ quickly through the small town.", verb:"spread",  form:"ps", answer:"spread",  full:"The news spread quickly through the small town."},
+  {template:"A bee ___ him on the arm while he was gardening.", verb:"sting",  form:"ps", answer:"stung",   full:"A bee stung him on the arm while he was gardening."},
+  {template:"The old cheese ___ so much that we had to throw it away.", verb:"stink",  form:"ps", answer:"stank",   full:"The old cheese stank so much that we had to throw it away."},
+  {template:"The workers ___ to demand better pay and working conditions.", verb:"strike", form:"ps", answer:"struck",  full:"The workers struck to demand better pay and working conditions."},
+  {template:"He ___ he would never eat fast food again after feeling so ill.", verb:"swear",  form:"ps", answer:"swore",   full:"He swore he would never eat fast food again after feeling so ill."},
+  {template:"She ___ the floor quickly before the guests arrived.", verb:"sweep",  form:"ps", answer:"swept",   full:"She swept the floor quickly before the guests arrived."},
+  {template:"He ___ his shirt when he pulled it off too quickly.", verb:"tear",   form:"ps", answer:"tore",    full:"He tore his shirt when he pulled it off too quickly."},
+  {template:"She accidentally ___ on the cat's tail and it ran away.", verb:"tread",  form:"ps", answer:"trod",    full:"She accidentally trod on the cat's tail and it ran away."},
+  {template:"The old woman ___ a warm scarf using wool she had collected.", verb:"weave",  form:"ps", answer:"wove",    full:"The old woman wove a warm scarf using wool she had collected."},
+  {template:"She ___ when she read the final chapter of the book.", verb:"weep",   form:"ps", answer:"wept",    full:"She wept when she read the final chapter of the book."},
+  {template:"He ___ the wet towel before hanging it on the line.", verb:"wring",  form:"ps", answer:"wrung",   full:"He wrung the wet towel before hanging it on the line."},
+
+  // PAST PARTICIPLE — verbos nuevos
+  {template:"Have you ___ a date for the meeting yet?", verb:"set",    form:"pp", answer:"set",     full:"Have you set a date for the meeting yet?"},
+  {template:"She has never ___ anything by hand — she always buys clothes.", verb:"sew",    form:"pp", answer:"sewn",    full:"She has never sewn anything by hand — she always buys clothes."},
+  {template:"The city has been ___ by several earthquakes over the years.", verb:"shake",  form:"pp", answer:"shaken",  full:"The city has been shaken by several earthquakes over the years."},
+  {template:"The sun has ___ all day — perfect weather for the beach.", verb:"shine",  form:"pp", answer:"shone",   full:"The sun has shone all day — perfect weather for the beach."},
+  {template:"The film has ___ to the top of the box office this weekend.", verb:"shoot",  form:"pp", answer:"shot",    full:"The film has shot to the top of the box office this weekend."},
+  {template:"The museum has ___ a new exhibition about ancient Egypt.", verb:"show",   form:"pp", answer:"shown",   full:"The museum has shown a new exhibition about ancient Egypt."},
+  {template:"That jumper has ___ so much in the wash it no longer fits.", verb:"shrink", form:"pp", answer:"shrunk",  full:"That jumper has shrunk so much in the wash it no longer fits."},
+  {template:"The old boat has ___ to the bottom of the lake.", verb:"sink",   form:"pp", answer:"sunk",    full:"The old boat has sunk to the bottom of the lake."},
+  {template:"The door has ___ shut and we can't open it from outside.", verb:"slide",  form:"pp", answer:"slid",    full:"The door has slid shut and we can't open it from outside."},
+  {template:"The gardener has already ___ the seeds for next season.", verb:"sow",    form:"pp", answer:"sown",    full:"The gardener has already sown the seeds for next season."},
+  {template:"I've never ___ that word correctly — I always make mistakes.", verb:"spell",  form:"pp", answer:"spelt",   full:"I've never spelt that word correctly — I always make mistakes."},
+  {template:"Someone has ___ juice on the carpet and left a stain.", verb:"spill",  form:"pp", answer:"spilt",   full:"Someone has spilt juice on the carpet and left a stain."},
+  {template:"The group has ___ into two teams for the competition.", verb:"split",  form:"pp", answer:"split",   full:"The group has split into two teams for the competition."},
+  {template:"The milk has ___ — you should have kept it in the fridge.", verb:"spoil",  form:"pp", answer:"spoilt",  full:"The milk has spoilt — you should have kept it in the fridge."},
+  {template:"The rumour has ___ all over school and everyone knows now.", verb:"spread",  form:"pp", answer:"spread",  full:"The rumour has spread all over school and everyone knows now."},
+  {template:"I've been ___ by a jellyfish — my arm really hurts!", verb:"sting",  form:"pp", answer:"stung",   full:"I've been stung by a jellyfish — my arm really hurts!"},
+  {template:"That fridge has ___ for days — we need to clean it out.", verb:"stink",  form:"pp", answer:"stunk",   full:"That fridge has stunk for days — we need to clean it out."},
+  {template:"Lightning has ___ the old tree at the edge of the garden.", verb:"strike", form:"pp", answer:"struck",  full:"Lightning has struck the old tree at the edge of the garden."},
+  {template:"She has ___ she will never lend him money again.", verb:"swear",  form:"pp", answer:"sworn",   full:"She has sworn she will never lend him money again."},
+  {template:"Has anyone ___ the corridor? It's covered in dust.", verb:"sweep",  form:"pp", answer:"swept",   full:"Has anyone swept the corridor? It's covered in dust."},
+  {template:"He has ___ all the pages out of the notebook by accident.", verb:"tear",   form:"pp", answer:"torn",    full:"He has torn all the pages out of the notebook by accident."},
+  {template:"You have ___ on my foot three times already!", verb:"tread",  form:"pp", answer:"trodden", full:"You have trodden on my foot three times already!"},
+  {template:"She has ___ rugs for twenty years and her work is stunning.", verb:"weave",  form:"pp", answer:"woven",   full:"She has woven rugs for twenty years and her work is stunning."},
+  {template:"He has ___ every night this week — the film really moved him.", verb:"weep",   form:"pp", answer:"wept",    full:"He has wept every night this week — the film really moved him."},
+  {template:"She has ___ the cloth so tightly that it won't drip at all.", verb:"wring",  form:"pp", answer:"wrung",   full:"She has wrung the cloth so tightly that it won't drip at all."},
 ];
 
 /* =============================================
@@ -193,8 +247,92 @@ let lastWasErrorMode = false; /* true cuando el quiz que terminó era de errores
 let currentSentenceFull = '';
 
 /* =============================================
-   TEMA (SOL / LUNA) — tap + swipe
+   INDEXEDDB — puente SW ↔ página
+   El SW no puede leer localStorage, así que
+   sincronizamos errores y timestamp en IDB.
    ============================================= */
+const VQ_DB = (() => {
+  let _db = null;
+  function open() {
+    if (_db) return Promise.resolve(_db);
+    return new Promise((res, rej) => {
+      const r = indexedDB.open('verbquest-store', 1);
+      r.onupgradeneeded = e => e.target.result.createObjectStore('kv', { keyPath: 'k' });
+      r.onsuccess  = e => { _db = e.target.result; res(_db); };
+      r.onerror    = () => rej(r.error);
+    });
+  }
+  function set(k, v) {
+    return open().then(db => new Promise((res, rej) => {
+      const tx = db.transaction('kv', 'readwrite');
+      tx.objectStore('kv').put({ k, v });
+      tx.oncomplete = res; tx.onerror = rej;
+    }));
+  }
+  function del(k) {
+    return open().then(db => new Promise((res, rej) => {
+      const tx = db.transaction('kv', 'readwrite');
+      tx.objectStore('kv').delete(k);
+      tx.oncomplete = res; tx.onerror = rej;
+    }));
+  }
+  return { set, del };
+})();
+
+/* Sincroniza errores + timestamp en IDB para que el SW pueda leerlos */
+function syncErrorsToIDB() {
+  try {
+    const errs = getStoredErrors();
+    if (errs.length > 0) {
+      VQ_DB.set('vq-errors', errs);
+      /* Solo actualiza el timestamp si aún no existe (primera vez que aparecen errores) */
+      const stored = localStorage.getItem('vq-errors-ts');
+      if (!stored) {
+        const now = Date.now();
+        localStorage.setItem('vq-errors-ts', now);
+        VQ_DB.set('vq-errors-ts', now);
+      } else {
+        VQ_DB.set('vq-errors-ts', parseInt(stored, 10));
+      }
+    } else {
+      /* Sin errores: limpiar IDB y timestamp */
+      VQ_DB.del('vq-errors');
+      VQ_DB.del('vq-errors-ts');
+      localStorage.removeItem('vq-errors-ts');
+    }
+  } catch(e) {}
+}
+
+/* Solicitar permiso de notificaciones y registrar Periodic Sync */
+async function initNotifications() {
+  if (!('serviceWorker' in navigator) || !('Notification' in window)) return;
+
+  try {
+    const reg = await navigator.serviceWorker.ready;
+
+    /* Pedir permiso solo si aún no se ha decidido */
+    if (Notification.permission === 'default') {
+      /* Esperar un momento para no interrumpir la carga inicial */
+      setTimeout(async () => {
+        const perm = await Notification.requestPermission();
+        if (perm === 'granted') registerPeriodicSync(reg);
+      }, 4000);
+    } else if (Notification.permission === 'granted') {
+      registerPeriodicSync(reg);
+    }
+  } catch(e) {}
+}
+
+async function registerPeriodicSync(reg) {
+  try {
+    if (!('periodicSync' in reg)) return;
+    const status = await navigator.permissions.query({ name: 'periodic-background-sync' });
+    if (status.state !== 'granted') return;
+    await reg.periodicSync.register('vq-errors-reminder', {
+      minInterval: 60 * 60 * 1000, /* el SW comprueba cada hora como mínimo */
+    });
+  } catch(e) {}
+}
 (function initTheme() {
   const saved   = localStorage.getItem('vq-theme');
   const toggle  = document.getElementById('themeToggle');
@@ -418,11 +556,13 @@ function addError(verbInf, form) {
     errs.push({ key, verbInf, form });
   }
   saveStoredErrors(errs);
+  syncErrorsToIDB();
 }
 function removeError(verbInf, form) {
   let errs = getStoredErrors();
   errs = errs.filter(e => e.key !== (verbInf + ':' + form));
   saveStoredErrors(errs);
+  syncErrorsToIDB();
 }
 function updateErrorsUI() {
   const errs = getStoredErrors();
@@ -1292,11 +1432,163 @@ function closeSharePreview() {
 /* =============================================
    NAV / SCREENS
    ============================================= */
+/* =============================================
+   MODAL DE CONFIRMACIÓN — ABANDONAR QUIZ
+   ============================================= */
+function isQuizActive() {
+  const activeScreen = document.querySelector('#pageQuiz .screen.active');
+  if (!activeScreen) return false;
+  const id = activeScreen.id;
+  return (id === 'quizScreen' || id === 'sentenceScreen') && questions.length > 0 && idx < questions.length;
+}
+
+function showQuitModal(onConfirm) {
+  const isLight    = document.body.classList.contains('light');
+  const bg         = isLight ? '#ffffff'              : '#1a2a3a';
+  const overlayBg  = isLight ? 'rgba(0,0,0,0.45)'    : 'rgba(0,0,0,0.68)';
+  const textColor  = isLight ? '#1a3a5c'              : '#eaf2fb';
+  const subColor   = isLight ? '#4a5568'              : 'rgba(255,255,255,0.68)';
+  const divider    = isLight ? 'rgba(0,0,0,0.08)'     : 'rgba(255,255,255,0.08)';
+  const shadow     = isLight ? '0 8px 40px rgba(0,0,0,0.16)' : '0 8px 40px rgba(0,0,0,0.55)';
+  const pillBg     = isLight ? 'rgba(30,122,191,0.10)' : 'rgba(30,122,191,0.18)';
+  const pillColor  = isLight ? '#1e6091'              : '#7ec8f7';
+
+  /* Datos reales del quiz en curso */
+  const currentQ   = idx + 1;
+  const totalQs    = questions.length;
+  const isSurvival = lives < 99;
+  const livesLeft  = lives;
+  const streakNow  = streak;
+  const scoreNow   = score;
+
+  /* Overlay */
+  const overlay = document.createElement('div');
+  overlay.id = 'quitModalOverlay';
+  overlay.style.cssText = `
+    position:fixed;inset:0;background:${overlayBg};
+    z-index:99998;display:flex;align-items:center;justify-content:center;
+    animation:qmFadeIn .25s ease;padding:1rem;box-sizing:border-box;
+  `;
+
+  /* Tarjeta */
+  const card = document.createElement('div');
+  card.style.cssText = `
+    background:${bg};border-radius:24px;padding:1.8rem 1.6rem 1.5rem;
+    max-width:320px;width:100%;text-align:center;
+    box-shadow:${shadow};position:relative;z-index:99999;
+    animation:qmSlideUp .3s cubic-bezier(.34,1.56,.64,1);
+  `;
+
+  /* Filas de datos del quiz actual */
+  const streakRow  = streakNow > 0
+    ? `<div style="display:flex;align-items:center;justify-content:space-between;padding:.45rem 0;border-bottom:1px solid ${divider}">
+         <span style="color:${subColor};font-size:.88rem">🔥 Racha</span>
+         <span style="font-weight:800;color:#e67e22;font-size:.95rem">${streakNow} seguidas</span>
+       </div>` : '';
+
+  const livesRow   = isSurvival
+    ? `<div style="display:flex;align-items:center;justify-content:space-between;padding:.45rem 0;border-bottom:1px solid ${divider}">
+         <span style="color:${subColor};font-size:.88rem">❤️ Vidas</span>
+         <span style="font-weight:800;color:#e74c3c;font-size:.95rem">${'❤️'.repeat(livesLeft)}</span>
+       </div>` : '';
+
+  card.innerHTML = `
+    <style>
+      @keyframes qmFadeIn{from{opacity:0}to{opacity:1}}
+      @keyframes qmSlideUp{from{opacity:0;transform:translateY(40px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+      #quitModalOverlay .qm-btn{
+        width:100%;padding:.78rem 1rem;border:none;border-radius:99px;
+        font-size:1rem;font-weight:800;font-family:'Nunito',sans-serif;
+        cursor:pointer;letter-spacing:.02em;transition:transform .15s,box-shadow .15s;
+      }
+      #quitModalOverlay .qm-btn:active{transform:scale(.97)}
+      #quitModalOverlay .qm-btn-stay{
+        background:linear-gradient(135deg,#1e7abf,#2e8b3a);color:#fff;
+        box-shadow:0 4px 16px rgba(30,122,191,.35);margin-bottom:.75rem;
+      }
+      #quitModalOverlay .qm-btn-stay:hover{transform:scale(1.03);box-shadow:0 6px 22px rgba(30,122,191,.45)}
+      #quitModalOverlay .qm-btn-quit{
+        background:transparent;color:#e74c3c;
+        border:2px solid rgba(231,76,60,.35);
+      }
+      #quitModalOverlay .qm-btn-quit:hover{background:rgba(231,76,60,.08)}
+    </style>
+
+    <div style="font-size:2rem;margin-bottom:.5rem">⚠️</div>
+
+    <div style="font-size:1.35rem;font-weight:900;font-family:'Fredoka One',cursive;
+                color:${textColor};margin-bottom:.3rem;line-height:1.25">
+      ¿Abandonar el quiz?
+    </div>
+    <div style="font-size:.875rem;color:${subColor};font-family:'Nunito',sans-serif;
+                margin-bottom:1.1rem;line-height:1.5">
+      Perderás todo el progreso de esta sesión.
+    </div>
+
+    <!-- Datos en tiempo real -->
+    <div style="background:${pillBg};border-radius:14px;padding:.6rem .9rem;
+                margin-bottom:1.3rem;text-align:left;font-family:'Nunito',sans-serif">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:.45rem 0;border-bottom:1px solid ${divider}">
+        <span style="color:${subColor};font-size:.88rem">📋 Pregunta</span>
+        <span style="font-weight:800;color:${pillColor};font-size:.95rem">${currentQ} de ${totalQs}</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:.45rem 0;border-bottom:1px solid ${divider}">
+        <span style="color:${subColor};font-size:.88rem">⭐ Puntos</span>
+        <span style="font-weight:800;color:${pillColor};font-size:.95rem">${scoreNow}</span>
+      </div>
+      ${streakRow}
+      ${livesRow}
+    </div>
+
+    <button class="qm-btn qm-btn-stay"  id="qmBtnStay">🎮 Seguir jugando</button>
+    <button class="qm-btn qm-btn-quit"  id="qmBtnQuit">Salir del quiz</button>
+  `;
+
+  overlay.appendChild(card);
+  document.body.appendChild(overlay);
+
+  /* Cerrar al tocar fuera */
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeQuitModal(); });
+
+  /* Seguir jugando */
+  document.getElementById('qmBtnStay').addEventListener('click', closeQuitModal);
+
+  /* Confirmar salida */
+  document.getElementById('qmBtnQuit').addEventListener('click', () => {
+    closeQuitModal(() => onConfirm());
+  });
+}
+
+function closeQuitModal(cb) {
+  const overlay = document.getElementById('quitModalOverlay');
+  if (!overlay) { if (cb) cb(); return; }
+  overlay.style.animation = 'qmFadeIn .2s ease reverse forwards';
+  setTimeout(() => { overlay.remove(); if (cb) cb(); }, 200);
+}
+
 function switchTab(tab) {
   playClick();
-  document.querySelectorAll('.page,.quiz-page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
-  if (tab==='theory') {
+
+  if (tab === 'theory' && isQuizActive()) {
+    showQuitModal(() => {
+      /* Reset estado del quiz */
+      questions = []; idx = 0; score = 0; streak = 0;
+      okCount = 0; badCount = 0; lives = 3; wrongLog = [];
+      answered = false; hintUsed = false;
+      /* Ir a teoría */
+      document.querySelectorAll('.page,.quiz-page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('pageTheory').classList.add('active');
+      document.getElementById('tabTheory').classList.add('active');
+      showScreen('startScreen');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    return;
+  }
+
+  document.querySelectorAll('.page,.quiz-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  if (tab === 'theory') {
     document.getElementById('pageTheory').classList.add('active');
     document.getElementById('tabTheory').classList.add('active');
   } else {
@@ -1304,7 +1596,7 @@ function switchTab(tab) {
     document.getElementById('tabQuiz').classList.add('active');
     showScreen('startScreen');
   }
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 function playAgain() {
   /* Leer fuente de verdad desde localStorage para no depender de variable en memoria */
@@ -1491,6 +1783,23 @@ function confetti(n=22){
    ============================================= */
 renderTheory();
 updateErrorsUI();
+syncErrorsToIDB();   /* sincronizar estado inicial de errores con IDB */
+initNotifications(); /* solicitar permiso y registrar Periodic Sync */
+
+/* ── Guardia para el botón Atrás del navegador / Android ── */
+history.pushState({ vq: true }, '');
+window.addEventListener('popstate', () => {
+  if (isQuizActive()) {
+    /* Reponer la entrada de historial para que el botón atrás siga funcionando */
+    history.pushState({ vq: true }, '');
+    showQuitModal(() => {
+      questions = []; idx = 0; score = 0; streak = 0;
+      okCount = 0; badCount = 0; lives = 3; wrongLog = [];
+      answered = false; hintUsed = false;
+      showScreen('startScreen');
+    });
+  }
+});
 
 /* El Service Worker se registra desde index.html como sw.js externo
    para garantizar compatibilidad con PWA instalada (Blob URL no persiste) */
