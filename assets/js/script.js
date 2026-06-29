@@ -566,8 +566,40 @@ document.getElementById('themeToggle').addEventListener('change', function() {
    ============================================= */
 function getAudioCtx() {
   if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  /* Reanudar si el navegador lo suspendió (política autoplay) */
+  if (audioCtx.state === 'suspended') audioCtx.resume();
   return audioCtx;
 }
+
+/* Precalentar AudioContext + SpeechSynthesis en el primer toque del usuario.
+   Los navegadores móviles los inicializan con ~300-500ms de latencia la primera
+   vez; hacerlo aquí evita que ese retraso ocurra al pulsar un audio real. */
+(function prewarmAudio() {
+  function warm() {
+    /* AudioContext: crear y reanudar en silencio */
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    } catch(e) {}
+
+    /* SpeechSynthesis: forzar carga de voces */
+    try {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.getVoices();
+        /* Utterance vacía con volumen 0 para despertar el motor TTS */
+        const u = new SpeechSynthesisUtterance('');
+        u.volume = 0;
+        window.speechSynthesis.speak(u);
+        setTimeout(() => window.speechSynthesis.cancel(), 50);
+      }
+    } catch(e) {}
+
+    document.removeEventListener('touchstart', warm, true);
+    document.removeEventListener('mousedown',  warm, true);
+  }
+  document.addEventListener('touchstart', warm, { capture: true, passive: true, once: true });
+  document.addEventListener('mousedown',  warm, { capture: true, passive: true, once: true });
+})();
 function playTone(freq, dur, type='sine', vol=0.3) {
   try {
     const ctx = getAudioCtx();
@@ -612,13 +644,23 @@ function playResult(pct) {
    ============================================= */
 function speak(text, onEnd) {
   if (!('speechSynthesis' in window)) return;
+  /* En algunos navegadores móviles speechSynthesis se congela tras inactividad;
+     cancel() + pequeño timeout lo despierta antes de hablar */
   window.speechSynthesis.cancel();
-  const utt = new SpeechSynthesisUtterance(text);
-  utt.lang = 'en-US';
-  utt.rate = 0.88;
-  utt.pitch = 1;
-  if (onEnd) utt.onend = onEnd;
-  window.speechSynthesis.speak(utt);
+  const fire = () => {
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.lang  = 'en-US';
+    utt.rate  = 0.88;
+    utt.pitch = 1;
+    if (onEnd) utt.onend = onEnd;
+    window.speechSynthesis.speak(utt);
+  };
+  /* Pequeño delay solo si el motor estaba pausado/congelado */
+  if (window.speechSynthesis.paused || window.speechSynthesis.pending) {
+    setTimeout(fire, 80);
+  } else {
+    fire();
+  }
 }
 
 function speakVerb(inf, ps, pp) {
@@ -744,10 +786,13 @@ function getTheoryList() {
   });
 }
 function renderTheory() {
-  const list = getTheoryList();
-  document.getElementById('theoryList').innerHTML = list.map((v,i)=>`
+  const list      = getTheoryList();
+  const container = document.getElementById('theoryList');
+
+  /* ── Pintar HTML primero para que el usuario vea la lista sin esperar ── */
+  container.innerHTML = list.map((v, i) => `
     <div class="vt-row"
-         style="animation:fadeUp .25s ease ${i*.018}s both"
+         style="animation:fadeUp .25s ease ${i * .018}s both"
          data-inf="${v.inf}" data-ps="${v.ps}" data-pp="${v.pp}">
       <div>
         <div class="vr-word">${v.inf}</div>
@@ -759,38 +804,32 @@ function renderTheory() {
         <div class="vr-pron">${v.pPs}</div>
       </div>
       <div class="vr-pp">
-        <div class="vr-word ${v.pp==='–'?'vr-dash':''}">${v.pp}</div>
-        <div class="vr-pron">${v.pp!=='–'?v.pPp:''}</div>
+        <div class="vr-word ${v.pp === '–' ? 'vr-dash' : ''}">${v.pp}</div>
+        <div class="vr-pron">${v.pp !== '–' ? v.pPp : ''}</div>
       </div>
     </div>`).join('');
 
   document.getElementById('theoryCount').innerHTML =
     `<span style="font-size:.72rem;opacity:.8">Mantén presionado una celda para escucharla 🔊</span> · Mostrando <strong>${list.length}</strong> de <strong>${VERBS.length}</strong>`;
 
-  /* Long-press por celda individual: cada columna pronuncia solo su forma */
-  document.querySelectorAll('#theoryList .vt-row').forEach(row => {
-    const cells = row.querySelectorAll(':scope > div');
-    const inf = row.dataset.inf;
-    const ps  = row.dataset.ps;
-    const pp  = row.dataset.pp;
+  /* ── Registrar long-press diferido: el navegador pinta primero, luego adjuntamos listeners ── */
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      container.querySelectorAll('.vt-row').forEach(row => {
+        const cells = row.querySelectorAll(':scope > div');
+        const inf   = row.dataset.inf;
+        const ps    = row.dataset.ps;
+        const pp    = row.dataset.pp;
 
-    /* Celda 0 → infinitivo */
-    initLongPress(cells[0], () => {
-      speakWord(inf);
-      showTtsPop(`🔊 ${inf}`);
-    });
-    /* Celda 1 → español (pronuncia infinitivo igual, la columna es solo referencia) */
-    initLongPress(cells[1], () => {
-      speakWord(inf);
-      showTtsPop(`🔊 ${inf}`);
-    });
-    /* Celda 2 → Past Simple */
-    initLongPress(cells[2], () => {
-      if (ps && ps !== '–') { speakWord(ps); showTtsPop(`🔊 ${ps}`); }
-    });
-    /* Celda 3 → Past Participle */
-    initLongPress(cells[3], () => {
-      if (pp && pp !== '–') { speakWord(pp); showTtsPop(`🔊 ${pp}`); }
+        initLongPress(cells[0], () => { speakWord(inf); showTtsPop(`🔊 ${inf}`); });
+        initLongPress(cells[1], () => { speakWord(inf); showTtsPop(`🔊 ${inf}`); });
+        initLongPress(cells[2], () => {
+          if (ps && ps !== '–') { speakWord(ps); showTtsPop(`🔊 ${ps}`); }
+        });
+        initLongPress(cells[3], () => {
+          if (pp && pp !== '–') { speakWord(pp); showTtsPop(`🔊 ${pp}`); }
+        });
+      });
     });
   });
 }
